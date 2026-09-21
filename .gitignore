@@ -1,0 +1,21 @@
+# dependencies (only used by the local screenshot tooling)
+node_modules/
+
+# local QA screenshots, ~92MB
+temporary screenshots/
+
+# scratch files
+_*.mjs
+_*.png
+_blank.html
+
+# Reference material and licensed assets that must not be published:
+# - Apple SF Pro font files (proprietary, redistribution not permitted)
+# - full-page captures of third-party websites used only as design references
+Brand Assets/WCE Agency Minimal ios/
+Brand Assets/www.*.png
+Brand Assets/ghost frame logo.png
+
+# OS noise
+.DS_Store
+Thumbs.db

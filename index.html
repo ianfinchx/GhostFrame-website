@@ -1,0 +1,1196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GhostFrame Media — A proven editing system, plugged into your agency</title>
+<meta name="description" content="White-label video production for social media managers and agencies. Standardized editing that delivers 24 animated reels a month in under two weeks, under your brand.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com"></script>
+<style>
+:root{
+  --bg:#f9f9f9;
+  --bg-white:#fff;
+  --bg-300:#f2f2f2;
+  --bg-900:#121214;
+  --txt:#212121;
+  --txt-600:#575757;
+  --txt-500:#919191;
+  --txt-100:#f9f9f9;
+  --border:#e7e7e7;
+  --border-400:#ccc;
+  --border-700:#3b3b3f;
+  --accent:#ff56e0;
+  --warn:#c0392b;
+  --font:"Inter Tight",Arial,Helvetica,sans-serif;
+  --shell:1152px;
+  --pad:112px;
+  --ease:cubic-bezier(.2,.7,.3,1);
+}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;border:0 solid}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--txt);font-family:var(--font);font-size:17px;font-weight:400;
+  line-height:1.41;letter-spacing:.17px;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden}
+img{display:block;max-width:100%}
+a{color:inherit;text-decoration:none}
+button{font:inherit;background:none;cursor:pointer;color:inherit}
+::selection{background:rgba(255,86,224,.21)}
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-thumb{background:var(--border-400);border-radius:3px}
+::-webkit-scrollbar-track{background:var(--bg)}
+:is(a,button,summary):focus-visible{outline:2px solid var(--txt);outline-offset:3px;border-radius:4px}
+.on-dark :is(a,button,summary):focus-visible{outline-color:#fff}
+
+.shell{width:100%;max-width:var(--shell);margin-inline:auto;padding-inline:24px}
+
+/* ---------- section rhythm: hairline-separated bands ---------- */
+.section{padding:var(--pad) 0;border-bottom:1px solid var(--border)}
+.section:last-of-type{border-bottom:none}
+
+/* ---------- type ---------- */
+h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
+.h-display{font-size:clamp(40px,6.3vw,87px);line-height:1.02;letter-spacing:-.028em}
+.h-section{font-size:clamp(28px,2.9vw,37px);line-height:1.14}
+.h-sub{font-size:clamp(22px,1.9vw,25px);line-height:1.2}
+.lede{font-size:17px;line-height:1.41;color:var(--txt-600);max-width:46ch}
+.muted{color:var(--txt-500)}
+.label{font-size:13px;font-weight:500;letter-spacing:.02em;color:var(--txt-500)}
+
+/* two-column band: heading left, content right */
+.split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+
+/* oversized section marker */
+.section-title{font-size:clamp(34px,4.4vw,58px);line-height:1;font-weight:700;letter-spacing:-.02em;
+  text-transform:uppercase;padding-bottom:28px;margin-bottom:56px;border-bottom:1px solid var(--border)}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:44px;padding:0 20px;
+  border-radius:8px;font-size:15px;font-weight:500;letter-spacing:0;white-space:nowrap;
+  transition:background-color .25s var(--ease),color .25s var(--ease),border-color .25s var(--ease),opacity .25s var(--ease)}
+.btn-dark{background:var(--txt);color:#fff}
+.btn-dark:hover{background:#000}
+.btn-dark:active{opacity:.85}
+.btn-line{border:1px solid var(--border-400);color:var(--txt);background:var(--bg-white)}
+.btn-line:hover{border-color:var(--txt)}
+.btn-line:active{opacity:.85}
+.btn-light{background:#fff;color:var(--txt)}
+.btn-light:hover{opacity:.88}
+.btn-sm{height:36px;padding:0 14px;font-size:14px}
+
+/* ---------- nav ---------- */
+.nav-bar{position:sticky;top:0;z-index:60;background:rgba(249,249,249,.88);
+  backdrop-filter:saturate(180%) blur(12px);-webkit-backdrop-filter:saturate(180%) blur(12px);
+  border-bottom:1px solid var(--border)}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:24px;height:60px}
+.brand{display:flex;align-items:center;gap:8px}
+.mark{position:relative;width:22px;height:31px;overflow:hidden;flex:none}
+.mark img{position:absolute;width:102px;height:68px;left:-39.8px;top:-9.7px;max-width:none}
+.brand-name{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.05;text-transform:uppercase}
+.brand-name span{display:block;font-weight:500;font-size:10.5px;letter-spacing:.12em;color:var(--txt-500)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-size:14px;color:var(--txt);transition:color .2s var(--ease)}
+.nav-links a:hover{color:var(--txt-500)}
+.nav-right{display:flex;align-items:center;gap:10px}
+.wa{display:grid;place-items:center;width:36px;height:36px;border-radius:8px;
+  border:1px solid var(--border-400);color:#1f9d54;transition:border-color .25s var(--ease),color .25s var(--ease)}
+.wa:hover{border-color:#25d366;color:#25d366}
+.nav-burger{display:none;width:36px;height:36px;border-radius:8px;border:1px solid var(--border-400);place-items:center}
+
+/* ---------- hero ---------- */
+.cover{position:relative;padding-top:140px;padding-bottom:var(--pad);border-bottom:1px solid var(--border);
+  overflow:hidden}
+.bloom{position:absolute;pointer-events:none;border-radius:50%;filter:blur(90px);opacity:.5;z-index:0}
+.bloom-a{width:360px;height:220px;left:14%;top:190px;background:rgba(255,86,224,.20)}
+.bloom-b{width:300px;height:200px;right:8%;top:430px;background:rgba(120,110,255,.14)}
+.cover .shell{position:relative;z-index:1}
+.cover-badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--txt-500);margin-bottom:26px}
+.cover-badge i{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block}
+.cover h1{max-width:15ch}
+.cover-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+.cover-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;margin-top:92px}
+.cover-copy p+p{margin-top:14px}
+
+/* video card */
+.player-wrap{position:relative}
+.player{position:relative;border-radius:12px;background:#1c1c1c;overflow:hidden;
+  box-shadow:0 24px 50px -34px rgba(18,18,20,.5)}
+.player-head{display:flex;align-items:center;gap:12px;padding:13px 16px 9px}
+.player-head .mark{width:20px;height:28px}
+.player-head .mark img{width:92.7px;height:61.8px;left:-36.2px;top:-8.8px;mix-blend-mode:screen}
+.avatar-ring{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#000;flex:none}
+.player-head h4{font-size:14px;font-weight:600;color:#fff;letter-spacing:-.01em}
+.player-head p{font-size:12px;color:#9a9a9a;line-height:1.3}
+.player-head .vol{margin-left:auto;color:#e6e6e6}
+.stage{position:relative;aspect-ratio:16/7.6;display:grid;place-items:center;
+  background:linear-gradient(150deg,#8e9aa3,#6f7a84 38%,#4c545c)}
+.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 55%)}
+.stage-word{position:absolute;left:8%;top:40%;transform:translateY(-50%);font-size:24px;font-weight:500;
+  color:rgba(255,255,255,.78);letter-spacing:-.02em}
+.play{position:absolute;z-index:2;top:40%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;
+  width:48px;height:48px;border-radius:50%;background:rgba(20,20,20,.55);color:#fff;
+  transition:transform .3s var(--ease),background-color .3s var(--ease)}
+.play:hover{transform:translate(-50%,-50%) scale(1.07);background:rgba(20,20,20,.75)}
+.stage-bar{position:absolute;z-index:2;inset:auto 0 0;padding:0 14px 26px}
+.ctrl-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.chip{padding:3px 8px;border-radius:5px;background:rgba(0,0,0,.55);color:#fff;font-size:12px}
+.expand{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff}
+.scrub{position:relative;height:3px;margin-top:16px;background:rgba(255,255,255,.3);border-radius:2px}
+.scrub i{position:absolute;inset:0 22% 0 0;background:#f0242e;border-radius:2px}
+.scrub b{position:absolute;top:50%;left:78%;width:10px;height:10px;margin:-5px 0 0 -5px;background:#f0242e;border-radius:50%}
+.yt-row{display:flex;justify-content:flex-end;margin-top:20px}
+.yt{display:flex;align-items:center;gap:5px;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:-.01em}
+.player-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;background:#141414}
+.status{display:flex;align-items:center;gap:8px;font-size:13px;color:#c9c9c9}
+.status i{width:7px;height:7px;border-radius:50%;background:#2ecc71}
+.player-foot a{font-size:13px;color:#e6e6e6;transition:opacity .25s var(--ease)}
+.player-foot a:hover{opacity:.7}
+.float{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;
+  border:1px solid var(--border)}
+.float .n{font-size:18px;font-weight:700;letter-spacing:-.025em;line-height:1.15}
+.float .l{font-size:12px;line-height:1.25;color:var(--txt-500)}
+.float-views{top:-20px;right:-16px;background:#fff;box-shadow:0 14px 30px -22px rgba(18,18,20,.5)}
+.float-proj{left:-18px;bottom:46px;background:var(--bg-900);border-color:var(--border-700);color:#fff;
+  box-shadow:0 16px 32px -20px rgba(18,18,20,.6)}
+.float-proj .l{color:var(--txt-500)}
+.float-proj .ic{display:grid;place-items:center;width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.1)}
+
+/* ---------- proof ---------- */
+.proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px}
+.proof-grid .n{font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.1;white-space:nowrap}
+.proof-grid .l{margin-top:10px;font-size:15px;color:var(--txt-600)}
+.proof-grid .ic{color:var(--txt-500);margin-bottom:18px}
+
+/* ---------- margin chart ---------- */
+.chart-wrap{position:relative;margin-top:72px;max-width:780px}
+/* cast shadow: an ellipse on the surface beneath the card */
+.chart-wrap::after{content:"";position:absolute;left:50%;bottom:-10px;width:80%;height:36px;
+  translate:-50% 0;border-radius:50%;background:rgba(18,18,20,.15);filter:blur(24px);z-index:0}
+.chart{position:relative;z-index:1;background:#fff;border:1px solid var(--border);border-radius:20px;
+  padding:34px 34px 28px;
+  box-shadow:0 1px 2px rgba(18,18,20,.04),0 10px 20px -10px rgba(18,18,20,.10),
+    0 34px 50px -22px rgba(18,18,20,.16)}
+.chart-plot,.chart-x{display:grid;grid-template-columns:repeat(7,1fr);gap:18px}
+.chart-plot{height:300px;align-items:end}
+.col{display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.col .v{text-align:center;font-size:17px;font-weight:600;color:#3f4145;line-height:1;margin-bottom:12px}
+.col i{display:block;height:var(--h);background:var(--c);border-radius:10px}
+.col.alert .v{color:#e8352b}
+.chart-x{margin-top:16px}
+.chart-x span{text-align:center;font-size:15px;color:var(--txt-500)}
+.chart-note{margin-top:20px;font-size:14px;color:var(--txt-500)}
+
+/* ---------- marker list (problems) ---------- */
+.marks{display:flex;flex-direction:column;gap:24px}
+.marks li{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;list-style:none;font-size:16px;
+  line-height:1.45;color:var(--txt-600)}
+.marks .g{color:var(--txt);font-size:13px;line-height:1.7}
+.marks b{color:var(--txt);font-weight:600}
+
+/* ---------- dock ---------- */
+.dock-wrap{display:flex;margin-top:44px}
+.dock{position:relative;display:inline-block;background:var(--bg-900);
+  border:1px solid var(--border-700);border-radius:20px;padding:12px;
+  box-shadow:0 14px 34px -20px rgba(18,18,20,.55)}
+.dock-row{position:relative;height:62px}
+.dock-app{position:absolute;bottom:0;transform-origin:bottom center;
+  filter:drop-shadow(0 3px 7px rgba(0,0,0,.4))}
+.dock-app img{width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none;
+  transform:scale(var(--s,1))}
+.dock-app.tile{background:#fff;border-radius:23%;overflow:hidden}
+.dock-app.tile img{transform:scale(calc(var(--s,1) * .78))}
+
+/* ---------- spotlight step cards ---------- */
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.step{
+  --border-size:1px;--radius:12px;--spot:300px;--base:205;--spread:100;
+  --hue:calc(var(--base) + (var(--xp,.5) * var(--spread)));
+  position:relative;border-radius:var(--radius);
+  border:var(--border-size) solid var(--border);background-color:#fff;
+  background-image:radial-gradient(var(--spot) var(--spot) at
+    calc(var(--x,-9999) * 1px) calc(var(--y,-9999) * 1px),
+    hsl(var(--hue) 85% 60% / .05), transparent 100%);
+  background-attachment:fixed;background-repeat:no-repeat;background-position:50% 50%;
+  background-size:calc(100% + 2 * var(--border-size)) calc(100% + 2 * var(--border-size));
+  padding:28px 26px 30px;touch-action:none;
+  transition:transform .35s var(--ease)}
+.step:hover{transform:translateY(-3px)}
+.step::before,.step::after,.step .glow::before{
+  pointer-events:none;content:"";position:absolute;inset:calc(var(--border-size) * -1);
+  border:var(--border-size) solid transparent;border-radius:var(--radius);
+  background-attachment:fixed;background-repeat:no-repeat;background-position:50% 50%;
+  background-size:calc(100% + 2 * var(--border-size)) calc(100% + 2 * var(--border-size));
+  -webkit-mask:linear-gradient(#000,#000),linear-gradient(#000,#000);
+  mask:linear-gradient(#000,#000),linear-gradient(#000,#000);
+  -webkit-mask-clip:padding-box,border-box;mask-clip:padding-box,border-box;
+  -webkit-mask-composite:xor;mask-composite:exclude}
+.step::before{background-image:radial-gradient(calc(var(--spot) * .8) calc(var(--spot) * .8) at
+  calc(var(--x,-9999) * 1px) calc(var(--y,-9999) * 1px),hsl(var(--hue) 90% 58% / .9),transparent 100%)}
+.step::after{background-image:radial-gradient(calc(var(--spot) * .4) calc(var(--spot) * .4) at
+  calc(var(--x,-9999) * 1px) calc(var(--y,-9999) * 1px),hsl(var(--hue) 95% 72% / .95),transparent 100%)}
+.step .glow{position:absolute;inset:0;pointer-events:none;border-radius:var(--radius);
+  opacity:.6;filter:blur(12px);will-change:filter}
+.step .glow::before{background-image:radial-gradient(calc(var(--spot) * .8) calc(var(--spot) * .8) at
+  calc(var(--x,-9999) * 1px) calc(var(--y,-9999) * 1px),hsl(var(--hue) 90% 60% / .7),transparent 100%)}
+.step .num{position:relative;font-size:13px;font-weight:500;color:var(--txt-500)}
+.step h3{position:relative;margin-top:18px;font-size:17px;font-weight:600}
+.step p{position:relative;margin-top:10px;font-size:15px;line-height:1.45;color:var(--txt-600)}
+
+/* ---------- comparison ---------- */
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:56px;
+  border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
+.vs-col{padding:34px 32px 36px}
+.vs-col+.vs-col{border-left:1px solid var(--border)}
+.vs-head{display:flex;align-items:baseline;gap:10px;padding-bottom:20px;margin-bottom:22px;
+  border-bottom:1px solid var(--border)}
+.vs-head h3{font-size:19px;font-weight:700}
+.vs-head span{font-size:13px;color:var(--txt-500)}
+.vs-col ul{list-style:none;display:flex;flex-direction:column;gap:14px}
+.vs-col li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;font-size:15.5px;line-height:1.45}
+.vs-col li svg{margin-top:4px}
+.vs-them{background:#fdf7f6}
+.vs-them .vs-head h3,.vs-them li{color:var(--warn)}
+.vs-them .vs-head{border-bottom-color:rgba(192,57,43,.18)}
+.vs-them li svg{color:var(--warn);opacity:.75}
+.vs-us li{color:var(--txt)}
+.vs-us li svg{color:var(--txt)}
+
+/* ---------- timeline ---------- */
+.timeline{list-style:none;margin-top:8px}
+.timeline>li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:32px;
+  padding:24px 0;border-top:1px solid var(--border)}
+.timeline>li:last-child{border-bottom:1px solid var(--border)}
+.timeline .when{font-size:16px;font-weight:600}
+.timeline>li.final .when{color:var(--accent);filter:brightness(.72)}
+.timeline ul{list-style:none;display:flex;flex-direction:column;gap:8px}
+.timeline ul li{position:relative;padding-left:20px;font-size:15.5px;line-height:1.45;color:var(--txt-600)}
+.timeline ul li::before{content:"";position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;
+  background:var(--border-400)}
+.timeline>li.final ul li{color:var(--txt)}
+.timeline>li.final ul li::before{background:var(--accent)}
+
+/* ---------- work ---------- */
+/* timeline on the left, the delivery calendar and its pitch on the right */
+.tl-grid{display:grid;grid-template-columns:minmax(0,1fr) 400px;gap:64px;align-items:start}
+.tl-side{position:relative}
+.tl-side .cal-wrap{padding:6px 0 34px}
+.tl-side .h-sub{margin-top:10px}
+.tl-side .lede{margin-top:16px}
+.tl-side .btn{margin-top:26px}
+
+/* delivery calendar: the highlighted run is the month's turnaround window */
+.cal-wrap{position:relative;display:flex;justify-content:center;padding:18px 0 34px}
+/* the cast shadow: a soft ellipse on the surface under the card */
+.cal-wrap::after{content:"";position:absolute;left:50%;bottom:6px;width:74%;height:34px;
+  translate:-50% 0;border-radius:50%;background:rgba(18,18,20,.16);filter:blur(22px);z-index:0}
+.cal{position:relative;z-index:1;width:100%;max-width:430px;background:#fff;border:1px solid var(--border);
+  border-radius:22px;padding:26px 24px 22px;
+  box-shadow:0 1px 2px rgba(18,18,20,.04),0 10px 20px -10px rgba(18,18,20,.10),
+    0 34px 50px -22px rgba(18,18,20,.18)}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:22px}
+.cal-head h3{font-size:24px;font-weight:700;letter-spacing:-.02em}
+.cal-nav{display:flex;gap:6px;color:var(--txt-500)}
+.cal-nav span{display:grid;place-items:center;width:26px;height:26px}
+.cal-dow,.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-dow span{text-align:center;font-size:11px;font-weight:500;letter-spacing:.06em;color:var(--txt-500);
+  padding-bottom:12px}
+.cell{position:relative;height:46px;display:grid;place-items:center;font-size:15px;font-weight:500}
+.cell span{position:relative;z-index:2}
+.cell.out{color:#c4c4c4}
+/* pale band behind the run, with rounded caps at each row edge */
+.cell.rng::before{content:"";position:absolute;inset:3px 0;background:#fdf3c2;z-index:0}
+.cell.rng.cap-l::before{border-radius:23px 0 0 23px}
+.cell.rng.cap-r::before{border-radius:0 23px 23px 0}
+/* solid marker on the first and last day of the run */
+.cell.on::after{content:"";position:absolute;width:44px;height:44px;border-radius:50%;background:#fadb4a;z-index:1}
+.cell.on{font-weight:700}
+.cal-note{margin-top:16px;padding-top:16px;border-top:1px solid var(--border);
+  display:flex;align-items:center;gap:9px;font-size:13.5px;color:var(--txt-600)}
+.cal-note i{width:11px;height:11px;border-radius:50%;background:#fadb4a;flex:none}
+
+/* ---------- custom pointer ---------- */
+/* Position updates every frame; scale/opacity carry the enter and exit. */
+.pointer-cursor{position:fixed;top:0;left:0;z-index:9999;pointer-events:none;
+  translate:-9999px -9999px;scale:0;opacity:0;transform-origin:0 0;
+  transition:scale .2s var(--ease),opacity .2s var(--ease);will-change:translate}
+.pointer-cursor.is-on{scale:1;opacity:1}
+/* the mark sits on a mostly empty canvas, so it is cropped to its artwork here */
+.pointer-cursor .art{position:relative;width:68px;height:44px;overflow:hidden;
+  /* a hairline light halo plus a soft dark one, so the mark holds on both
+     the pale background and the dark calendar band */
+  filter:drop-shadow(0 0 1px rgba(255,255,255,.9)) drop-shadow(0 3px 6px rgba(18,18,20,.35))}
+.pointer-cursor .art img{position:absolute;width:267.7px;height:221.7px;left:-97.5px;top:-83.2px;max-width:none}
+
+/* ---------- included ---------- */
+.inc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.inc{background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px 26px}
+.inc h3{font-size:17px;font-weight:600}
+.inc ul{list-style:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);
+  display:flex;flex-direction:column;gap:12px}
+.inc li{display:grid;grid-template-columns:16px minmax(0,1fr);gap:10px;font-size:15px;line-height:1.45;
+  color:var(--txt-600)}
+.inc li svg{margin-top:4px;color:var(--txt)}
+
+/* ---------- faq ---------- */
+.qa{border-top:1px solid var(--border)}
+.qa:last-of-type{border-bottom:1px solid var(--border)}
+.qa summary{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:20px 0;cursor:pointer;
+  font-size:16.5px;font-weight:500;list-style:none;transition:color .2s var(--ease)}
+.qa summary::-webkit-details-marker{display:none}
+.qa summary:hover{color:var(--txt-500)}
+.qa summary svg{flex:none;color:var(--txt-500);transition:transform .3s var(--ease)}
+.qa[open] summary svg{transform:rotate(45deg)}
+.qa .ans{padding:0 48px 22px 0;font-size:15.5px;line-height:1.5;color:var(--txt-600);max-width:62ch}
+
+/* ---------- closer (dark) ---------- */
+.closer{position:relative;overflow:hidden;background:var(--bg-900);color:#fff;padding:var(--pad) 0}
+.particles{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:0}
+.closer .shell{position:relative;z-index:1}
+.closer h2{max-width:14ch}
+.closer p{margin-top:18px;font-size:16px;line-height:1.45;color:var(--txt-500);max-width:42ch}
+.closer .row{display:flex;flex-wrap:wrap;gap:10px;margin-top:32px}
+.closer .mail{margin-top:34px;font-size:15px;color:var(--txt-500)}
+.closer .mail a{display:inline-block;margin-top:4px;color:#fff;font-weight:600;
+  border-bottom:1px solid rgba(255,255,255,.45);padding-bottom:2px}
+.closer .mail a:hover{border-bottom-color:#fff}
+
+/* ---------- footer ---------- */
+.foot{background:var(--bg);padding:64px 0 40px}
+.foot-grid{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:40px}
+.foot h4{font-size:13px;font-weight:500;color:var(--txt-500);letter-spacing:.02em}
+.foot ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:11px}
+.foot li a{font-size:15px;color:var(--txt);transition:color .2s var(--ease)}
+.foot li a:hover{color:var(--txt-500)}
+.foot-contact{margin-top:20px}
+.foot-contact a{display:block;font-size:15px;margin-bottom:4px}
+.foot-contact a:hover{color:var(--txt-500)}
+.foot-btm{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:18px;
+  margin-top:56px;padding-top:24px;border-top:1px solid var(--border);font-size:13px;color:var(--txt-500)}
+.foot-btm .legal{display:flex;gap:22px}
+.foot-btm a:hover{color:var(--txt)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  :root{--pad:80px}
+  .cover{padding-top:104px}
+  .split,.cover-grid{grid-template-columns:1fr;gap:40px}
+  .tl-grid{grid-template-columns:1fr;gap:56px}
+  .cover-grid{margin-top:64px}
+  .h-section{max-width:18ch}
+  .step-grid,.inc-grid{grid-template-columns:1fr}
+  .proof-grid{grid-template-columns:1fr;gap:36px}
+  .nav-links{display:none}
+  .nav-burger{display:grid}
+  .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
+  .cal-wrap{padding:8px 0 30px}
+}
+@media (max-width:680px){
+  :root{--pad:64px}
+  .shell{padding-inline:20px}
+  .cover-cta .btn,.closer .row .btn{flex:1 1 100%}
+  .brand-name span{display:none}
+  .nav-right .btn-line{display:none}
+  .versus{grid-template-columns:1fr}
+  .vs-col+.vs-col{border-left:none;border-top:1px solid var(--border)}
+  .vs-col{padding:26px 22px 28px}
+  .timeline>li{grid-template-columns:1fr;gap:12px}
+  .chart-wrap{margin-top:48px}
+  .chart{padding:22px 14px 18px;border-radius:16px}
+  .chart-plot,.chart-x{gap:6px}
+  .chart-plot{height:210px}
+  .col .v{font-size:12px;margin-bottom:8px}
+  .col i{border-radius:6px}
+  .chart-x span{font-size:12px}
+  .player-wrap{margin-top:60px}
+  .float{padding:9px 12px}
+  .float .n{font-size:16px}
+  .float .l{font-size:10.5px}
+  .float-views{top:-40px;right:-4px}
+  .float-proj{left:-4px;top:-40px;bottom:auto}
+  .stage-word{font-size:19px;top:34%}
+  .stage-bar{padding:0 12px 12px}
+  .scrub{margin-top:12px}
+  .yt-row{margin-top:12px}
+  .foot-grid{grid-template-columns:1fr;gap:32px}
+  .qa .ans{padding-right:0}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
+    transition-duration:.001ms!important;scroll-behavior:auto!important}
+  .step:hover{transform:none}
+  .step .glow{display:none}
+  .play:hover{transform:translate(-50%,-50%)}
+}
+</style>
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<div class="nav-bar">
+  <div class="shell">
+    <nav class="nav" aria-label="Primary">
+      <a class="brand" href="#top" aria-label="GhostFrame Media, home">
+        <span class="mark"><img src="Brand Assets/ghostframe png.png" alt=""></span>
+        <span class="brand-name">GhostFrame<span>White Label Studio</span></span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#work">For Agencies</a>
+        <a href="#work">For Social Media Managers</a>
+        <a href="#steps">How It Works</a>
+        <a href="#timeline">Timeline</a>
+        <a href="#proof">Results</a>
+      </div>
+
+      <div class="nav-right">
+        <a class="wa" href="#included" aria-label="Message GhostFrame on WhatsApp">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.13c-.24.68-1.42 1.3-1.96 1.35-.5.05-.96.24-3.24-.67-2.73-1.08-4.46-3.85-4.6-4.03-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.98.95-2.25.24-.27.53-.34.71-.34.18 0 .35 0 .51.01.16.01.38-.06.6.46.22.53.76 1.85.83 1.99.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.28-.12.54.15.27.67 1.1 1.43 1.78.98.87 1.8 1.14 2.07 1.27.27.13.42.11.58-.07.16-.18.67-.78.85-1.05.18-.27.35-.22.6-.13.24.09 1.55.73 1.82.86.27.13.44.2.51.31.07.11.07.64-.17 1.32z"/></svg>
+        </a>
+        <a class="btn btn-line btn-sm" href="#included">Start This Week</a>
+        <button class="nav-burger" aria-label="Open menu">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
+        </button>
+      </div>
+    </nav>
+  </div>
+</div>
+
+<!-- ============ COVER ============ -->
+<section class="cover" id="top">
+  <span class="bloom bloom-a" aria-hidden="true"></span>
+  <span class="bloom bloom-b" aria-hidden="true"></span>
+  <div class="shell">
+    <p class="cover-badge"><i></i> 24 reels a month · Delivered in under two weeks</p>
+
+    <h1 class="h-display">A proven editing system, plugged into your agency.</h1>
+
+    <div class="cover-cta">
+      <a class="btn btn-dark" href="#included">Start This Week</a>
+      <a class="btn btn-line" href="#proof">See the Results</a>
+    </div>
+
+    <div class="cover-grid">
+      <div class="cover-copy">
+        <p class="lede">You know how agencies lose their margin the moment a client asks for more video every month?</p>
+        <p class="lede">White-label video production for social media managers and agencies. Standardized editing that delivers 24 animated reels a month in under two weeks, under your brand.</p>
+      </div>
+
+      <div class="player-wrap">
+        <div class="player">
+          <div class="player-head">
+            <span class="avatar-ring"><span class="mark"><img src="Brand Assets/ghostframe png.png" alt=""></span></span>
+            <div>
+              <h4>GhostFrame Media — How the system works</h4>
+              <p>GhostFrame White Label Studio</p>
+            </div>
+            <span class="vol" aria-hidden="true">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+            </span>
+          </div>
+
+          <div class="stage">
+            <span class="stage-word">See how</span>
+            <button class="play" aria-label="Play the GhostFrame intro video">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
+            </button>
+            <div class="stage-bar">
+              <div class="ctrl-row">
+                <span class="chip">0:29 / 0:35</span>
+                <span class="expand" aria-hidden="true">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
+                </span>
+              </div>
+              <div class="scrub"><i></i><b></b></div>
+              <div class="yt-row">
+                <span class="yt" aria-hidden="true">
+                  <svg width="19" height="13" viewBox="0 0 24 17" fill="#fff"><path d="M23.5 2.65A3 3 0 0 0 21.38.53C19.5 0 12 0 12 0S4.5 0 2.62.53A3 3 0 0 0 .5 2.65C0 4.54 0 8.5 0 8.5s0 3.96.5 5.85a3 3 0 0 0 2.12 2.12C4.5 17 12 17 12 17s7.5 0 9.38-.53a3 3 0 0 0 2.12-2.12C24 12.46 24 8.5 24 8.5s0-3.96-.5-5.85z" fill="#f0242e"/><path d="M9.55 12.14 15.82 8.5 9.55 4.86z" fill="#fff"/></svg>
+                  YouTube
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <div class="player-foot">
+            <span class="status"><i></i> Accepting new agencies</span>
+            <a href="#included">Book a call</a>
+          </div>
+        </div>
+
+        <div class="float float-views">
+          <div><div class="n">600k</div><div class="l">Followers grown</div></div>
+        </div>
+        <div class="float float-proj">
+          <span class="ic" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2"/><path d="m22 8-7 4 7 4z"/></svg>
+          </span>
+          <div><div class="n">24/mo</div><div class="l">Reels delivered</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROOF ============ -->
+<section class="section" id="proof">
+  <div class="shell">
+    <div class="split">
+      <h2 class="h-section">Editing tested on real accounts.</h2>
+      <p class="lede">These are numbers from accounts we edit for, not industry averages.</p>
+    </div>
+
+    <div>
+      <div class="proof-grid">
+        <div>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7"/><path d="M17 8h4v4"/></svg></span>
+          <div class="n">60k → 600k</div>
+          <div class="l">Follower growth on one account</div>
+        </div>
+        <div>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v19"/><path d="M16.5 6.8A4 4 0 0 0 12.8 4.5h-1.4a3.4 3.4 0 0 0-.6 6.75l2.4.5a3.4 3.4 0 0 1-.6 6.75h-1.4A4 4 0 0 1 7.5 16.2"/></svg></span>
+          <div class="n">$50k → $70k</div>
+          <div class="l">Monthly revenue, USD</div>
+        </div>
+        <div>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M17 7h5"/><path d="M19.5 4.5v5"/></svg></span>
+          <div class="n">150+</div>
+          <div class="l">Qualified leads into the CRM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="section" id="problem">
+  <div class="shell">
+    <h2 class="section-title">Problem we solve</h2>
+
+    <div class="split">
+      <div>
+        <p class="h-section">Your clients need video. Producing it is killing your margins.</p>
+        <p class="lede" style="margin-top:22px">Every agency hits the same wall: clients want more content every month, but every way of producing it has a catch.</p>
+      </div>
+
+      <ul class="marks">
+        <li><span class="g" aria-hidden="true">◆</span><div><b>Hiring editors is slow and risky.</b> Finding, training and managing an in-house editor takes months. A bad hire costs you clients.</div></li>
+        <li><span class="g" aria-hidden="true">■</span><div><b>Freelancers don’t scale.</b> Inconsistent quality, missed deadlines, and every new editor needs to learn your style from scratch.</div></li>
+        <li><span class="g" aria-hidden="true">▲</span><div><b>Late delivery costs you the client.</b> When content arrives late or revisions get lost in WhatsApp, your client blames you, not the editor.</div></li>
+      </ul>
+    </div>
+
+    <figure class="chart-wrap">
+      <div class="chart">
+        <div class="chart-plot" role="img"
+             aria-label="Margin on video work falling month by month: January 48 percent, February 42, March 35, April 28, May 20, June 12, July 6.">
+          <div class="col" style="--h:100%;--c:#e9eaec"><span class="v">48%</span><i></i></div>
+          <div class="col" style="--h:86.7%;--c:#e6e7e9"><span class="v">42%</span><i></i></div>
+          <div class="col" style="--h:72.9%;--c:#e4e3e4"><span class="v">35%</span><i></i></div>
+          <div class="col" style="--h:58%;--c:#e6e0dd"><span class="v">28%</span><i></i></div>
+          <div class="col" style="--h:42.6%;--c:#eeddda"><span class="v">20%</span><i></i></div>
+          <div class="col" style="--h:26.7%;--c:#f4d7d4"><span class="v">12%</span><i></i></div>
+          <div class="col alert" style="--h:18.2%;--c:#e8352b"><span class="v">6%</span><i></i></div>
+        </div>
+        <div class="chart-x" aria-hidden="true">
+          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+        </div>
+      </div>
+      <figcaption class="chart-note">Margin left on video work as the monthly volume climbs. Illustrative, not client data.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="steps">
+  <div class="shell">
+    <div class="split">
+      <h2 class="h-section">Send footage today. Full month delivered in under two weeks.</h2>
+      <div class="dock-wrap">
+        <div class="dock" id="dock">
+          <div class="dock-row">
+            <div class="dock-app tile"><img src="Brand Assets/tools/notion.png" alt="Notion" draggable="false"></div>
+            <div class="dock-app"><img src="Brand Assets/tools/frameio.png" alt="Frame.io" style="--s:1.38" draggable="false"></div>
+            <div class="dock-app"><img src="Brand Assets/tools/instagram.png" alt="Instagram" draggable="false"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="step-grid">
+      <article class="step" data-glow>
+        <span class="glow" aria-hidden="true"></span>
+        <div class="num">Step 1</div>
+        <h3>Send your footage</h3>
+        <p>Upload raw footage and scripts to your client’s Notion workspace. One short onboarding form.</p>
+      </article>
+
+      <article class="step" data-glow>
+        <span class="glow" aria-hidden="true"></span>
+        <div class="num">Step 2</div>
+        <h3>We edit and animate</h3>
+        <p>One editor cuts, another adds motion graphics and one more SFX. Our AI workflow produces 5-8 animated reels a day, compared with 2-3 from a traditional editor.</p>
+      </article>
+
+      <article class="step" data-glow>
+        <span class="glow" aria-hidden="true"></span>
+        <div class="num">Step 3</div>
+        <h3>You deliver under your brand</h3>
+        <p>Your client reviews and comments directly in Frame.io. You deliver a full month of content ahead of schedule, and your client never knows we exist.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPARISON ============ -->
+<section class="section" id="versus">
+  <div class="shell">
+    <div class="split">
+      <h2 class="h-section">Short and sweet, here is the difference.</h2>
+      <p class="lede">Same brief, same month, same client. One route burns your margin, the other runs on a schedule you can promise.</p>
+    </div>
+
+    <div class="versus">
+      <div class="vs-col vs-them">
+        <div class="vs-head">
+          <h3>A freelance editor</h3>
+          <span>the usual route</span>
+        </div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Months to find, train and manage</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> 2-3 reels a day</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Quality drifts between editors</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Every brief starts from scratch</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Notes lost in a WhatsApp thread</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Late delivery lands on you</li>
+        </ul>
+      </div>
+
+      <div class="vs-col vs-us">
+        <div class="vs-head">
+          <h3>GhostFrame</h3>
+          <span>white label</span>
+        </div>
+        <ul>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Running from one onboarding form</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 5-8 reels a day</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Three specialists on every reel</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Notes on the timeline in Frame.io</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24 reels in under two weeks</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ TIMELINE ============ -->
+<section class="section" id="timeline">
+  <div class="shell">
+    <div class="tl-grid">
+      <div class="tl-main">
+        <h2 class="h-section">What to expect, day by day.</h2>
+        <p class="lede" style="margin-top:20px;margin-bottom:44px">Every month runs the same way, so you can tell your client the delivery date before we start.</p>
+
+    <ol class="timeline">
+      <li>
+        <div class="when">Day 1</div>
+        <ul>
+          <li>Onboarding form completed</li>
+          <li>Frame.io and Notion workspace set up for your client</li>
+          <li>Footage and scripts received</li>
+          <li>Brand style locked: colors, fonts, caption style</li>
+        </ul>
+      </li>
+      <li>
+        <div class="when">Days 2-3</div>
+        <ul>
+          <li>First reel delivered as a style sample</li>
+          <li>Your feedback calibrates the rest of the batch</li>
+        </ul>
+      </li>
+      <li>
+        <div class="when">Days 4-8</div>
+        <ul>
+          <li>Full production: editing and animation in parallel</li>
+          <li>5-8 reels finished per day</li>
+        </ul>
+      </li>
+      <li>
+        <div class="when">Days 9-11</div>
+        <ul>
+          <li>Client reviews and comments directly in Frame.io</li>
+          <li>Revisions returned within 48 hours</li>
+        </ul>
+      </li>
+      <li class="final">
+        <div class="when">Under 2 weeks</div>
+        <ul>
+          <li>All 24 reels delivered, ready to publish</li>
+          <li>Next month’s footage scheduled</li>
+        </ul>
+      </li>
+    </ol>
+      </div>
+
+      <aside class="tl-side" id="work" data-pointer>
+        <div class="cal-wrap">
+        <figure class="cal">
+          <div class="cal-head">
+            <h3>Jan 2026</h3>
+            <div class="cal-nav" aria-hidden="true">
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg></span>
+              <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg></span>
+            </div>
+          </div>
+
+          <div class="cal-dow" aria-hidden="true">
+            <span>MON</span><span>TUE</span><span>WED</span><span>THU</span><span>FRI</span><span>SAT</span><span>SUN</span>
+          </div>
+
+          <div class="cal-grid" aria-hidden="true">
+            <div class="cell out"><span>29</span></div><div class="cell out"><span>30</span></div><div class="cell out"><span>31</span></div>
+            <div class="cell rng cap-l on"><span>1</span></div><div class="cell rng"><span>2</span></div><div class="cell rng"><span>3</span></div><div class="cell rng cap-r"><span>4</span></div>
+
+            <div class="cell rng cap-l"><span>5</span></div><div class="cell rng"><span>6</span></div><div class="cell rng"><span>7</span></div><div class="cell rng"><span>8</span></div><div class="cell rng"><span>9</span></div><div class="cell rng"><span>10</span></div><div class="cell rng cap-r on"><span>11</span></div>
+
+            <div class="cell"><span>12</span></div><div class="cell"><span>13</span></div><div class="cell"><span>14</span></div><div class="cell"><span>15</span></div><div class="cell"><span>16</span></div><div class="cell"><span>17</span></div><div class="cell"><span>18</span></div>
+
+            <div class="cell"><span>19</span></div><div class="cell"><span>20</span></div><div class="cell"><span>21</span></div><div class="cell"><span>22</span></div><div class="cell"><span>23</span></div><div class="cell"><span>24</span></div><div class="cell"><span>25</span></div>
+
+            <div class="cell"><span>26</span></div><div class="cell"><span>27</span></div><div class="cell"><span>28</span></div><div class="cell"><span>29</span></div><div class="cell"><span>30</span></div><div class="cell"><span>31</span></div><div class="cell out"><span>1</span></div>
+          </div>
+
+          <figcaption class="cal-note"><i></i> Footage in on the 1st, all 24 reels delivered by the 11th.</figcaption>
+        </figure>
+      </div>
+        <h3 class="h-sub">24 reels a month, under your brand.</h3>
+        <p class="lede">Animated short-form built to a locked style: your colors, your fonts, your caption style. Motion graphics and SFX on every cut.</p>
+        <a class="btn btn-dark" href="#included">See What’s Included</a>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<!-- ============ INCLUDED ============ -->
+<section class="section" id="included">
+  <div class="shell">
+    <div class="split">
+      <h2 class="h-section">One system. Every month.</h2>
+      <p class="lede">No retainer surprises and no per-project quoting. The same scope, the same schedule, every single month.</p>
+    </div>
+
+    <div class="inc-grid">
+      <article class="inc">
+        <h3>Production</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 24 animated reels a month</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Delivered in under two weeks</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 5-8 reels finished per day</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Three specialists per reel: editing, motion graphics, then SFX</li>
+        </ul>
+      </article>
+
+      <article class="inc">
+        <h3>Your workflow</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Notion workspace per client for footage and scripts</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Frame.io review, so notes never get lost in WhatsApp</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Revisions returned within 48 hours</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> One onboarding form, no long kickoff calls</li>
+        </ul>
+      </article>
+
+      <article class="inc">
+        <h3>White label</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Everything ships under your brand</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1: colors, fonts, captions</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Style sample on day 2-3 before the full batch runs</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Your client never knows we exist</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="shell">
+    <div class="split">
+      <h2 class="h-section">Questions, answered.</h2>
+      <div>
+        <details class="qa" open>
+          <summary>What happens in the first week?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">Day 1 covers onboarding: you fill one short form, we set up a Frame.io and Notion workspace for your client, receive footage and scripts, and lock the brand style — colors, fonts and caption style. Your first reel lands on day 2-3 as a style sample.</div>
+        </details>
+        <details class="qa">
+          <summary>How do you deliver 24 reels that fast?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">The work is split three ways: one editor cuts, another adds motion graphics and one more SFX, all running in parallel. Our AI workflow produces 5-8 animated reels a day, compared with 2-3 from a traditional editor.</div>
+        </details>
+        <details class="qa">
+          <summary>How do revisions work?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">Your client comments directly on the timeline in Frame.io, so nothing gets lost in a WhatsApp thread. Revisions come back within 48 hours, on days 9-11 of the month.</div>
+        </details>
+        <details class="qa">
+          <summary>What if the style is wrong?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">That is what the day 2-3 sample is for. You get one finished reel before the batch runs, and your feedback calibrates the remaining 23. Nothing goes into full production until the style is signed off.</div>
+        </details>
+        <details class="qa">
+          <summary>Do you edit under my agency’s brand?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">Always. Everything ships under your brand, in your client’s own Frame.io and Notion workspace. We never appear in front of your client.</div>
+        </details>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLOSER ============ -->
+<section class="closer on-dark">
+  <canvas class="particles" data-particles data-quantity="120" data-color="#ffffff" aria-hidden="true"></canvas>
+  <div class="shell">
+    <div class="split">
+      <div>
+        <h2 class="h-section">Your client’s next month is already late.</h2>
+        <p>Send footage today and deliver a full month of animated reels in under two weeks — under your brand, without hiring anyone.</p>
+      </div>
+      <div>
+        <div class="row">
+          <a class="btn btn-light" href="#included">Start This Week</a>
+          <a class="btn" href="#timeline" style="border:1px solid var(--border-700);color:#fff">See the Timeline</a>
+        </div>
+        <p class="mail">or email us at<br><a href="mailto:hello@ghostframemedia.com">hello@ghostframemedia.com</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="shell">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" aria-label="GhostFrame Media, home">
+          <span class="mark"><img src="Brand Assets/ghostframe png.png" alt=""></span>
+          <span class="brand-name">GhostFrame<span>White Label Studio</span></span>
+        </a>
+        <div class="foot-contact">
+          <a href="mailto:hello@ghostframemedia.com">hello@ghostframemedia.com</a>
+        </div>
+      </div>
+
+      <div>
+        <h4>Services</h4>
+        <ul>
+          <li><a href="#steps">Short-Form Editing</a></li>
+          <li><a href="#steps">VSL</a></li>
+          <li><a href="#steps">Ads</a></li>
+          <li><a href="#included">White-Label Delivery</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Who we serve</h4>
+        <ul>
+          <li><a href="#work">Social Media Managers</a></li>
+          <li><a href="#work">Marketing Agencies</a></li>
+          <li><a href="#work">Content Studios</a></li>
+          <li><a href="#work">Freelance Strategists</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#steps">How It Works</a></li>
+          <li><a href="#timeline">Day-by-Day Timeline</a></li>
+          <li><a href="#proof">Results</a></li>
+          <li><a href="#included">What’s Included</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="foot-btm">
+      <span>© 2026 GhostFrame Media. A proven editing system, plugged into your agency.</span>
+      <span class="legal"><a href="#top">Privacy Policy</a><a href="#top">Terms of Service</a></span>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Spotlight cards: one cursor-driven light shared by every [data-glow].
+// Viewport coordinates, because the card layers use background-attachment:fixed.
+(function () {
+  var cards = document.querySelectorAll('[data-glow]');
+  if (!cards.length) return;
+  var x = 0, y = 0, queued = false;
+
+  function paint() {
+    queued = false;
+    var w = window.innerWidth || 1, h = window.innerHeight || 1;
+    for (var i = 0; i < cards.length; i++) {
+      var s = cards[i].style;
+      s.setProperty('--x', x.toFixed(1));
+      s.setProperty('--y', y.toFixed(1));
+      s.setProperty('--xp', (x / w).toFixed(3));
+      s.setProperty('--yp', (y / h).toFixed(3));
+    }
+  }
+
+  document.addEventListener('pointermove', function (e) {
+    x = e.clientX; y = e.clientY;
+    if (!queued) { queued = true; requestAnimationFrame(paint); }
+  }, { passive: true });
+})();
+
+// Particle field on a canvas: drifting dots that lean toward the cursor.
+// Ported from the React component; same params, same easing.
+(function () {
+  var nodes = document.querySelectorAll('[data-particles]');
+  if (!nodes.length) return;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function hexToRgb(hex) {
+    hex = hex.replace('#', '');
+    if (hex.length === 3) hex = hex.split('').map(function (c) { return c + c; }).join('');
+    var n = parseInt(hex, 16);
+    return [(n >> 16) & 255, (n >> 8) & 255, n & 255];
+  }
+  function remap(value, s1, e1, s2, e2) {
+    var r = ((value - s1) * (e2 - s2)) / (e1 - s1) + s2;
+    return r > 0 ? r : 0;
+  }
+
+  function field(canvas) {
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    var dpr = window.devicePixelRatio || 1;
+    var quantity = +canvas.dataset.quantity || 100;
+    var staticity = +canvas.dataset.staticity || 50;
+    var ease = +canvas.dataset.ease || 50;
+    var size = canvas.dataset.size ? +canvas.dataset.size : 0.4;
+    var vx = +canvas.dataset.vx || 0, vy = +canvas.dataset.vy || 0;
+    var rgb = hexToRgb(canvas.dataset.color || '#ffffff').join(', ');
+    var circles = [], w = 0, h = 0, mouse = { x: 0, y: 0 }, raf = null, timer = null;
+
+    function params() {
+      return {
+        x: Math.floor(Math.random() * w),
+        y: Math.floor(Math.random() * h),
+        translateX: 0, translateY: 0,
+        size: Math.floor(Math.random() * 2) + size,
+        alpha: 0,
+        targetAlpha: parseFloat((Math.random() * 0.6 + 0.1).toFixed(1)),
+        dx: (Math.random() - 0.5) * 0.1,
+        dy: (Math.random() - 0.5) * 0.1,
+        magnetism: 0.1 + Math.random() * 4
+      };
+    }
+
+    function draw(c, update) {
+      ctx.translate(c.translateX, c.translateY);
+      ctx.beginPath();
+      ctx.arc(c.x, c.y, c.size, 0, 2 * Math.PI);
+      ctx.fillStyle = 'rgba(' + rgb + ', ' + c.alpha + ')';
+      ctx.fill();
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      if (!update) circles.push(c);
+    }
+
+    function resize() {
+      w = canvas.offsetWidth; h = canvas.offsetHeight;
+      if (!w || !h) return;
+      canvas.width = w * dpr; canvas.height = h * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      circles = [];
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < quantity; i++) {
+        var c = params();
+        // a resting field still needs visible dots
+        if (still) c.alpha = c.targetAlpha;
+        draw(c);
+      }
+    }
+
+    function animate() {
+      ctx.clearRect(0, 0, w, h);
+      for (var i = 0; i < circles.length; i++) {
+        var c = circles[i];
+        var closest = Math.min(
+          c.x + c.translateX - c.size,
+          w - c.x - c.translateX - c.size,
+          c.y + c.translateY - c.size,
+          h - c.y - c.translateY - c.size
+        );
+        var edgeFade = parseFloat(remap(closest, 0, 20, 0, 1).toFixed(2));
+        if (edgeFade > 1) {
+          c.alpha = Math.min(c.alpha + 0.02, c.targetAlpha);
+        } else {
+          c.alpha = c.targetAlpha * edgeFade;
+        }
+        c.x += c.dx + vx;
+        c.y += c.dy + vy;
+        c.translateX += (mouse.x / (staticity / c.magnetism) - c.translateX) / ease;
+        c.translateY += (mouse.y / (staticity / c.magnetism) - c.translateY) / ease;
+
+        draw(c, true);
+
+        if (c.x < -c.size || c.x > w + c.size || c.y < -c.size || c.y > h + c.size) {
+          circles.splice(i, 1); i--;
+          draw(params());
+        }
+      }
+      raf = requestAnimationFrame(animate);
+    }
+
+    resize();
+    if (still) return;
+    animate();
+
+    window.addEventListener('resize', function () {
+      clearTimeout(timer);
+      timer = setTimeout(resize, 200);
+    });
+    window.addEventListener('pointermove', function (e) {
+      var r = canvas.getBoundingClientRect();
+      var x = e.clientX - r.left - w / 2;
+      var y = e.clientY - r.top - h / 2;
+      if (x < w / 2 && x > -w / 2 && y < h / 2 && y > -h / 2) { mouse.x = x; mouse.y = y; }
+    }, { passive: true });
+  }
+
+  for (var i = 0; i < nodes.length; i++) field(nodes[i]);
+})();
+
+// Custom pointer: swaps the native cursor for an arrow inside [data-pointer].
+// Skipped on touch and under reduced motion, where the native cursor stays.
+(function () {
+  var hosts = document.querySelectorAll('[data-pointer]');
+  if (!hosts.length) return;
+  if (!window.matchMedia('(pointer: fine)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var el = document.createElement('div');
+  el.className = 'pointer-cursor';
+  el.setAttribute('aria-hidden', 'true');
+  el.innerHTML = '<span class="art"><img src="Brand Assets/logito cursor.png" alt=""></span>';
+  document.body.appendChild(el);
+
+  var x = 0, y = 0, queued = false;
+  function paint() { queued = false; el.style.translate = x + 'px ' + y + 'px'; }
+
+  for (var i = 0; i < hosts.length; i++) {
+    var host = hosts[i];
+    host.style.cursor = 'none';
+    host.addEventListener('pointermove', function (e) {
+      x = e.clientX; y = e.clientY;
+      if (!queued) { queued = true; requestAnimationFrame(paint); }
+    }, { passive: true });
+    host.addEventListener('pointerenter', function () { el.classList.add('is-on'); });
+    host.addEventListener('pointerleave', function () { el.classList.remove('is-on'); });
+  }
+})();
+
+// macOS dock magnification: cosine falloff, eased toward target each frame.
+(function () {
+  var dock = document.getElementById('dock');
+  if (!dock) return;
+  var row = dock.querySelector('.dock-row');
+  var apps = [].slice.call(dock.querySelectorAll('.dock-app'));
+  if (!apps.length) return;
+
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
+  var MIN = 1, cfg, scales, positions, mouseX = null, raf = null;
+
+  function readConfig() {
+    var d = Math.min(window.innerWidth, window.innerHeight);
+    if (d < 480) return { size: Math.max(40, d * 0.105), max: 1.4, reach: d * 0.5 };
+    if (d < 768) return { size: Math.max(48, d * 0.085), max: 1.5, reach: d * 0.45 };
+    if (d < 1024) return { size: 56, max: 1.6, reach: 200 };
+    return { size: 68, max: 1.75, reach: 250 };
+  }
+  function gap() { return Math.max(6, cfg.size * 0.14); }
+  function pad() { return Math.max(10, cfg.size * 0.19); }
+
+  function targets(mx) {
+    if (mx === null || reduce.matches) return apps.map(function () { return MIN; });
+    var g = gap(), reach = cfg.reach;
+    return apps.map(function (_, i) {
+      var center = i * (cfg.size + g) + cfg.size / 2;
+      var lo = mx - reach / 2, hi = mx + reach / 2;
+      if (center < lo || center > hi) return MIN;
+      var theta = Math.min(Math.max(((center - lo) / reach) * 2 * Math.PI, 0), 2 * Math.PI);
+      return MIN + ((1 - Math.cos(theta)) / 2) * (cfg.max - MIN);
+    });
+  }
+
+  function layout(s) {
+    var g = gap(), x = 0;
+    return s.map(function (sc) {
+      var w = cfg.size * sc, center = x + w / 2;
+      x += w + g;
+      return center;
+    });
+  }
+
+  function paint() {
+    var edge = 0;
+    for (var i = 0; i < apps.length; i++) {
+      var size = cfg.size * scales[i], el = apps[i];
+      el.style.left = (positions[i] - size / 2) + 'px';
+      el.style.width = size + 'px';
+      el.style.height = size + 'px';
+      el.style.zIndex = Math.round(scales[i] * 10);
+      edge = Math.max(edge, positions[i] + size / 2);
+    }
+    row.style.height = cfg.size + 'px';
+    row.style.width = edge + 'px';
+    dock.style.padding = pad() + 'px';
+  }
+
+  function tick() {
+    raf = null;
+    var t = targets(mouseX), tp = layout(t);
+    var ease = mouseX !== null ? 0.2 : 0.12, moving = false;
+    for (var i = 0; i < apps.length; i++) {
+      scales[i] += (t[i] - scales[i]) * ease;
+      positions[i] += (tp[i] - positions[i]) * ease;
+      if (Math.abs(t[i] - scales[i]) > 0.002 || Math.abs(tp[i] - positions[i]) > 0.1) moving = true;
+    }
+    paint();
+    if (moving || mouseX !== null) raf = requestAnimationFrame(tick);
+  }
+  function kick() { if (raf === null) raf = requestAnimationFrame(tick); }
+
+  function reset() {
+    cfg = readConfig();
+    scales = apps.map(function () { return MIN; });
+    positions = layout(scales);
+    paint();
+  }
+
+  reset();
+  window.addEventListener('resize', function () { reset(); kick(); });
+  dock.addEventListener('pointermove', function (e) {
+    if (reduce.matches) return;
+    mouseX = e.clientX - dock.getBoundingClientRect().left - pad();
+    kick();
+  }, { passive: true });
+  dock.addEventListener('pointerleave', function () { mouseX = null; kick(); });
+})();
+</script>
+
+</body>
+</html>
