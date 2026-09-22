@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>GhostFrame Media — A proven editing system, plugged into your agency</title>
-<meta name="description" content="White-label video production for social media managers and agencies. Standardized editing that delivers 24 animated reels a month in under two weeks, under your brand.">
+<meta name="description" content="White-label video production for social media managers and agencies. Standardized editing that delivers 24 reels a month in under two weeks, under your brand.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -95,9 +95,6 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .nav-links a{font-size:14px;color:var(--txt);transition:color .2s var(--ease)}
 .nav-links a:hover{color:var(--txt-500)}
 .nav-right{display:flex;align-items:center;gap:10px}
-.wa{display:grid;place-items:center;width:36px;height:36px;border-radius:8px;
-  border:1px solid var(--border-400);color:#1f9d54;transition:border-color .25s var(--ease),color .25s var(--ease)}
-.wa:hover{border-color:#25d366;color:#25d366}
 .nav-burger{display:none;width:36px;height:36px;border-radius:8px;border:1px solid var(--border-400);place-items:center}
 
 /* ---------- hero ---------- */
@@ -111,58 +108,64 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .cover-badge i{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block}
 .cover h1{max-width:15ch}
 .cover-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
-.cover-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:end;margin-top:92px}
+.cover-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:56px;
+  align-items:center;margin-top:76px}
+.cover-copy{max-width:640px}
 .cover-copy p+p{margin-top:14px}
 
-/* video card */
-.player-wrap{position:relative}
-.player{position:relative;border-radius:12px;background:#1c1c1c;overflow:hidden;
-  box-shadow:0 24px 50px -34px rgba(18,18,20,.5)}
-.player-head{display:flex;align-items:center;gap:12px;padding:13px 16px 9px}
-.player-head .mark{width:20px;height:28px}
-.player-head .mark img{width:92.7px;height:61.8px;left:-36.2px;top:-8.8px;mix-blend-mode:screen}
-.avatar-ring{display:grid;place-items:center;width:34px;height:34px;border-radius:50%;background:#000;flex:none}
-.player-head h4{font-size:14px;font-weight:600;color:#fff;letter-spacing:-.01em}
-.player-head p{font-size:12px;color:#9a9a9a;line-height:1.3}
-.player-head .vol{margin-left:auto;color:#e6e6e6}
-.stage{position:relative;aspect-ratio:16/7.6;display:grid;place-items:center;
-  background:linear-gradient(150deg,#8e9aa3,#6f7a84 38%,#4c545c)}
-.stage::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.5),transparent 55%)}
-.stage-word{position:absolute;left:8%;top:40%;transform:translateY(-50%);font-size:24px;font-weight:500;
-  color:rgba(255,255,255,.78);letter-spacing:-.02em}
-.play{position:absolute;z-index:2;top:40%;left:50%;transform:translate(-50%,-50%);display:grid;place-items:center;
-  width:48px;height:48px;border-radius:50%;background:rgba(20,20,20,.55);color:#fff;
-  transition:transform .3s var(--ease),background-color .3s var(--ease)}
-.play:hover{transform:translate(-50%,-50%) scale(1.07);background:rgba(20,20,20,.75)}
-.stage-bar{position:absolute;z-index:2;inset:auto 0 0;padding:0 14px 26px}
-.ctrl-row{display:flex;align-items:center;justify-content:space-between;gap:12px}
-.chip{padding:3px 8px;border-radius:5px;background:rgba(0,0,0,.55);color:#fff;font-size:12px}
-.expand{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:rgba(0,0,0,.45);color:#fff}
-.scrub{position:relative;height:3px;margin-top:16px;background:rgba(255,255,255,.3);border-radius:2px}
-.scrub i{position:absolute;inset:0 22% 0 0;background:#f0242e;border-radius:2px}
-.scrub b{position:absolute;top:50%;left:78%;width:10px;height:10px;margin:-5px 0 0 -5px;background:#f0242e;border-radius:50%}
-.yt-row{display:flex;justify-content:flex-end;margin-top:20px}
-.yt{display:flex;align-items:center;gap:5px;color:#fff;font-size:12.5px;font-weight:600;letter-spacing:-.01em}
-.player-foot{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:10px 16px;background:#141414}
-.status{display:flex;align-items:center;gap:8px;font-size:13px;color:#c9c9c9}
-.status i{width:7px;height:7px;border-radius:50%;background:#2ecc71}
-.player-foot a{font-size:13px;color:#e6e6e6;transition:opacity .25s var(--ease)}
-.player-foot a:hover{opacity:.7}
-.float{position:absolute;z-index:4;display:flex;align-items:center;gap:10px;padding:11px 14px;border-radius:10px;
-  border:1px solid var(--border)}
-.float .n{font-size:18px;font-weight:700;letter-spacing:-.025em;line-height:1.15}
-.float .l{font-size:12px;line-height:1.25;color:var(--txt-500)}
-.float-views{top:-20px;right:-16px;background:#fff;box-shadow:0 14px 30px -22px rgba(18,18,20,.5)}
-.float-proj{left:-18px;bottom:46px;background:var(--bg-900);border-color:var(--border-700);color:#fff;
-  box-shadow:0 16px 32px -20px rgba(18,18,20,.6)}
-.float-proj .l{color:var(--txt-500)}
-.float-proj .ic{display:grid;place-items:center;width:28px;height:28px;border-radius:7px;background:rgba(255,255,255,.1)}
+/* margin-by-client-type chart */
+.mchart{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 28px 22px;
+  box-shadow:0 1px 2px rgba(18,18,20,.04),0 12px 26px -18px rgba(18,18,20,.22)}
+.mchart-title{font-size:clamp(22px,1.9vw,26px);line-height:1;font-weight:700;letter-spacing:-.02em;
+  text-transform:uppercase;padding-bottom:18px;margin-bottom:26px;border-bottom:1px solid var(--border)}
+.mchart-plot{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;height:290px;align-items:end;
+  border-bottom:1px solid var(--border)}
+.mcol{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
+.mcap{text-align:center;font-size:16px;font-weight:700;color:var(--txt);margin-bottom:10px}
+/* the bar is the full price range; the solid fill is the margin inside it */
+.mbar{position:relative;display:block;height:var(--range)}
+.mrange{position:absolute;inset:0;border:1.5px dashed #b9cfba;border-radius:10px;background:#f2f7f2}
+.mfill{position:absolute;inset:auto 0 0 0;height:calc(var(--margin) / var(--range) * 100%);
+  background:#a8d3a5;border-radius:10px}
+.strong .mfill{background:#5f9e62}
+/* the percentage pill sits beside the margin, with a measuring bracket */
+.mpct{position:absolute;left:-6px;bottom:calc(var(--margin) / 2 - 14px);z-index:2;
+  padding:4px 10px;border-radius:999px;background:#eaf4ea;color:#2f7a34;
+  font-size:14px;font-weight:600;line-height:1.2}
+.mchart-x{display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin-top:16px}
+.mchart-x span{text-align:center;font-size:14.5px;line-height:1.3;color:var(--txt)}
+.mchart-key{display:flex;justify-content:center;gap:26px;margin-top:20px;padding-top:16px;
+  border-top:1px solid var(--border);font-size:13.5px;color:var(--txt-500)}
+.mchart-key span{display:flex;align-items:center;gap:8px}
+.mchart-key i{width:22px;height:14px;border-radius:4px;flex:none}
+.k-range{border:1.5px dashed #b9cfba;background:#f2f7f2}
+.k-fill{background:#a8d3a5}
+
 
 /* ---------- proof ---------- */
 .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:56px}
 .proof-grid .n{font-size:clamp(26px,2.4vw,34px);font-weight:700;letter-spacing:-.03em;line-height:1.1;white-space:nowrap}
 .proof-grid .l{margin-top:10px;font-size:15px;color:var(--txt-600)}
 .proof-grid .ic{color:var(--txt-500);margin-bottom:18px}
+
+/* ---------- client rail ---------- */
+/* Drifts right to left on its own, but it is a real scroll container:
+   drag, wheel, swipe and keyboard all work, and the drift yields to them. */
+.rail{position:relative;margin-top:72px;overflow-x:auto;overflow-y:hidden;
+  scrollbar-width:none;-ms-overflow-style:none;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.rail::-webkit-scrollbar{display:none}
+.rail-track{display:flex;gap:18px;width:max-content;padding:4px 24px 18px}
+.rail-card{flex:none;width:372px;background:#fff;border:1px solid var(--border);border-radius:14px;
+  padding:16px 18px;box-shadow:0 10px 24px -20px rgba(18,18,20,.35);
+  transition:transform .3s var(--ease),box-shadow .3s var(--ease)}
+.rail-card:hover{transform:translateY(-3px);box-shadow:0 16px 30px -20px rgba(18,18,20,.45)}
+/* fixed height so the row never collapses before the images decode */
+.rail-card img{width:100%;height:118px;object-fit:contain;object-position:center}
+
+/* section-level call to action */
+.section-cta{display:flex;justify-content:center;margin-top:64px}
 
 /* ---------- margin chart ---------- */
 .chart-wrap{position:relative;margin-top:72px;max-width:780px}
@@ -203,9 +206,10 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .dock-app.tile{background:#fff;border-radius:23%;overflow:hidden}
 .dock-app.tile img{transform:scale(calc(var(--s,1) * .78))}
 
-/* ---------- spotlight step cards ---------- */
-.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
-.step{
+/* ---------- spotlight card ---------- */
+/* One cursor-tracked light shared by every .spot on the page: the layers use
+   background-attachment:fixed, so the viewport is their positioning area. */
+.spot{
   --border-size:1px;--radius:12px;--spot:300px;--base:205;--spread:100;
   --hue:calc(var(--base) + (var(--xp,.5) * var(--spread)));
   position:relative;border-radius:var(--radius);
@@ -215,10 +219,10 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
     hsl(var(--hue) 85% 60% / .05), transparent 100%);
   background-attachment:fixed;background-repeat:no-repeat;background-position:50% 50%;
   background-size:calc(100% + 2 * var(--border-size)) calc(100% + 2 * var(--border-size));
-  padding:28px 26px 30px;touch-action:none;
+  touch-action:none;
   transition:transform .35s var(--ease)}
-.step:hover{transform:translateY(-3px)}
-.step::before,.step::after,.step .glow::before{
+.spot:hover{transform:translateY(-3px)}
+.spot::before,.spot::after,.spot .glow::before{
   pointer-events:none;content:"";position:absolute;inset:calc(var(--border-size) * -1);
   border:var(--border-size) solid transparent;border-radius:var(--radius);
   background-attachment:fixed;background-repeat:no-repeat;background-position:50% 50%;
@@ -227,31 +231,38 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   mask:linear-gradient(#000,#000),linear-gradient(#000,#000);
   -webkit-mask-clip:padding-box,border-box;mask-clip:padding-box,border-box;
   -webkit-mask-composite:xor;mask-composite:exclude}
-.step::before{background-image:radial-gradient(calc(var(--spot) * .8) calc(var(--spot) * .8) at
+.spot::before{background-image:radial-gradient(calc(var(--spot) * .8) calc(var(--spot) * .8) at
   calc(var(--x,-9999) * 1px) calc(var(--y,-9999) * 1px),hsl(var(--hue) 90% 58% / .9),transparent 100%)}
-.step::after{background-image:radial-gradient(calc(var(--spot) * .4) calc(var(--spot) * .4) at
+.spot::after{background-image:radial-gradient(calc(var(--spot) * .4) calc(var(--spot) * .4) at
   calc(var(--x,-9999) * 1px) calc(var(--y,-9999) * 1px),hsl(var(--hue) 95% 72% / .95),transparent 100%)}
-.step .glow{position:absolute;inset:0;pointer-events:none;border-radius:var(--radius);
+.spot .glow{position:absolute;inset:0;pointer-events:none;border-radius:var(--radius);
   opacity:.6;filter:blur(12px);will-change:filter}
-.step .glow::before{background-image:radial-gradient(calc(var(--spot) * .8) calc(var(--spot) * .8) at
+.spot .glow::before{background-image:radial-gradient(calc(var(--spot) * .8) calc(var(--spot) * .8) at
   calc(var(--x,-9999) * 1px) calc(var(--y,-9999) * 1px),hsl(var(--hue) 90% 60% / .7),transparent 100%)}
+
+/* ---------- how-it-works cards ---------- */
+.step-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
+.step{padding:28px 26px 30px}
 .step .num{position:relative;font-size:13px;font-weight:500;color:var(--txt-500)}
 .step h3{position:relative;margin-top:18px;font-size:17px;font-weight:600}
 .step p{position:relative;margin-top:10px;font-size:15px;line-height:1.45;color:var(--txt-600)}
 
 /* ---------- comparison ---------- */
-.versus{display:grid;grid-template-columns:1fr 1fr;gap:0;margin-top:56px;
-  border:1px solid var(--border);border-radius:12px;overflow:hidden;background:#fff}
-.vs-col{padding:34px 32px 36px}
-.vs-col+.vs-col{border-left:1px solid var(--border)}
-.vs-head{display:flex;align-items:baseline;gap:10px;padding-bottom:20px;margin-bottom:22px;
+.versus-block{margin-top:96px;text-align:center}
+.versus-block .h-sub{font-size:clamp(24px,2.3vw,31px)}
+.versus-lede{margin:18px auto 0;max-width:64ch;font-size:17px;line-height:1.45;color:var(--txt-600)}
+.versus{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px;text-align:left}
+.vs-col{position:relative;padding:38px 38px 42px}
+.vs-head{display:flex;flex-direction:column;gap:3px;padding-bottom:22px;margin-bottom:26px;
   border-bottom:1px solid var(--border)}
-.vs-head h3{font-size:19px;font-weight:700}
-.vs-head span{font-size:13px;color:var(--txt-500)}
-.vs-col ul{list-style:none;display:flex;flex-direction:column;gap:14px}
-.vs-col li{display:grid;grid-template-columns:18px minmax(0,1fr);gap:10px;font-size:15.5px;line-height:1.45}
+.vs-head h3{position:relative;font-size:22px;font-weight:700;display:flex;align-items:center;gap:9px}
+.vs-head h3 .mark{width:23px;height:33px}
+.vs-head h3 .mark img{width:107.1px;height:71.4px;left:-41.8px;top:-10.1px}
+.vs-head span{position:relative;font-size:14px;color:var(--txt-500)}
+.vs-col ul{position:relative;list-style:none;display:flex;flex-direction:column;gap:17px}
+.vs-col li{display:grid;grid-template-columns:20px minmax(0,1fr);gap:12px;font-size:17px;line-height:1.4}
 .vs-col li svg{margin-top:4px}
-.vs-them{background:#fdf7f6}
+.vs-them{background-color:#fdf7f6}
 .vs-them .vs-head h3,.vs-them li{color:var(--warn)}
 .vs-them .vs-head{border-bottom-color:rgba(192,57,43,.18)}
 .vs-them li svg{color:var(--warn);opacity:.75}
@@ -326,7 +337,9 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 
 /* ---------- included ---------- */
 .inc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:56px}
-.inc{background:#fff;border:1px solid var(--border);border-radius:12px;padding:28px 26px}
+/* box, border and radius come from .spot so the light can draw on them */
+.inc{padding:28px 26px}
+.inc>*{position:relative}
 .inc h3{font-size:17px;font-weight:600}
 .inc ul{list-style:none;margin-top:20px;padding-top:20px;border-top:1px solid var(--border);
   display:flex;flex-direction:column;gap:12px}
@@ -376,9 +389,10 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 @media (max-width:1100px){
   :root{--pad:80px}
   .cover{padding-top:104px}
-  .split,.cover-grid{grid-template-columns:1fr;gap:40px}
+  .split{grid-template-columns:1fr;gap:40px}
   .tl-grid{grid-template-columns:1fr;gap:56px}
-  .cover-grid{margin-top:64px}
+  .cover-grid{grid-template-columns:1fr;gap:44px;margin-top:56px}
+  .versus-block{margin-top:64px}
   .h-section{max-width:18ch}
   .step-grid,.inc-grid{grid-template-columns:1fr}
   .proof-grid{grid-template-columns:1fr;gap:36px}
@@ -394,9 +408,17 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   .brand-name span{display:none}
   .nav-right .btn-line{display:none}
   .versus{grid-template-columns:1fr}
-  .vs-col+.vs-col{border-left:none;border-top:1px solid var(--border)}
-  .vs-col{padding:26px 22px 28px}
+  .versus{gap:12px}
+  .vs-col{padding:22px 20px 24px}
   .timeline>li{grid-template-columns:1fr;gap:12px}
+  .rail-card{width:300px}
+  .mchart{padding:20px 18px 18px}
+  .mchart-plot{height:220px;gap:12px}
+  .mcap{font-size:13px}
+  .mpct{font-size:12px;padding:3px 7px;left:-4px}
+  .mchart-x{gap:12px}
+  .mchart-x span{font-size:12.5px}
+  .mchart-key{gap:16px;font-size:12px}
   .chart-wrap{margin-top:48px}
   .chart{padding:22px 14px 18px;border-radius:16px}
   .chart-plot,.chart-x{gap:6px}
@@ -404,25 +426,14 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   .col .v{font-size:12px;margin-bottom:8px}
   .col i{border-radius:6px}
   .chart-x span{font-size:12px}
-  .player-wrap{margin-top:60px}
-  .float{padding:9px 12px}
-  .float .n{font-size:16px}
-  .float .l{font-size:10.5px}
-  .float-views{top:-40px;right:-4px}
-  .float-proj{left:-4px;top:-40px;bottom:auto}
-  .stage-word{font-size:19px;top:34%}
-  .stage-bar{padding:0 12px 12px}
-  .scrub{margin-top:12px}
-  .yt-row{margin-top:12px}
   .foot-grid{grid-template-columns:1fr;gap:32px}
   .qa .ans{padding-right:0}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important;scroll-behavior:auto!important}
-  .step:hover{transform:none}
-  .step .glow{display:none}
-  .play:hover{transform:translate(-50%,-50%)}
+  .spot:hover{transform:none}
+  .spot .glow{display:none}
 }
 </style>
 </head>
@@ -438,18 +449,14 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       </a>
 
       <div class="nav-links">
-        <a href="#work">For Agencies</a>
-        <a href="#work">For Social Media Managers</a>
+        <a href="#proof">Results</a>
+        <a href="#problem">Problem We Solve</a>
         <a href="#steps">How It Works</a>
         <a href="#timeline">Timeline</a>
-        <a href="#proof">Results</a>
       </div>
 
       <div class="nav-right">
-        <a class="wa" href="#included" aria-label="Message GhostFrame on WhatsApp">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.87 9.87 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91C21.96 6.45 17.5 2 12.04 2zm5.8 14.13c-.24.68-1.42 1.3-1.96 1.35-.5.05-.96.24-3.24-.67-2.73-1.08-4.46-3.85-4.6-4.03-.13-.18-1.1-1.47-1.1-2.8 0-1.33.7-1.98.95-2.25.24-.27.53-.34.71-.34.18 0 .35 0 .51.01.16.01.38-.06.6.46.22.53.76 1.85.83 1.99.07.13.11.29.02.47-.09.18-.13.29-.27.45-.13.16-.28.35-.4.47-.13.13-.27.28-.12.54.15.27.67 1.1 1.43 1.78.98.87 1.8 1.14 2.07 1.27.27.13.42.11.58-.07.16-.18.67-.78.85-1.05.18-.27.35-.22.6-.13.24.09 1.55.73 1.82.86.27.13.44.2.51.31.07.11.07.64-.17 1.32z"/></svg>
-        </a>
-        <a class="btn btn-line btn-sm" href="#included">Start This Week</a>
+        <a class="btn btn-line btn-sm" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start This Week</a>
         <button class="nav-burger" aria-label="Open menu">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
         </button>
@@ -468,76 +475,95 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
     <h1 class="h-display">A proven editing system, plugged into your agency.</h1>
 
     <div class="cover-cta">
-      <a class="btn btn-dark" href="#included">Start This Week</a>
+      <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start This Week</a>
       <a class="btn btn-line" href="#proof">See the Results</a>
     </div>
 
     <div class="cover-grid">
       <div class="cover-copy">
         <p class="lede">You know how agencies lose their margin the moment a client asks for more video every month?</p>
-        <p class="lede">White-label video production for social media managers and agencies. Standardized editing that delivers 24 animated reels a month in under two weeks, under your brand.</p>
+        <p class="lede">White-label video production for social media managers and agencies. Standardized editing that delivers 24 reels a month in under two weeks, under your brand.</p>
       </div>
 
-      <div class="player-wrap">
-        <div class="player">
-          <div class="player-head">
-            <span class="avatar-ring"><span class="mark"><img src="Brand Assets/ghostframe png.png" alt=""></span></span>
-            <div>
-              <h4>GhostFrame Media — How the system works</h4>
-              <p>GhostFrame White Label Studio</p>
-            </div>
-            <span class="vol" aria-hidden="true">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7"/><path d="M18.5 5.5a9 9 0 0 1 0 13"/></svg>
-            </span>
+      <figure class="mchart">
+        <h2 class="mchart-title">Your profit</h2>
+        <div class="mchart-plot">
+          <div class="mcol" style="--range:66%;--margin:50%">
+            <span class="mcap">$3K – $5K</span>
+            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
+            <span class="mpct">50%</span>
           </div>
-
-          <div class="stage">
-            <span class="stage-word">See how</span>
-            <button class="play" aria-label="Play the GhostFrame intro video">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13l11-6.5z"/></svg>
-            </button>
-            <div class="stage-bar">
-              <div class="ctrl-row">
-                <span class="chip">0:29 / 0:35</span>
-                <span class="expand" aria-hidden="true">
-                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M9 21H3v-6"/><path d="M21 3l-7 7"/><path d="M3 21l7-7"/></svg>
-                </span>
-              </div>
-              <div class="scrub"><i></i><b></b></div>
-              <div class="yt-row">
-                <span class="yt" aria-hidden="true">
-                  <svg width="19" height="13" viewBox="0 0 24 17" fill="#fff"><path d="M23.5 2.65A3 3 0 0 0 21.38.53C19.5 0 12 0 12 0S4.5 0 2.62.53A3 3 0 0 0 .5 2.65C0 4.54 0 8.5 0 8.5s0 3.96.5 5.85a3 3 0 0 0 2.12 2.12C4.5 17 12 17 12 17s7.5 0 9.38-.53a3 3 0 0 0 2.12-2.12C24 12.46 24 8.5 24 8.5s0-3.96-.5-5.85z" fill="#f0242e"/><path d="M9.55 12.14 15.82 8.5 9.55 4.86z" fill="#fff"/></svg>
-                  YouTube
-                </span>
-              </div>
-            </div>
+          <div class="mcol" style="--range:82%;--margin:62%">
+            <span class="mcap">$4K – $8K</span>
+            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
+            <span class="mpct">62%</span>
           </div>
-
-          <div class="player-foot">
-            <span class="status"><i></i> Accepting new agencies</span>
-            <a href="#included">Book a call</a>
+          <div class="mcol strong" style="--range:100%;--margin:85%">
+            <span class="mcap">$10K – $15K</span>
+            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
+            <span class="mpct">85%</span>
           </div>
         </div>
-
-        <div class="float float-views">
-          <div><div class="n">600k</div><div class="l">Followers grown</div></div>
+        <div class="mchart-x">
+          <span>Social Media<br>Managers</span>
+          <span>Social Media<br>Agencies</span>
+          <span>Marketing<br>Agencies</span>
         </div>
-        <div class="float float-proj">
-          <span class="ic" aria-hidden="true">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="13" height="12" rx="2"/><path d="m22 8-7 4 7 4z"/></svg>
-          </span>
-          <div><div class="n">24/mo</div><div class="l">Reels delivered</div></div>
-        </div>
-      </div>
+        <figcaption class="mchart-key">
+          <span><i class="k-range"></i> Service price range</span>
+          <span><i class="k-fill"></i> Your margin</span>
+        </figcaption>
+      </figure>
     </div>
+
+      <div class="versus-block" id="versus">
+        <h2 class="h-sub">Short and sweet, here is the difference.</h2>
+        <p class="versus-lede">Same brief, same month, same client. One route burns your margin, the other runs on a schedule.</p>
+
+        <div class="versus">
+          <div class="vs-col vs-them spot" data-glow>
+            <span class="glow" aria-hidden="true"></span>
+            <div class="vs-head">
+              <h3>A freelance editor</h3>
+              <span>the usual route</span>
+            </div>
+            <ul>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Months to find, train and manage</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> 2-3 reels a day</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Quality drifts between editors</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Every brief starts from scratch</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Notes lost in a WhatsApp thread</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Late delivery lands on you</li>
+            </ul>
+          </div>
+
+          <div class="vs-col vs-us spot" data-glow>
+            <span class="glow" aria-hidden="true"></span>
+            <div class="vs-head">
+              <h3><span class="mark" aria-hidden="true"><img src="Brand Assets/ghostframe png.png" alt=""></span> GhostFrame</h3>
+              <span>white label</span>
+            </div>
+            <ul>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Running from one onboarding form</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 5-8 reels a day</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Three specialists on every reel</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Notes on the timeline in Frame.io</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24 reels in under two weeks</li>
+            </ul>
+          </div>
+        </div>
+      </div>
   </div>
 </section>
 
 <!-- ============ PROOF ============ -->
 <section class="section" id="proof">
   <div class="shell">
+    <h2 class="section-title">Results</h2>
+
     <div class="split">
-      <h2 class="h-section">Editing tested on real accounts.</h2>
+      <p class="h-section">Editing tested on real accounts.</p>
       <p class="lede">These are numbers from accounts we edit for, not industry averages.</p>
     </div>
 
@@ -559,6 +585,36 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
           <div class="l">Qualified leads into the CRM</div>
         </div>
       </div>
+    </div>
+  </div>
+
+  <div class="rail" aria-label="Accounts we edit for">
+    <div class="rail-track">
+      <a class="rail-card" href="https://instagram.com/gabrielfernandezreal" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/gabrielfernandezreal.webp" alt="gabrielfernandezreal, 1.3M followers"></a>
+      <a class="rail-card" href="https://instagram.com/diliprieto" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/diliprieto.webp" alt="diliprieto, 672,000 followers"></a>
+      <a class="rail-card" href="https://instagram.com/paosandovalr" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/paosandovalr.webp" alt="paosandovalr, 265,000 followers"></a>
+      <a class="rail-card" href="https://instagram.com/laurazaci" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/laurazaci.webp" alt="laurazaci, 134,000 followers"></a>
+      <a class="rail-card" href="https://instagram.com/riudi_salon" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/riudi_salon.webp" alt="riudi_salon, 51.1k followers"></a>
+      <a class="rail-card" href="https://instagram.com/proof3coaching" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/proof3coaching.webp" alt="proof3coaching, 15.7k followers"></a>
+      <a class="rail-card" href="https://instagram.com/imwillbruh" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/imwillbruh.webp" alt="imwillbruh, 9,116 followers"></a>
+      <a class="rail-card" href="https://instagram.com/coach_herbers" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/coach_herbers.webp" alt="coach_herbers, 6,126 followers"></a>
+      <a class="rail-card" href="https://instagram.com/wellness.meli" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/wellness-meli.webp" alt="wellness.meli, 3,713 followers"></a>
+
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/gabrielfernandezreal" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/gabrielfernandezreal.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/diliprieto" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/diliprieto.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/paosandovalr" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/paosandovalr.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/laurazaci" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/laurazaci.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/riudi_salon" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/riudi_salon.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/proof3coaching" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/proof3coaching.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/imwillbruh" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/imwillbruh.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/coach_herbers" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/coach_herbers.webp" alt=""></a>
+      <a class="rail-card" aria-hidden="true" tabindex="-1" href="https://instagram.com/wellness.meli" target="_blank" rel="noopener noreferrer"><img src="Brand Assets/clients/wellness-meli.webp" alt=""></a>
+    </div>
+  </div>
+
+  <div class="shell">
+    <div class="section-cta">
+      <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a>
     </div>
   </div>
 </section>
@@ -599,14 +655,18 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       </div>
       <figcaption class="chart-note">Margin left on video work as the monthly volume climbs. Illustrative, not client data.</figcaption>
     </figure>
+
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
 <!-- ============ HOW IT WORKS ============ -->
 <section class="section" id="steps">
   <div class="shell">
+    <h2 class="section-title">How it works</h2>
+
     <div class="split">
-      <h2 class="h-section">Send footage today. Full month delivered in under two weeks.</h2>
+      <p class="h-section">Send footage today. Full month delivered in under two weeks.</p>
       <div class="dock-wrap">
         <div class="dock" id="dock">
           <div class="dock-row">
@@ -619,78 +679,40 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
     </div>
 
     <div class="step-grid">
-      <article class="step" data-glow>
+      <article class="step spot" data-glow>
         <span class="glow" aria-hidden="true"></span>
         <div class="num">Step 1</div>
         <h3>Send your footage</h3>
         <p>Upload raw footage and scripts to your client’s Notion workspace. One short onboarding form.</p>
       </article>
 
-      <article class="step" data-glow>
+      <article class="step spot" data-glow>
         <span class="glow" aria-hidden="true"></span>
         <div class="num">Step 2</div>
         <h3>We edit and animate</h3>
-        <p>One editor cuts, another adds motion graphics and one more SFX. Our AI workflow produces 5-8 animated reels a day, compared with 2-3 from a traditional editor.</p>
+        <p>One editor cuts, another adds motion graphics and one more SFX. Our AI workflow produces 5-8 reels a day, compared with 2-3 from a traditional editor.</p>
       </article>
 
-      <article class="step" data-glow>
+      <article class="step spot" data-glow>
         <span class="glow" aria-hidden="true"></span>
         <div class="num">Step 3</div>
         <h3>You deliver under your brand</h3>
         <p>Your client reviews and comments directly in Frame.io. You deliver a full month of content ahead of schedule, and your client never knows we exist.</p>
       </article>
     </div>
-  </div>
-</section>
 
-<!-- ============ COMPARISON ============ -->
-<section class="section" id="versus">
-  <div class="shell">
-    <div class="split">
-      <h2 class="h-section">Short and sweet, here is the difference.</h2>
-      <p class="lede">Same brief, same month, same client. One route burns your margin, the other runs on a schedule you can promise.</p>
-    </div>
-
-    <div class="versus">
-      <div class="vs-col vs-them">
-        <div class="vs-head">
-          <h3>A freelance editor</h3>
-          <span>the usual route</span>
-        </div>
-        <ul>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Months to find, train and manage</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> 2-3 reels a day</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Quality drifts between editors</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Every brief starts from scratch</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Notes lost in a WhatsApp thread</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Late delivery lands on you</li>
-        </ul>
-      </div>
-
-      <div class="vs-col vs-us">
-        <div class="vs-head">
-          <h3>GhostFrame</h3>
-          <span>white label</span>
-        </div>
-        <ul>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Running from one onboarding form</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 5-8 reels a day</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Three specialists on every reel</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Notes on the timeline in Frame.io</li>
-          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24 reels in under two weeks</li>
-        </ul>
-      </div>
-    </div>
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
 <!-- ============ TIMELINE ============ -->
 <section class="section" id="timeline">
   <div class="shell">
+    <h2 class="section-title">Timeline</h2>
+
     <div class="tl-grid">
       <div class="tl-main">
-        <h2 class="h-section">What to expect, day by day.</h2>
+        <p class="h-section">What to expect, day by day.</p>
         <p class="lede" style="margin-top:20px;margin-bottom:44px">Every month runs the same way, so you can tell your client the delivery date before we start.</p>
 
     <ol class="timeline">
@@ -766,8 +788,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
         </figure>
       </div>
         <h3 class="h-sub">24 reels a month, under your brand.</h3>
-        <p class="lede">Animated short-form built to a locked style: your colors, your fonts, your caption style. Motion graphics and SFX on every cut.</p>
-        <a class="btn btn-dark" href="#included">See What’s Included</a>
+        <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a>
       </aside>
     </div>
   </div>
@@ -776,23 +797,25 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 <!-- ============ INCLUDED ============ -->
 <section class="section" id="included">
   <div class="shell">
+    <h2 class="section-title">What you get</h2>
+
     <div class="split">
-      <h2 class="h-section">One system. Every month.</h2>
+      <p class="h-section">One system. Every month.</p>
       <p class="lede">No retainer surprises and no per-project quoting. The same scope, the same schedule, every single month.</p>
     </div>
 
     <div class="inc-grid">
-      <article class="inc">
+      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
         <h3>Production</h3>
         <ul>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 24 animated reels a month</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 24 reels a month</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Delivered in under two weeks</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 5-8 reels finished per day</li>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Three specialists per reel: editing, motion graphics, then SFX</li>
         </ul>
       </article>
 
-      <article class="inc">
+      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
         <h3>Your workflow</h3>
         <ul>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Notion workspace per client for footage and scripts</li>
@@ -802,7 +825,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
         </ul>
       </article>
 
-      <article class="inc">
+      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
         <h3>White label</h3>
         <ul>
           <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Everything ships under your brand</li>
@@ -812,14 +835,18 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
         </ul>
       </article>
     </div>
+
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="shell">
+    <h2 class="section-title">FAQ</h2>
+
     <div class="split">
-      <h2 class="h-section">Questions, answered.</h2>
+      <p class="h-section">Questions, answered.</p>
       <div>
         <details class="qa" open>
           <summary>What happens in the first week?
@@ -831,7 +858,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
           <summary>How do you deliver 24 reels that fast?
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="ans">The work is split three ways: one editor cuts, another adds motion graphics and one more SFX, all running in parallel. Our AI workflow produces 5-8 animated reels a day, compared with 2-3 from a traditional editor.</div>
+          <div class="ans">The work is split three ways: one editor cuts, another adds motion graphics and one more SFX, all running in parallel. Our AI workflow produces 5-8 reels a day, compared with 2-3 from a traditional editor.</div>
         </details>
         <details class="qa">
           <summary>How do revisions work?
@@ -863,14 +890,14 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
     <div class="split">
       <div>
         <h2 class="h-section">Your client’s next month is already late.</h2>
-        <p>Send footage today and deliver a full month of animated reels in under two weeks — under your brand, without hiring anyone.</p>
+        <p>Send footage today and deliver a full month of reels in under two weeks — under your brand, without hiring anyone.</p>
       </div>
       <div>
         <div class="row">
-          <a class="btn btn-light" href="#included">Start This Week</a>
+          <a class="btn btn-light" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Book a Call</a>
           <a class="btn" href="#timeline" style="border:1px solid var(--border-700);color:#fff">See the Timeline</a>
         </div>
-        <p class="mail">or email us at<br><a href="mailto:hello@ghostframemedia.com">hello@ghostframemedia.com</a></p>
+        <p class="mail">or email us at<br><a href="mailto:ianjames@ghostframemedia.com">ianjames@ghostframemedia.com</a></p>
       </div>
     </div>
   </div>
@@ -886,7 +913,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
           <span class="brand-name">GhostFrame<span>White Label Studio</span></span>
         </a>
         <div class="foot-contact">
-          <a href="mailto:hello@ghostframemedia.com">hello@ghostframemedia.com</a>
+          <a href="mailto:ianjames@ghostframemedia.com">ianjames@ghostframemedia.com</a>
         </div>
       </div>
 
@@ -1072,6 +1099,54 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   }
 
   for (var i = 0; i < nodes.length; i++) field(nodes[i]);
+})();
+
+// Client rail: a scroll container that also drifts on its own. The drift stops
+// the moment someone touches it, and the duplicated half makes the loop seamless.
+(function () {
+  var rail = document.querySelector('.rail');
+  if (!rail) return;
+  var track = rail.querySelector('.rail-track');
+  if (!track) return;
+
+  var drifting = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var SPEED = 52;        // px per second, independent of refresh rate
+  var HOLD = 2500;       // ms of manual control after an interaction
+  var holdUntil = 0, last = 0, raf = null;
+  // scrollLeft is rounded to whole pixels, so the sub-pixel drift is
+  // accumulated here and written out each frame.
+  var pos = 0;
+
+  function half() { return track.scrollWidth / 2; }
+
+  function step(ts) {
+    raf = requestAnimationFrame(step);
+    // delta-timed: a 120Hz screen must not scroll twice as fast as a 60Hz one
+    var dt = last ? Math.min(ts - last, 50) : 16;
+    last = ts;
+    if (!drifting || ts < holdUntil) return;
+    pos += SPEED * dt / 1000;
+    if (pos >= half()) pos -= half();
+    rail.scrollLeft = pos;
+  }
+
+  // any interaction hands control over, then the drift resumes
+  function nudge() { holdUntil = performance.now() + HOLD; }
+  ['pointerenter', 'pointerdown', 'wheel', 'touchstart', 'focusin'].forEach(function (ev) {
+    rail.addEventListener(ev, nudge, { passive: true });
+  });
+
+  rail.addEventListener('scroll', function () {
+    // our own write lands within a pixel of pos; anything else is the user,
+    // and comparing positions avoids racing the async scroll event
+    if (Math.abs(rail.scrollLeft - pos) < 2) return;
+    // a manual scroll wins: follow it, and wrap so the loop never hits an end
+    if (rail.scrollLeft < 1) rail.scrollLeft = half();
+    else if (rail.scrollLeft > half() * 2 - 1) rail.scrollLeft = half();
+    pos = rail.scrollLeft;
+  }, { passive: true });
+
+  raf = requestAnimationFrame(step);
 })();
 
 // Custom pointer: swaps the native cursor for an arrow inside [data-pointer].
