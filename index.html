@@ -110,7 +110,10 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .cover-badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--txt-500);margin-bottom:26px}
 .cover-badge i{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block}
 .cover h1{max-width:15ch}
-.cover-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:40px}
+/* the offer: bigger than body copy, quieter than the headline */
+.cover-offer{margin-top:30px;max-width:60ch;font-size:clamp(18px,1.55vw,21px);line-height:1.5;
+  color:var(--txt-600)}
+.cover-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
 .cover-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:56px;
   align-items:center;margin-top:76px}
 .cover-copy{max-width:640px}
@@ -477,6 +480,8 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
     <p class="cover-badge"><i></i> 24 reels a month · Delivered in under two weeks</p>
 
     <h1 class="h-display">A proven editing system, plugged into your agency.</h1>
+
+    <p class="cover-offer">We help short-form agencies scale client accounts without hiring editors, using a proven editing system delivered under their brand, in under 2 weeks, completely DFY.</p>
 
     <div class="cover-cta">
       <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start This Week</a>
