@@ -7,7 +7,7 @@
 <meta name="description" content="White-label video production for social media managers and agencies. Standardized editing that delivers 24 reels a month in under two weeks, under your brand.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 <link rel="icon" type="image/png" sizes="32x32" href="Brand Assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="512x512" href="Brand Assets/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="Brand Assets/apple-touch-icon.png">
@@ -109,15 +109,30 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .cover .shell{position:relative;z-index:1}
 .cover-badge{display:inline-flex;align-items:center;gap:9px;font-size:13px;color:var(--txt-500);margin-bottom:26px}
 .cover-badge i{width:5px;height:5px;border-radius:50%;background:var(--accent);display:inline-block}
-.cover h1{max-width:15ch}
-/* the offer: bigger than body copy, quieter than the headline */
-.cover-offer{margin-top:30px;max-width:60ch;font-size:clamp(18px,1.55vw,21px);line-height:1.5;
-  color:var(--txt-600)}
-.cover-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:36px}
-.cover-grid{display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:56px;
-  align-items:center;margin-top:76px}
-.cover-copy{max-width:640px}
-.cover-copy p+p{margin-top:14px}
+/* the offer is the headline now. It is a full sentence, not a short phrase,
+   so it is set well below display size to stay readable as a paragraph. */
+.cover-offer{max-width:40ch;font-size:clamp(29px,3.9vw,52px);line-height:1.16;
+  letter-spacing:-.022em;font-weight:700;color:var(--txt)}
+/* the two phrases that carry the pitch, set in a serif italic against the
+   grotesque so they read as emphasis without a colour or a highlighter */
+.cover-offer .hl{font-family:"Instrument Serif",Georgia,"Times New Roman",serif;
+  font-style:italic;font-weight:400;font-size:1.12em;letter-spacing:-.005em}
+/* the gloss on DFY: an aside inside the headline, so it is set smaller.
+   It travels with "DFY" so a wrap never leaves the parenthetical alone. */
+.cover-offer .dfy-wrap{white-space:nowrap}
+.cover-offer .dfy{font-size:.55em;font-weight:600;letter-spacing:-.01em;color:var(--txt-600)}
+/* the two promises, sized just under the headline so they read as the proof */
+.cover-promise{list-style:none;margin-top:36px;max-width:56ch;display:flex;flex-direction:column;gap:16px}
+.cover-promise li{display:grid;grid-template-columns:27px minmax(0,1fr);gap:14px;
+  font-size:clamp(18px,1.75vw,24px);line-height:1.38;color:var(--txt);font-weight:600}
+.cover-promise svg{margin-top:4px;color:var(--txt)}
+.cover-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px}
+/* the qualifier: the quietest text in the hero, but it conditions a refund
+   promise, so it stays above the 4.5:1 contrast floor rather than --txt-500 */
+.cover-fine{margin-top:26px;max-width:80ch;font-size:11.5px;line-height:1.5;color:#6e6e6e}
+/* the chart is on its own here, so it is centred rather than gridded */
+.cover-grid{display:flex;justify-content:center;margin-top:84px}
+.cover-grid .mchart{width:100%;max-width:720px}
 
 /* margin-by-client-type chart */
 .mchart{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 28px 22px;
@@ -254,7 +269,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .step p{position:relative;margin-top:10px;font-size:15px;line-height:1.45;color:var(--txt-600)}
 
 /* ---------- comparison ---------- */
-.versus-block{margin-top:96px;text-align:center}
+.versus-block{margin-top:72px;text-align:center}
 .versus-block .h-sub{font-size:clamp(24px,2.3vw,31px)}
 .versus-lede{margin:18px auto 0;max-width:64ch;font-size:17px;line-height:1.45;color:var(--txt-600)}
 .versus{display:grid;grid-template-columns:1fr 1fr;gap:22px;margin-top:46px;text-align:left}
@@ -397,7 +412,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   .cover{padding-top:104px}
   .split{grid-template-columns:1fr;gap:40px}
   .tl-grid{grid-template-columns:1fr;gap:56px}
-  .cover-grid{grid-template-columns:1fr;gap:44px;margin-top:56px}
+  .cover-grid{margin-top:56px}
   .versus-block{margin-top:64px}
   .h-section{max-width:18ch}
   .step-grid,.inc-grid{grid-template-columns:1fr}
@@ -479,51 +494,19 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   <div class="shell">
     <p class="cover-badge"><i></i> 24 reels a month · Delivered in under two weeks</p>
 
-    <h1 class="h-display">A proven editing system, plugged into your agency.</h1>
+    <h1 class="cover-offer">We help <span class="hl">short-form agencies scale</span> without hiring editors, using a proven editing system that delivers in <span class="hl">under 2 weeks</span>, completely <span class="dfy-wrap">DFY <span class="dfy">(done-for-you).</span></span></h1>
 
-    <p class="cover-offer">We help short-form agencies scale client accounts without hiring editors, using a proven editing system delivered under their brand, in under 2 weeks, completely DFY.</p>
+    <ul class="cover-promise">
+      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> If we don’t deliver all 24 reels in under 2 weeks, you get your money back.</li>
+      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Unlimited revisions until your client approves every reel.</li>
+    </ul>
 
     <div class="cover-cta">
       <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start This Week</a>
       <a class="btn btn-line" href="#proof">See the Results</a>
     </div>
 
-    <div class="cover-grid">
-      <div class="cover-copy">
-        <p class="lede">You know how agencies lose their margin the moment a client asks for more video every month?</p>
-        <p class="lede">White-label video production for social media managers and agencies. Standardized editing that delivers 24 reels a month in under two weeks, under your brand.</p>
-      </div>
-
-      <figure class="mchart">
-        <h2 class="mchart-title">Your profit</h2>
-        <div class="mchart-plot">
-          <div class="mcol" style="--range:66%;--margin:50%">
-            <span class="mcap">$3K – $5K</span>
-            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
-            <span class="mpct">50%</span>
-          </div>
-          <div class="mcol" style="--range:82%;--margin:62%">
-            <span class="mcap">$4K – $8K</span>
-            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
-            <span class="mpct">62%</span>
-          </div>
-          <div class="mcol strong" style="--range:100%;--margin:85%">
-            <span class="mcap">$10K – $15K</span>
-            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
-            <span class="mpct">85%</span>
-          </div>
-        </div>
-        <div class="mchart-x">
-          <span>Social Media<br>Managers</span>
-          <span>Social Media<br>Agencies</span>
-          <span>Marketing<br>Agencies</span>
-        </div>
-        <figcaption class="mchart-key">
-          <span><i class="k-range"></i> Service price range</span>
-          <span><i class="k-fill"></i> Your margin</span>
-        </figcaption>
-      </figure>
-    </div>
+    <p class="cover-fine">The 2-week clock starts once your footage is uploaded and the style sample is approved. We onboard up to 5 accounts per cycle — more can be added with a week’s notice.</p>
 
       <div class="versus-block" id="versus">
         <h2 class="h-sub">Short and sweet, here is the difference.</h2>
@@ -563,6 +546,38 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
           </div>
         </div>
       </div>
+    <div class="cover-grid">
+      <figure class="mchart">
+        <h2 class="mchart-title">Your profit</h2>
+        <div class="mchart-plot">
+          <div class="mcol" style="--range:66%;--margin:50%">
+            <span class="mcap">$3K – $5K</span>
+            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
+            <span class="mpct">50%</span>
+          </div>
+          <div class="mcol" style="--range:82%;--margin:62%">
+            <span class="mcap">$4K – $8K</span>
+            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
+            <span class="mpct">62%</span>
+          </div>
+          <div class="mcol strong" style="--range:100%;--margin:85%">
+            <span class="mcap">$10K – $15K</span>
+            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
+            <span class="mpct">85%</span>
+          </div>
+        </div>
+        <div class="mchart-x">
+          <span>Social Media<br>Managers</span>
+          <span>Social Media<br>Agencies</span>
+          <span>Marketing<br>Agencies</span>
+        </div>
+        <figcaption class="mchart-key">
+          <span><i class="k-range"></i> Service price range</span>
+          <span><i class="k-fill"></i> Your margin</span>
+        </figcaption>
+      </figure>
+    </div>
+
   </div>
 </section>
 
