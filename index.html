@@ -137,34 +137,24 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   align-items:center;margin-top:36px}
 .hero-split .cover-promise{margin-top:0}
 
-/* margin-by-client-type chart */
-/* sits beside the guarantees now, so everything in it is scaled down a step */
-.mchart{background:#fff;border:1px solid var(--border);border-radius:16px;padding:20px 22px 18px;
-  box-shadow:0 1px 2px rgba(18,18,20,.04),0 12px 26px -18px rgba(18,18,20,.22)}
-.mchart-title{font-size:clamp(17px,1.35vw,20px);line-height:1;font-weight:700;letter-spacing:-.02em;
-  text-transform:uppercase;padding-bottom:13px;margin-bottom:20px;border-bottom:1px solid var(--border)}
-.mchart-plot{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;height:200px;align-items:end;
-  border-bottom:1px solid var(--border)}
-.mcol{position:relative;display:flex;flex-direction:column;justify-content:flex-end;height:100%}
-.mcap{text-align:center;font-size:13px;font-weight:700;color:var(--txt);margin-bottom:7px}
-/* the bar is the full price range; the solid fill is the margin inside it */
-.mbar{position:relative;display:block;height:var(--range)}
-.mrange{position:absolute;inset:0;border:1.5px dashed #b9cfba;border-radius:8px;background:#f2f7f2}
-.mfill{position:absolute;inset:auto 0 0 0;height:calc(var(--margin) / var(--range) * 100%);
-  background:#a8d3a5;border-radius:8px}
-.strong .mfill{background:#5f9e62}
-/* the percentage pill sits beside the margin, with a measuring bracket */
-.mpct{position:absolute;left:-5px;bottom:calc(var(--margin) / 2 - 11px);z-index:2;
-  padding:3px 8px;border-radius:999px;background:#eaf4ea;color:#2f7a34;
-  font-size:11.5px;font-weight:600;line-height:1.2}
-.mchart-x{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:12px}
-.mchart-x span{text-align:center;font-size:12px;line-height:1.3;color:var(--txt)}
-.mchart-key{display:flex;justify-content:center;gap:18px;margin-top:15px;padding-top:13px;
-  border-top:1px solid var(--border);font-size:11.5px;color:var(--txt-500)}
-.mchart-key span{display:flex;align-items:center;gap:8px}
-.mchart-key i{width:17px;height:11px;border-radius:3px;flex:none}
-.k-range{border:1.5px dashed #b9cfba;background:#f2f7f2}
-.k-fill{background:#a8d3a5}
+/* value stack: what the offer is worth line by line, then the real price */
+.stack{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 28px 28px;
+  box-shadow:0 1px 2px rgba(18,18,20,.04),0 18px 36px -24px rgba(18,18,20,.28)}
+.stack-title{font-size:clamp(17px,1.35vw,20px);line-height:1;font-weight:700;letter-spacing:-.02em;
+  text-transform:uppercase;padding-bottom:14px;margin-bottom:6px;border-bottom:1px solid var(--border)}
+.stack-table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
+.stack-table td{padding:12px 0;font-size:15px;line-height:1.35;vertical-align:baseline}
+.stack-table td:last-child{text-align:right;padding-left:18px;white-space:nowrap;font-weight:700;color:var(--txt)}
+.stack-table tbody td:first-child{color:var(--txt-600)}
+.stack-table tbody tr+tr td{border-top:1px dashed var(--border)}
+.stack-table .dash{color:var(--txt-500);font-weight:500}
+.stack-table tfoot tr.total td{border-top:1px solid var(--txt);padding-top:16px;font-weight:600;color:var(--txt-600)}
+.stack-table tfoot tr.total s{color:var(--txt-500);text-decoration-color:#e0352b;text-decoration-thickness:2.5px}
+.stack-table tfoot tr.yours td{padding-top:6px;font-weight:700;color:var(--txt);font-size:17px}
+.stack-table tfoot tr.yours td:last-child{font-size:clamp(28px,2.6vw,36px);letter-spacing:-.03em;line-height:1}
+.stack-table .ok{display:inline-grid;place-items:center;width:30px;height:30px;margin-right:10px;border-radius:50%;
+  background:#e6f6ea;color:#1f9d4a;vertical-align:middle;transform:translateY(-3px)}
+.stack-cta{width:100%;margin-top:22px;height:50px;font-size:16px}
 
 
 /* ---------- proof ---------- */
@@ -418,7 +408,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   .tl-grid{grid-template-columns:1fr;gap:56px}
   .hero-split{grid-template-columns:1fr;gap:40px;align-items:start;margin-top:32px}
   /* stacked, the chart would stretch the full column and distort the bars */
-  .hero-split .mchart{max-width:560px}
+  .hero-split .stack{max-width:560px}
   .versus-block{margin-top:64px}
   .h-section{max-width:18ch}
   .step-grid,.inc-grid{grid-template-columns:1fr}
@@ -440,13 +430,8 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   .timeline>li{grid-template-columns:1fr;gap:12px}
   .rail-card{width:320px;padding:16px 18px}
   .rail-card img{height:104px}
-  .mchart{padding:20px 18px 18px}
-  .mchart-plot{height:220px;gap:12px}
-  .mcap{font-size:13px}
-  .mpct{font-size:12px;padding:3px 7px;left:-4px}
-  .mchart-x{gap:12px}
-  .mchart-x span{font-size:12.5px}
-  .mchart-key{gap:16px;font-size:12px}
+  .stack{padding:22px 18px 22px}
+  .stack-table td{font-size:14px}
   .chart-wrap{margin-top:48px}
   .chart{padding:22px 14px 18px;border-radius:16px}
   .chart-plot,.chart-x{gap:6px}
@@ -477,14 +462,14 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       </a>
 
       <div class="nav-links">
-        <a href="#proof">Results</a>
         <a href="#problem">Problem We Solve</a>
+        <a href="#proof">Results</a>
         <a href="#steps">How It Works</a>
         <a href="#timeline">Timeline</a>
       </div>
 
       <div class="nav-right">
-        <a class="btn btn-line btn-sm" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start This Week</a>
+        <a class="btn btn-line btn-sm" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start This Week</a>
         <button class="nav-burger" aria-label="Open menu">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M3 7h18M3 12h18M3 17h18"/></svg>
         </button>
@@ -505,46 +490,36 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
     <div class="hero-split">
       <div class="hero-left">
     <ul class="cover-promise">
+      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> We handle ads, organic short-form, VSLs, and YouTube.</li>
       <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> If we don’t deliver all 24 reels in under 2 weeks, you get your money back.</li>
       <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Take 5 or 50 new clients without recruiting, training, or managing local staff.</li>
     </ul>
 
     <div class="cover-cta">
-      <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start This Week</a>
+      <a class="btn btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSfKzobe5lycSHfWF43CIOCTizPZ5WTQwU5pMAdo236OWGKOfw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Get a free reel in 48h</a>
       <a class="btn btn-line" href="#proof">See the Results</a>
     </div>
 
     <p class="cover-fine">The 2-week clock starts once your footage is uploaded and the style sample is approved. We onboard up to 5 accounts per cycle — more can be added with a week’s notice.</p>
       </div>
 
-      <figure class="mchart">
-        <h2 class="mchart-title">Your profit</h2>
-        <div class="mchart-plot">
-          <div class="mcol" style="--range:66%;--margin:50%">
-            <span class="mcap">$3K – $5K</span>
-            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
-            <span class="mpct">50%</span>
-          </div>
-          <div class="mcol" style="--range:82%;--margin:62%">
-            <span class="mcap">$4K – $8K</span>
-            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
-            <span class="mpct">62%</span>
-          </div>
-          <div class="mcol strong" style="--range:100%;--margin:85%">
-            <span class="mcap">$10K – $15K</span>
-            <span class="mbar"><i class="mrange"></i><i class="mfill"></i></span>
-            <span class="mpct">85%</span>
-          </div>
-        </div>
-        <div class="mchart-x">
-          <span>Social Media<br>Managers</span>
-          <span>Social Media<br>Agencies</span>
-          <span>Marketing<br>Agencies</span>
-        </div>
-        <figcaption class="mchart-key">
-          <span><i class="k-range"></i> Service price range</span>
-          <span><i class="k-fill"></i> Your margin</span>
-        </figcaption>
+      <figure class="stack">
+        <h2 class="stack-title">What you get</h2>
+        <table class="stack-table">
+          <tbody>
+            <tr><td>24 scripts written to convert</td><td>$1,000</td></tr>
+            <tr><td>24 reels edited with motion graphics and SFX</td><td>$2,000</td></tr>
+            <tr><td>Frame.io + Notion system set up per client</td><td>$500</td></tr>
+            <tr><td>Brand kit: colors, fonts, caption style</td><td>$500</td></tr>
+            <tr><td>Unlimited revisions until approval</td><td>$500</td></tr>
+            <tr><td>Delivery in under 2 weeks</td><td class="dash">—</td></tr>
+          </tbody>
+          <tfoot>
+            <tr class="total"><td>Total value</td><td><s>$4,500</s></td></tr>
+            <tr class="yours"><td>Your price</td><td><span class="ok" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>$1,500</td></tr>
+          </tfoot>
+        </table>
+        <a class="btn btn-dark stack-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfKzobe5lycSHfWF43CIOCTizPZ5WTQwU5pMAdo236OWGKOfw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Get a free reel in 48h</a>
       </figure>
     </div>
 
@@ -587,6 +562,47 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
         </div>
       </div>
 
+  </div>
+</section>
+
+<!-- ============ PROBLEM ============ -->
+<section class="section" id="problem">
+  <div class="shell">
+    <h2 class="section-title">Problem we solve</h2>
+
+    <div class="split">
+      <div>
+        <p class="h-section">Your clients need video. Producing it is killing your margins.</p>
+        <p class="lede" style="margin-top:22px">Every agency hits the same wall: clients want more content every month, but every way of producing it has a catch.</p>
+      </div>
+
+      <ul class="marks">
+        <li><span class="g" aria-hidden="true">◆</span><div><b>Hiring editors is slow and risky.</b> Finding, training and managing an in-house editor takes months. A bad hire costs you clients.</div></li>
+        <li><span class="g" aria-hidden="true">■</span><div><b>Freelancers don’t scale.</b> Inconsistent quality, missed deadlines, and every new editor needs to learn your style from scratch.</div></li>
+        <li><span class="g" aria-hidden="true">▲</span><div><b>Late delivery costs you the client.</b> When content arrives late or revisions get lost in WhatsApp, your client blames you, not the editor.</div></li>
+      </ul>
+    </div>
+
+    <figure class="chart-wrap">
+      <div class="chart">
+        <div class="chart-plot" role="img"
+             aria-label="Margin on video work falling month by month: January 48 percent, February 42, March 35, April 28, May 20, June 12, July 6.">
+          <div class="col" style="--h:100%;--c:#e9eaec"><span class="v">48%</span><i></i></div>
+          <div class="col" style="--h:86.7%;--c:#e6e7e9"><span class="v">42%</span><i></i></div>
+          <div class="col" style="--h:72.9%;--c:#e4e3e4"><span class="v">35%</span><i></i></div>
+          <div class="col" style="--h:58%;--c:#e6e0dd"><span class="v">28%</span><i></i></div>
+          <div class="col" style="--h:42.6%;--c:#eeddda"><span class="v">20%</span><i></i></div>
+          <div class="col" style="--h:26.7%;--c:#f4d7d4"><span class="v">12%</span><i></i></div>
+          <div class="col alert" style="--h:18.2%;--c:#e8352b"><span class="v">6%</span><i></i></div>
+        </div>
+        <div class="chart-x" aria-hidden="true">
+          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
+        </div>
+      </div>
+      <figcaption class="chart-note">Margin left on video work as the monthly volume climbs. Illustrative, not client data.</figcaption>
+    </figure>
+
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
@@ -647,49 +663,8 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 
   <div class="shell">
     <div class="section-cta">
-      <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a>
+      <a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a>
     </div>
-  </div>
-</section>
-
-<!-- ============ PROBLEM ============ -->
-<section class="section" id="problem">
-  <div class="shell">
-    <h2 class="section-title">Problem we solve</h2>
-
-    <div class="split">
-      <div>
-        <p class="h-section">Your clients need video. Producing it is killing your margins.</p>
-        <p class="lede" style="margin-top:22px">Every agency hits the same wall: clients want more content every month, but every way of producing it has a catch.</p>
-      </div>
-
-      <ul class="marks">
-        <li><span class="g" aria-hidden="true">◆</span><div><b>Hiring editors is slow and risky.</b> Finding, training and managing an in-house editor takes months. A bad hire costs you clients.</div></li>
-        <li><span class="g" aria-hidden="true">■</span><div><b>Freelancers don’t scale.</b> Inconsistent quality, missed deadlines, and every new editor needs to learn your style from scratch.</div></li>
-        <li><span class="g" aria-hidden="true">▲</span><div><b>Late delivery costs you the client.</b> When content arrives late or revisions get lost in WhatsApp, your client blames you, not the editor.</div></li>
-      </ul>
-    </div>
-
-    <figure class="chart-wrap">
-      <div class="chart">
-        <div class="chart-plot" role="img"
-             aria-label="Margin on video work falling month by month: January 48 percent, February 42, March 35, April 28, May 20, June 12, July 6.">
-          <div class="col" style="--h:100%;--c:#e9eaec"><span class="v">48%</span><i></i></div>
-          <div class="col" style="--h:86.7%;--c:#e6e7e9"><span class="v">42%</span><i></i></div>
-          <div class="col" style="--h:72.9%;--c:#e4e3e4"><span class="v">35%</span><i></i></div>
-          <div class="col" style="--h:58%;--c:#e6e0dd"><span class="v">28%</span><i></i></div>
-          <div class="col" style="--h:42.6%;--c:#eeddda"><span class="v">20%</span><i></i></div>
-          <div class="col" style="--h:26.7%;--c:#f4d7d4"><span class="v">12%</span><i></i></div>
-          <div class="col alert" style="--h:18.2%;--c:#e8352b"><span class="v">6%</span><i></i></div>
-        </div>
-        <div class="chart-x" aria-hidden="true">
-          <span>Jan</span><span>Feb</span><span>Mar</span><span>Apr</span><span>May</span><span>Jun</span><span>Jul</span>
-        </div>
-      </div>
-      <figcaption class="chart-note">Margin left on video work as the monthly volume climbs. Illustrative, not client data.</figcaption>
-    </figure>
-
-    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
@@ -734,7 +709,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       </article>
     </div>
 
-    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a></div>
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
@@ -821,7 +796,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
         </figure>
       </div>
         <h3 class="h-sub">24 reels a month, under your brand.</h3>
-        <a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a>
+        <a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a>
       </aside>
     </div>
   </div>
@@ -869,7 +844,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       </article>
     </div>
 
-    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Start Now</a></div>
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
@@ -927,7 +902,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       </div>
       <div>
         <div class="row">
-          <a class="btn btn-light" href="https://calendly.com/ianjames-ghostframemedia" target="_blank" rel="noopener noreferrer">Book a Call</a>
+          <a class="btn btn-light" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
           <a class="btn" href="#timeline" style="border:1px solid var(--border-700);color:#fff">See the Timeline</a>
         </div>
         <p class="mail">or email us at<br><a href="mailto:hello@ghostframemedia.com">hello@ghostframemedia.com</a></p>
