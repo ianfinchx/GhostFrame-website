@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>GhostFrame Media — A proven editing system, plugged into your agency</title>
-<meta name="description" content="White-label video production for social media managers and agencies. Standardized editing that delivers 24 reels a month in under two weeks, under your brand.">
+<title>GhostFrame Media — White-label video for agencies that serve realtors</title>
+<meta name="description" content="White-label reels for agencies that serve realtors. 24 scripted talking-head and listing reels per client, delivered by day 11, under your brand. $1,500/mo.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,300..600&display=swap" rel="stylesheet">
@@ -136,6 +136,60 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .hero-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,.82fr);gap:56px;
   align-items:center;margin-top:36px}
 .hero-split .cover-promise{margin-top:0}
+.cover-sub{margin-top:22px;max-width:58ch;font-size:clamp(17px,1.45vw,20px);line-height:1.5;color:var(--txt-600)}
+.hero-split{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.cover-promise li{font-size:clamp(17px,1.5vw,21px)}
+
+/* hero collage: three real screenshots laid on the page like prints, each
+   slightly turned, the review board in front because it is the workflow */
+.collage{position:relative;height:565px}
+.shot{position:absolute;margin:0;background:#fff;border:1px solid var(--border);border-radius:16px;padding:8px 8px 10px;
+  box-shadow:0 1px 2px rgba(18,18,20,.05),0 14px 28px -16px rgba(18,18,20,.22),0 42px 60px -34px rgba(18,18,20,.30)}
+.shot img{width:100%;border-radius:10px;object-fit:cover;background:#0c0f14}
+.shot figcaption{margin-top:9px;padding:0 4px;font-size:13px;font-weight:600;letter-spacing:-.005em;font-variant-numeric:tabular-nums}
+.shot-views{left:0;top:0;width:54%;rotate:-4deg;z-index:1}
+.shot-views img{aspect-ratio:1/1;object-position:50% 52%}
+.shot-followers{right:0;top:18px;width:41%;rotate:3.5deg;z-index:2}
+.shot-followers img{aspect-ratio:778/860;object-position:50% 0}
+.shot-review{left:9%;bottom:0;width:82%;rotate:-1.2deg;z-index:3}
+.shot-review img{aspect-ratio:1010/463;object-position:0 50%}
+.collage-note{margin-top:18px;font-size:12.5px;color:#6e6e6e;text-align:center}
+
+/* proof strip: the one realtor number, straight under the hero */
+.proofstrip{padding:56px 0;border-bottom:1px solid var(--border);background:var(--bg-white)}
+.proofstrip .shell{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:56px;align-items:center}
+.proofstrip .shell:not(:has(figure)){grid-template-columns:1fr}
+.proofstrip p{font-size:clamp(22px,2.3vw,31px);font-weight:700;letter-spacing:-.022em;line-height:1.24;max-width:32ch}
+.proofstrip-shot{position:relative;margin:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;
+  box-shadow:0 1px 2px rgba(18,18,20,.04),0 18px 36px -24px rgba(18,18,20,.28)}
+.proofstrip-shot .tag{position:absolute;top:10px;left:10px;padding:4px 8px;border-radius:6px;background:rgba(18,18,20,.82);
+  color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em}
+
+/* how it works: four steps, each with the real screen that step produces */
+.step-rows{list-style:none;margin-top:56px}
+.step-row{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:64px;align-items:center;
+  padding:48px 0;border-top:1px solid var(--border)}
+.step-row:last-child{border-bottom:1px solid var(--border)}
+.step-copy .num{font-size:13px;font-weight:500;color:var(--txt-500)}
+.step-copy h3{margin-top:14px;font-size:clamp(22px,1.9vw,26px);line-height:1.18}
+.step-copy p{margin-top:14px;font-size:16.5px;line-height:1.55;color:var(--txt-600);max-width:46ch}
+.media{display:grid;gap:14px}
+.media.two{grid-template-columns:1fr 1fr}
+.frame{border-radius:16px;overflow:hidden;border:1px solid var(--border);background:var(--bg-300);
+  box-shadow:0 1px 2px rgba(18,18,20,.04),0 10px 20px -12px rgba(18,18,20,.12),0 30px 46px -28px rgba(18,18,20,.22)}
+.frame img{width:100%;aspect-ratio:16/10;object-fit:cover;object-position:50% 0}
+.media.two .frame img{aspect-ratio:1672/941;object-position:0 0}
+.frame-tall{max-width:420px;justify-self:center;width:100%}
+.frame-tall img{aspect-ratio:778/760;background:#0c0f14}
+
+/* what you get: pitch on the left, the value stack on the right */
+.wyg{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:48px;align-items:start}
+.stack-table tfoot tr.yours small{font-size:.45em;font-weight:600;letter-spacing:0;color:var(--txt-600);margin-left:2px}
+.stack-bonus{margin-top:16px;text-align:center;font-size:15px;font-weight:600}
+.btn-ghost{border:1px solid var(--border-700);color:#fff}
+.btn-ghost:hover{border-color:#fff}
+.btn-ghost:active{opacity:.85}
+#versus .versus-block{margin-top:0}
 
 /* value stack: what the offer is worth line by line, then the real price */
 .stack{background:#fff;border:1px solid var(--border);border-radius:18px;padding:26px 28px 28px;
@@ -417,6 +471,17 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   .nav-burger{display:grid}
   .foot-grid{grid-template-columns:1fr 1fr;gap:36px}
   .cal-wrap{padding:8px 0 30px}
+  .hero-right{max-width:560px}
+  .proofstrip .shell,.wyg{grid-template-columns:1fr;gap:32px}
+  .wyg .stack{max-width:560px}
+  .step-row{grid-template-columns:1fr;gap:28px;padding:40px 0}
+}
+@media (max-width:680px){
+  /* stacked, the prints lose their turn and sit full width */
+  .collage{height:auto;display:flex;flex-direction:column;gap:16px}
+  .shot{position:static;width:100%;rotate:0deg}
+  .shot-views img,.shot-followers img{aspect-ratio:4/3}
+  .media.two{grid-template-columns:1fr}
 }
 @media (max-width:680px){
   :root{--pad:64px}
@@ -462,9 +527,9 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       </a>
 
       <div class="nav-links">
+        <a href="#steps">How It Works</a>
         <a href="#problem">Problem We Solve</a>
         <a href="#proof">Results</a>
-        <a href="#steps">How It Works</a>
         <a href="#timeline">Timeline</a>
       </div>
 
@@ -483,85 +548,195 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   <span class="bloom bloom-a" aria-hidden="true"></span>
   <span class="bloom bloom-b" aria-hidden="true"></span>
   <div class="shell">
-    <p class="cover-badge"><i></i> 24 reels a month · Delivered in under two weeks</p>
+    <p class="cover-badge"><i></i> White-label video for agencies that serve realtors</p>
 
-    <h1 class="cover-offer">A white-label content team. You can instantly take <span class="hl">5&nbsp;or&nbsp;50 new video retainers</span> without recruiting or training staff.</h1>
+    <h1 class="cover-offer">Sign more realtors. Keep them past month 3. <span class="hl">Never hire an editor.</span></h1>
+    <p class="cover-sub">We write and edit 24 talking-head and listing reels for every realtor you sign, delivered by day 11, under your brand. $1,500 a month.</p>
 
     <div class="hero-split">
       <div class="hero-left">
     <ul class="cover-promise">
-      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> We handle ads, organic short-form, VSLs, and YouTube.</li>
-      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> If we don’t deliver all 24 reels in under 2 weeks, you get your money back.</li>
-      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Take 5 or 50 new clients without recruiting, training, or managing local staff.</li>
+      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Free pitch pack: we turn your prospect’s own footage into spec reels you take into the sales call.</li>
+      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24 scripts + 24 reels a month, delivered in under 2 weeks, or your money back.</li>
+      <li><svg width="25" height="25" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Your client never knows we exist.</li>
     </ul>
 
     <div class="cover-cta">
-      <a class="btn btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSfKzobe5lycSHfWF43CIOCTizPZ5WTQwU5pMAdo236OWGKOfw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Get a free reel in 48h</a>
-      <a class="btn btn-line" href="#proof">See the Results</a>
+      <a class="btn btn-dark" href="https://docs.google.com/forms/d/e/1FAIpQLSfKzobe5lycSHfWF43CIOCTizPZ5WTQwU5pMAdo236OWGKOfw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Get a free pitch pack</a>
+      <a class="btn btn-line" href="#proof">See the results</a>
     </div>
 
-    <p class="cover-fine">The 2-week clock starts once your footage is uploaded and the style sample is approved. We onboard up to 5 accounts per cycle — more can be added with a week’s notice.</p>
+    <p class="cover-fine">The 2-week clock starts once your client’s footage is uploaded and the style sample is approved. We onboard up to 5 accounts per cycle.</p>
       </div>
 
-      <figure class="stack">
-        <h2 class="stack-title">What you get</h2>
-        <table class="stack-table">
-          <tbody>
-            <tr><td>24 scripts written to convert</td><td>$1,000</td></tr>
-            <tr><td>24 reels edited with motion graphics and SFX</td><td>$2,000</td></tr>
-            <tr><td>Frame.io + Notion system set up per client</td><td>$500</td></tr>
-            <tr><td>Brand kit: colors, fonts, caption style</td><td>$500</td></tr>
-            <tr><td>Unlimited revisions until approval</td><td>$500</td></tr>
-            <tr><td>Delivery in under 2 weeks</td><td class="dash">—</td></tr>
-          </tbody>
-          <tfoot>
-            <tr class="total"><td>Total value</td><td><s>$4,500</s></td></tr>
-            <tr class="yours"><td>Your price</td><td><span class="ok" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>$1,500</td></tr>
-          </tfoot>
-        </table>
-        <a class="btn btn-dark stack-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfKzobe5lycSHfWF43CIOCTizPZ5WTQwU5pMAdo236OWGKOfw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Get a free reel in 48h</a>
-      </figure>
+      <div class="hero-right">
+        <div class="collage">
+          <figure class="shot shot-views">
+            <img src="Brand Assets/proof/insights-views.png" alt="Instagram insights: 14,639,106 views in the last 90 days">
+            <figcaption>14.6M views · 90 days</figcaption>
+          </figure>
+          <figure class="shot shot-followers">
+            <img src="Brand Assets/proof/insights-followers.png" alt="Instagram insights: 476,042 followers, up 41,339 in the last 90 days">
+            <figcaption>+41,339 followers · 90 days</figcaption>
+          </figure>
+          <figure class="shot shot-review">
+            <img src="Brand Assets/proof/frameio-real.png" alt="Frame.io project with five reels marked Approved or Needs Review">
+            <figcaption>Real review workflow</figcaption>
+          </figure>
+        </div>
+        <p class="collage-note">Real screenshots from an account we edit. Names blurred.</p>
+      </div>
     </div>
+  </div>
+</section>
 
-      <div class="versus-block" id="versus">
-        <h2 class="h-sub">Short and sweet, here is the difference.</h2>
-        <p class="versus-lede">Same brief, same month, same client. One route burns your margin, the other runs on a schedule.</p>
+<!-- ============ PROOF STRIP ============ -->
+<section class="proofstrip" aria-label="Proof">
+  <div class="shell">
+    <p>One realtor account: 2k → 10k average views and 150+ qualified leads into the CRM.</p>
+    <figure class="proofstrip-shot">
+      <img src="Brand Assets/proof/proof-lead.png" alt="Example of a qualified lead from a realtor account" onerror="this.closest('figure').remove()">
+      <span class="tag">EXAMPLE</span>
+    </figure>
+  </div>
+</section>
 
-        <div class="versus">
-          <div class="vs-col vs-them spot" data-glow>
-            <span class="glow" aria-hidden="true"></span>
-            <div class="vs-head">
-              <h3>A freelance editor</h3>
-              <span>the usual route</span>
-            </div>
-            <ul>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Months to find, train and manage</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> 2-3 reels a day</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Quality drifts between editors</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Every brief starts from scratch</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Notes lost in a WhatsApp thread</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Late delivery lands on you</li>
-            </ul>
-          </div>
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="steps">
+  <div class="shell">
+    <h2 class="section-title">How it works</h2>
 
-          <div class="vs-col vs-us spot" data-glow>
-            <span class="glow" aria-hidden="true"></span>
-            <div class="vs-head">
-              <h3><span class="mark" aria-hidden="true"><img src="Brand Assets/ghostframe png.png" alt=""></span> GhostFrame</h3>
-              <span>white label</span>
-            </div>
-            <ul>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Running from one onboarding form</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 5-8 reels a day</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Three specialists on every reel</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Notes on the timeline in Frame.io</li>
-              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24 reels in under two weeks</li>
-            </ul>
+    <div class="split">
+      <p class="h-section">Four steps from prospect to retained client.</p>
+      <div class="dock-wrap">
+        <div class="dock" id="dock">
+          <div class="dock-row">
+            <div class="dock-app tile"><img src="Brand Assets/tools/notion.png" alt="Notion" draggable="false"></div>
+            <div class="dock-app"><img src="Brand Assets/tools/frameio.png" alt="Frame.io" style="--s:1.38" draggable="false"></div>
+            <div class="dock-app"><img src="Brand Assets/tools/instagram.png" alt="Instagram" draggable="false"></div>
           </div>
         </div>
       </div>
+    </div>
 
+    <ol class="step-rows">
+      <li class="step-row">
+        <div class="step-copy">
+          <div class="num">Step 1</div>
+          <h3>Close the realtor</h3>
+          <p>Send us your prospect’s Instagram. Within 48 hours we turn their existing footage into 2–3 spec reels. You walk into the sales call with their content already done.</p>
+        </div>
+        <div class="media">
+          <div class="frame"><img src="Brand Assets/proof/step1-pitchpack.png" alt="Pitch pack in Notion with three spec reels ready for a sales call" loading="lazy"></div>
+        </div>
+      </li>
+      <li class="step-row">
+        <div class="step-copy">
+          <div class="num">Step 2</div>
+          <h3>Start the month with one form</h3>
+          <p>We write 24 scripts built for real estate — market updates, buyer and seller tips, myths, neighborhood guides and listing tours — and send your client a filming guide so they can record the whole month in one sitting.</p>
+        </div>
+        <div class="media">
+          <div class="frame"><img src="Brand Assets/proof/step2-script.png" alt="A listing tour script in Notion with hook, body, CTA and shot list" loading="lazy"></div>
+        </div>
+      </li>
+      <li class="step-row">
+        <div class="step-copy">
+          <div class="num">Step 3</div>
+          <h3>We produce in parallel</h3>
+          <p>One specialist cuts, one adds motion graphics, one adds SFX. You approve a style sample on day 2–3, and all 24 reels land by day 11. Your client reviews directly in Frame.io, with notes on the timeline, not lost in WhatsApp.</p>
+        </div>
+        <div class="media two">
+          <div class="frame"><img src="Brand Assets/proof/step3-calendar.png" alt="Content calendar showing all 24 reels delivered by the 11th" loading="lazy"></div>
+          <div class="frame"><img src="Brand Assets/proof/step3-review.png" alt="Review screen with timestamped client comments on a reel" loading="lazy"></div>
+        </div>
+      </li>
+      <li class="step-row">
+        <div class="step-copy">
+          <div class="num">Step 4</div>
+          <h3>Your client sees results before month 3</h3>
+          <p>24 reels a month means more hooks tested. We find the winners early, so your client sees traction while they’re still deciding whether to renew.</p>
+        </div>
+        <div class="media">
+          <div class="frame frame-tall"><img src="Brand Assets/proof/insights-followers.png" alt="Instagram insights: 476,042 followers, up 41,339 in 90 days" loading="lazy"></div>
+        </div>
+      </li>
+    </ol>
+
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a></div>
+  </div>
+</section>
+
+<!-- ============ INCLUDED ============ -->
+<section class="section" id="included">
+  <div class="shell">
+    <h2 class="section-title">What you get</h2>
+
+    <div class="wyg">
+      <div>
+        <p class="h-section">One system. Every month.</p>
+        <p class="lede" style="margin-top:22px">No retainer surprises and no per-project quoting. The same scope, the same schedule, every single month.</p>
+      </div>
+
+      <div>
+      <figure class="stack">
+        <h3 class="stack-title">Per realtor, per month</h3>
+        <table class="stack-table">
+          <tbody>
+            <tr><td>24 real estate scripts written to convert</td><td>$1,000</td></tr>
+            <tr><td>24 talking-head and listing reels with motion graphics and SFX</td><td>$2,000</td></tr>
+            <tr><td>Filming guide: record the whole month in one session</td><td>$300</td></tr>
+            <tr><td>Frame.io + Notion workspace per client</td><td>$500</td></tr>
+            <tr><td>Brand kit: colors, fonts, caption style</td><td>$500</td></tr>
+            <tr><td>2 revision rounds per reel, returned in 48h</td><td class="dash">—</td></tr>
+            <tr><td>Delivery in under 2 weeks, or your money back</td><td class="dash">—</td></tr>
+          </tbody>
+          <tfoot>
+            <tr class="total"><td>Total value</td><td><s>$4,300</s></td></tr>
+            <tr class="yours"><td>Your price</td><td><span class="ok" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span>$1,500<small>/mo</small></td></tr>
+          </tfoot>
+        </table>
+        <a class="btn btn-dark stack-cta" href="https://docs.google.com/forms/d/e/1FAIpQLSfKzobe5lycSHfWF43CIOCTizPZ5WTQwU5pMAdo236OWGKOfw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Get a free pitch pack</a>
+      </figure>
+      <p class="stack-bonus">Bonus: your first pitch pack is free.</p>
+      </div>
+    </div>
+
+    <div class="inc-grid">
+      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
+        <h3>Production</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 24 reels a month</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Delivered in under two weeks</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 6–8 reels per editor per day</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Three specialists per reel: editing, motion graphics, then SFX</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Scripts and editing in English and Spanish</li>
+        </ul>
+      </article>
+
+      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
+        <h3>Your workflow</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Notion workspace per client for footage and scripts</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Frame.io review, so notes never get lost in WhatsApp</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 2 revision rounds, returned within 48 hours</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> One onboarding form, no long kickoff calls</li>
+        </ul>
+      </article>
+
+      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
+        <h3>White label</h3>
+        <ul>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Everything ships under your brand</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1: colors, fonts, captions</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Style sample on day 2–3 before the full batch runs</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Your client never knows we exist</li>
+          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> We only show client work with permission</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a></div>
   </div>
 </section>
 
@@ -572,14 +747,14 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 
     <div class="split">
       <div>
-        <p class="h-section">Your clients need video. Producing it is killing your margins.</p>
-        <p class="lede" style="margin-top:22px">Every agency hits the same wall: clients want more content every month, but every way of producing it has a catch.</p>
+        <p class="h-section">Your realtor clients leave in month 3. Your production is why.</p>
+        <p class="lede" style="margin-top:22px">Realtors expect leads fast. When content arrives late, looks generic, or never gets filmed, they cancel, and the blame lands on you.</p>
       </div>
 
       <ul class="marks">
-        <li><span class="g" aria-hidden="true">◆</span><div><b>Hiring editors is slow and risky.</b> Finding, training and managing an in-house editor takes months. A bad hire costs you clients.</div></li>
-        <li><span class="g" aria-hidden="true">■</span><div><b>Freelancers don’t scale.</b> Inconsistent quality, missed deadlines, and every new editor needs to learn your style from scratch.</div></li>
-        <li><span class="g" aria-hidden="true">▲</span><div><b>Late delivery costs you the client.</b> When content arrives late or revisions get lost in WhatsApp, your client blames you, not the editor.</div></li>
+        <li><span class="g" aria-hidden="true">◆</span><div><b>Realtors don’t film.</b> Busy agents put off recording. Without scripts and a simple setup guide, the month stalls before it starts.</div></li>
+        <li><span class="g" aria-hidden="true">■</span><div><b>Freelancers don’t scale.</b> Inconsistent quality, missed deadlines, and every new editor learns your style from scratch.</div></li>
+        <li><span class="g" aria-hidden="true">▲</span><div><b>Slow results kill retention.</b> 8–12 reels a month isn’t enough tests to find what works before the client decides to leave.</div></li>
       </ul>
     </div>
 
@@ -606,6 +781,51 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   </div>
 </section>
 
+<!-- ============ COMPARISON ============ -->
+<section class="section" id="versus">
+  <div class="shell">
+      <div class="versus-block">
+        <h2 class="h-sub">Short and sweet, here is the difference.</h2>
+        <p class="versus-lede">Same brief, same month, same client. One route burns your margin, the other runs on a schedule.</p>
+
+        <div class="versus">
+          <div class="vs-col vs-them spot" data-glow>
+            <span class="glow" aria-hidden="true"></span>
+            <div class="vs-head">
+              <h3>A freelance editor</h3>
+              <span>the usual route</span>
+            </div>
+            <ul>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Months to find, train and manage</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> 2-3 reels a day</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> You write the scripts</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Quality drifts between editors</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Notes lost in a WhatsApp thread</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg> Late delivery lands on you</li>
+            </ul>
+          </div>
+
+          <div class="vs-col vs-us spot" data-glow>
+            <span class="glow" aria-hidden="true"></span>
+            <div class="vs-head">
+              <h3><span class="mark" aria-hidden="true"><img src="Brand Assets/ghostframe png.png" alt=""></span> GhostFrame</h3>
+              <span>white label</span>
+            </div>
+            <ul>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Scripts and filming guide included</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 6–8 reels per editor per day</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Three specialists on every reel</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Notes on the timeline in Frame.io</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> 24 reels in under two weeks</li>
+              <li><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg> Free pitch pack to close your next realtor</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+  </div>
+</section>
+
 <!-- ============ PROOF ============ -->
 <section class="section" id="proof">
   <div class="shell">
@@ -613,25 +833,35 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 
     <div class="split">
       <p class="h-section">Editing tested on real accounts.</p>
-      <p class="lede">These are numbers from accounts we edit for, not industry averages.</p>
+      <p class="lede">These are numbers from accounts we edit, not industry averages.</p>
     </div>
 
     <div>
       <div class="proof-grid">
         <div>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18"/><path d="M5 12V20h14v-8"/><path d="M2 12 12 4l10 8"/></svg></span>
+          <div class="n">2k → 10k</div>
+          <div class="l">Average views on a realtor account, plus 150+ qualified leads into the CRM</div>
+        </div>
+        <div>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></span>
+          <div class="n">14.6M views</div>
+          <div class="l">In 90 days, one account</div>
+        </div>
+        <div>
+          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M17 7h5"/><path d="M19.5 4.5v5"/></svg></span>
+          <div class="n">+41,339 followers</div>
+          <div class="l">In 90 days, same account</div>
+        </div>
+        <div>
           <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-6 4 4 5-7"/><path d="M17 8h4v4"/></svg></span>
           <div class="n">60k → 600k</div>
-          <div class="l">Follower growth on one account</div>
+          <div class="l">Follower growth, another account</div>
         </div>
         <div>
           <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2.5v19"/><path d="M16.5 6.8A4 4 0 0 0 12.8 4.5h-1.4a3.4 3.4 0 0 0-.6 6.75l2.4.5a3.4 3.4 0 0 1-.6 6.75h-1.4A4 4 0 0 1 7.5 16.2"/></svg></span>
           <div class="n">$50k → $70k</div>
           <div class="l">Monthly revenue, USD</div>
-        </div>
-        <div>
-          <span class="ic"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="3.5"/><path d="M17 7h5"/><path d="M19.5 4.5v5"/></svg></span>
-          <div class="n">150+</div>
-          <div class="l">Qualified leads into the CRM</div>
         </div>
       </div>
     </div>
@@ -668,51 +898,6 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   </div>
 </section>
 
-<!-- ============ HOW IT WORKS ============ -->
-<section class="section" id="steps">
-  <div class="shell">
-    <h2 class="section-title">How it works</h2>
-
-    <div class="split">
-      <p class="h-section">Send footage today. Full month delivered in under two weeks.</p>
-      <div class="dock-wrap">
-        <div class="dock" id="dock">
-          <div class="dock-row">
-            <div class="dock-app tile"><img src="Brand Assets/tools/notion.png" alt="Notion" draggable="false"></div>
-            <div class="dock-app"><img src="Brand Assets/tools/frameio.png" alt="Frame.io" style="--s:1.38" draggable="false"></div>
-            <div class="dock-app"><img src="Brand Assets/tools/instagram.png" alt="Instagram" draggable="false"></div>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="step-grid">
-      <article class="step spot" data-glow>
-        <span class="glow" aria-hidden="true"></span>
-        <div class="num">Step 1</div>
-        <h3>Send your footage</h3>
-        <p>Upload raw footage and scripts to your client’s Notion workspace. One short onboarding form.</p>
-      </article>
-
-      <article class="step spot" data-glow>
-        <span class="glow" aria-hidden="true"></span>
-        <div class="num">Step 2</div>
-        <h3>We edit and animate</h3>
-        <p>One editor cuts, another adds motion graphics and one more SFX. Our AI workflow produces 5-8 reels a day, compared with 2-3 from a traditional editor.</p>
-      </article>
-
-      <article class="step spot" data-glow>
-        <span class="glow" aria-hidden="true"></span>
-        <div class="num">Step 3</div>
-        <h3>You deliver under your brand</h3>
-        <p>Your client reviews and comments directly in Frame.io. You deliver a full month of content ahead of schedule, and your client never knows we exist.</p>
-      </article>
-    </div>
-
-    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a></div>
-  </div>
-</section>
-
 <!-- ============ TIMELINE ============ -->
 <section class="section" id="timeline">
   <div class="shell">
@@ -725,40 +910,47 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 
     <ol class="timeline">
       <li>
-        <div class="when">Day 1</div>
+        <div class="when">Before day 1</div>
         <ul>
           <li>Onboarding form completed</li>
-          <li>Frame.io and Notion workspace set up for your client</li>
-          <li>Footage and scripts received</li>
-          <li>Brand style locked: colors, fonts, caption style</li>
+          <li>We deliver 24 scripts + filming guide</li>
+          <li>Your client records the month in one session</li>
         </ul>
       </li>
       <li>
-        <div class="when">Days 2-3</div>
+        <div class="when">Day 1</div>
+        <ul>
+          <li>Footage uploaded</li>
+          <li>Frame.io and Notion workspace set up</li>
+          <li>Brand style locked</li>
+        </ul>
+      </li>
+      <li>
+        <div class="when">Days 2–3</div>
         <ul>
           <li>First reel delivered as a style sample</li>
-          <li>Your feedback calibrates the rest of the batch</li>
+          <li>Your feedback calibrates the batch</li>
         </ul>
       </li>
       <li>
-        <div class="when">Days 4-8</div>
+        <div class="when">Days 4–8</div>
         <ul>
-          <li>Full production: editing and animation in parallel</li>
-          <li>5-8 reels finished per day</li>
+          <li>Full production, editing and animation in parallel</li>
+          <li>6–8 reels per editor per day</li>
         </ul>
       </li>
       <li>
-        <div class="when">Days 9-11</div>
+        <div class="when">Days 9–11</div>
         <ul>
-          <li>Client reviews and comments directly in Frame.io</li>
-          <li>Revisions returned within 48 hours</li>
+          <li>Client reviews in Frame.io</li>
+          <li>Revisions returned within 48 hours (2 rounds per reel)</li>
         </ul>
       </li>
       <li class="final">
-        <div class="when">Under 2 weeks</div>
+        <div class="when">By day 11</div>
         <ul>
-          <li>All 24 reels delivered, ready to publish</li>
-          <li>Next month’s footage scheduled</li>
+          <li>All 24 reels delivered</li>
+          <li>Next month’s scripts already in progress</li>
         </ul>
       </li>
     </ol>
@@ -802,52 +994,6 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   </div>
 </section>
 
-<!-- ============ INCLUDED ============ -->
-<section class="section" id="included">
-  <div class="shell">
-    <h2 class="section-title">What you get</h2>
-
-    <div class="split">
-      <p class="h-section">One system. Every month.</p>
-      <p class="lede">No retainer surprises and no per-project quoting. The same scope, the same schedule, every single month.</p>
-    </div>
-
-    <div class="inc-grid">
-      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
-        <h3>Production</h3>
-        <ul>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 24 reels a month</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Delivered in under two weeks</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> 5-8 reels finished per day</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Three specialists per reel: editing, motion graphics, then SFX</li>
-        </ul>
-      </article>
-
-      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
-        <h3>Your workflow</h3>
-        <ul>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Notion workspace per client for footage and scripts</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Frame.io review, so notes never get lost in WhatsApp</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Revisions returned within 48 hours</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> One onboarding form, no long kickoff calls</li>
-        </ul>
-      </article>
-
-      <article class="inc spot" data-glow><span class="glow" aria-hidden="true"></span>
-        <h3>White label</h3>
-        <ul>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Everything ships under your brand</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Brand style locked on day 1: colors, fonts, captions</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Style sample on day 2-3 before the full batch runs</li>
-          <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg> Your client never knows we exist</li>
-        </ul>
-      </article>
-    </div>
-
-    <div class="section-cta"><a class="btn btn-dark" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Start Now</a></div>
-  </div>
-</section>
-
 <!-- ============ FAQ ============ -->
 <section class="section" id="faq">
   <div class="shell">
@@ -860,31 +1006,55 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
           <summary>What happens in the first week?
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="ans">Day 1 covers onboarding: you fill one short form, we set up a Frame.io and Notion workspace for your client, receive footage and scripts, and lock the brand style — colors, fonts and caption style. Your first reel lands on day 2-3 as a style sample.</div>
+          <div class="ans">Before day 1 you fill one onboarding form, and we deliver 24 scripts plus a filming guide so your client can record the month in one session. On day 1 the footage is uploaded, we set up a Frame.io and Notion workspace for your client, and lock the brand style — colors, fonts and caption style. Your first reel lands on day 2–3 as a style sample.</div>
+        </details>
+        <details class="qa">
+          <summary>What’s a pitch pack?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">Before you sign a realtor, send us their Instagram. We turn their existing footage into 2–3 spec reels within 48 hours so you can show them their own content on the sales call. Your first one is free.</div>
+        </details>
+        <details class="qa">
+          <summary>Who writes the scripts?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">We do. 24 scripts a month built for real estate, plus a filming guide so your client can record everything in one sitting.</div>
         </details>
         <details class="qa">
           <summary>How do you deliver 24 reels that fast?
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="ans">The work is split three ways: one editor cuts, another adds motion graphics and one more SFX, all running in parallel. Our AI workflow produces 5-8 reels a day, compared with 2-3 from a traditional editor.</div>
+          <div class="ans">The work is split three ways: one editor cuts, another adds motion graphics, another adds SFX, running in parallel. Each editor finishes 6–8 reels a day.</div>
         </details>
         <details class="qa">
           <summary>How do revisions work?
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="ans">Your client comments directly on the timeline in Frame.io, so nothing gets lost in a WhatsApp thread. Revisions come back within 48 hours, on days 9-11 of the month.</div>
+          <div class="ans">Your client comments directly on the timeline in Frame.io. 2 rounds per reel, returned within 48 hours.</div>
         </details>
         <details class="qa">
           <summary>What if the style is wrong?
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
-          <div class="ans">That is what the day 2-3 sample is for. You get one finished reel before the batch runs, and your feedback calibrates the remaining 23. Nothing goes into full production until the style is signed off.</div>
+          <div class="ans">That is what the day 2–3 sample is for. You get one finished reel before the batch runs, and your feedback calibrates the remaining 23. Nothing goes into full production until the style is signed off.</div>
         </details>
         <details class="qa">
           <summary>Do you edit under my agency’s brand?
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
           </summary>
           <div class="ans">Always. Everything ships under your brand, in your client’s own Frame.io and Notion workspace. We never appear in front of your client.</div>
+        </details>
+        <details class="qa">
+          <summary>Do you work in Spanish?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">Yes. We write and edit in English and Spanish, so you can serve realtors who sell to Spanish-speaking buyers.</div>
+        </details>
+        <details class="qa">
+          <summary>Do you guarantee views or leads?
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </summary>
+          <div class="ans">No. We guarantee delivery: 24 reels in under 2 weeks, or your money back. Results depend on your client’s market, offer and posting. Our job is to give them more tested content, faster.</div>
         </details>
       </div>
     </div>
@@ -897,13 +1067,13 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
   <div class="shell">
     <div class="split">
       <div>
-        <h2 class="h-section">Your client’s next month is already late.</h2>
-        <p>Send footage today and deliver a full month of reels in under two weeks, under your brand, without hiring anyone.</p>
+        <h2 class="h-section">Your next realtor client is one sales call away.</h2>
+        <p>We’ll make the spec reels. You close the deal.</p>
       </div>
       <div>
         <div class="row">
-          <a class="btn btn-light" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Book a Call</a>
-          <a class="btn" href="#timeline" style="border:1px solid var(--border-700);color:#fff">See the Timeline</a>
+          <a class="btn btn-light" href="https://docs.google.com/forms/d/e/1FAIpQLSfKzobe5lycSHfWF43CIOCTizPZ5WTQwU5pMAdo236OWGKOfw/viewform?usp=header" target="_blank" rel="noopener noreferrer">Get a free pitch pack</a>
+          <a class="btn btn-ghost" href="https://calendly.com/ian-ghostframemedia/30min" target="_blank" rel="noopener noreferrer">Book a call</a>
         </div>
         <p class="mail">or email us at<br><a href="mailto:hello@ghostframemedia.com">hello@ghostframemedia.com</a></p>
       </div>
@@ -931,7 +1101,6 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
           <li><a href="#steps">Short-Form Editing</a></li>
           <li><a href="#steps">Long-Form YouTube Editing</a></li>
           <li><a href="#steps">VSL</a></li>
-          <li><a href="#steps">Ads</a></li>
           <li><a href="#included">White-Label Delivery</a></li>
         </ul>
       </div>
@@ -939,10 +1108,9 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
       <div>
         <h4>Who we serve</h4>
         <ul>
-          <li><a href="#work">Social Media Managers</a></li>
-          <li><a href="#work">Marketing Agencies</a></li>
-          <li><a href="#work">Content Studios</a></li>
-          <li><a href="#work">Freelance Strategists</a></li>
+          <li><a href="#work">Agencies that serve realtors</a></li>
+          <li><a href="#work">Real estate marketing teams</a></li>
+          <li><a href="#work">Social media managers for realtors</a></li>
         </ul>
       </div>
 
@@ -964,6 +1132,7 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
     </div>
   </div>
 </footer>
+
 
 <script>
 // Spotlight cards: one cursor-driven light shared by every [data-glow].
