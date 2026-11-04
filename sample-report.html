@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>GhostScan Report</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Newsreader:ital,opsz,wght@1,6..72,300..600&display=swap">
+<style>
+/* Layout: white minimal report in GhostFrame's type system; hairline borders, uppercase section titles with one italic serif phrase, orange reserved for the client and for actions. */
+:root{
+  --bg:#ffffff; --card:#ffffff; --soft:#f6f6f5; --txt:#1c1c1c; --txt-600:#5c5c5c; --txt-500:#929292;
+  --border:#ececec; --border-400:#d4d4d4; --accent:#ff6a1a; --accent-soft:#fff1e8; --you:#ff6a1a; --c1:#3a3a3a; --c2:#c4c4c4; --flag:#c0392b;
+  color-scheme:light;
+  --font:"Inter Tight", Arial, Helvetica, sans-serif; --serif:"Newsreader", Georgia, "Times New Roman", serif;
+}
+
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--txt);font:400 16px/1.55 var(--font);letter-spacing:.01em}
+.shell{max-width:1040px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{margin:0;text-wrap:balance;font-weight:700;letter-spacing:-.02em;line-height:1.05}
+h1{font-size:clamp(2.1rem,5vw,3.3rem)}
+h1 em,h2 em{font-family:var(--serif);font-style:italic;font-weight:400;letter-spacing:-.01em}
+h2{font-size:clamp(1.7rem,3.6vw,2.5rem);text-transform:uppercase}
+h3{font-size:1.05rem;letter-spacing:-.01em}
+p{margin:0}
+.n{font-variant-numeric:tabular-nums}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:.78rem;color:var(--txt-500)}
+.eyebrow::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.muted{color:var(--txt-600)}
+
+header.top{border-bottom:1px solid var(--border);background:var(--bg)}
+header.top .shell{padding-block:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:10px;line-height:1.05}
+.logo svg{width:26px;height:26px}
+.logo b{display:block;font-size:.9rem;letter-spacing:.02em}
+.logo small{display:block;font-size:.62rem;letter-spacing:.14em;color:var(--txt-500);text-transform:uppercase}
+.tag{font-size:.78rem;color:var(--txt-600);border:1px solid var(--border-400);border-radius:8px;padding:6px 12px;background:var(--card)}
+
+main .shell{display:grid;gap:96px;padding-block:64px 80px}
+.hero{display:grid;gap:22px;max-width:820px}
+.hero .lede{font-size:1.1rem;color:var(--txt-600);max-width:60ch}
+.vs{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.88rem;color:var(--txt-600)}
+.vs span{display:inline-flex;align-items:center;gap:7px}
+.sw{width:10px;height:10px;border-radius:2px;display:inline-block;flex:none}
+
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--border);border-radius:14px;background:var(--card);overflow:hidden}
+.kpi{padding:22px;display:grid;gap:6px;align-content:start;border-left:1px solid var(--border)}
+.kpi:first-child{border-left:0}
+.kpi:first-child .v{color:var(--accent)}
+.kpi .k{font-size:.8rem;color:var(--txt-500)}
+.kpi .v{font-size:2.2rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.kpi .r{font-size:.8rem;color:var(--txt-600)}
+@media (max-width:760px){.kpis{grid-template-columns:1fr 1fr}.kpi:nth-child(3){border-left:0}.kpi:nth-child(n+3){border-top:1px solid var(--border)}}
+
+section{display:grid;gap:28px;min-width:0}
+.sh{display:grid;gap:12px;max-width:720px}
+.sh p{color:var(--txt-600)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:24px;display:grid;gap:18px;min-width:0}
+
+.scroll{overflow-x:auto}
+svg text{font-family:var(--font);font-size:11.5px;fill:var(--txt-500)}
+svg .acc{font-size:13px;font-weight:600;fill:var(--txt)}
+.legend{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:.8rem;color:var(--txt-500)}
+.legend span{display:inline-flex;align-items:center;gap:6px}
+
+.asks{display:grid;gap:0;border:1px solid var(--border);border-radius:14px;background:var(--card);overflow:hidden}
+.ask{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:6px 24px;padding:20px 24px;border-top:1px solid var(--border);align-items:center}
+.ask:first-child{border-top:0}
+.ask q{font-size:1.05rem;font-weight:500;quotes:"“" "”"}
+.ask .who{font-size:.8rem;color:var(--txt-500);display:flex;align-items:center;gap:7px;grid-column:1}
+.ask .num{grid-row:1/3;grid-column:2;text-align:right;display:grid;gap:2px}
+.ask .num b{font-size:2rem;font-weight:700;letter-spacing:-.03em;line-height:1}
+.ask .num small{font-size:.75rem;color:var(--txt-500)}
+.ask .bar{grid-column:1;height:4px;background:var(--soft);border-radius:2px;overflow:hidden}
+.ask .bar i{display:block;height:100%;background:var(--c1)}
+.ask.you .bar i{background:var(--you)}
+.ask.direct .bar i{background:var(--c2)}
+.takeaway{font-size:1.05rem;max-width:62ch}
+.takeaway em{font-family:var(--serif);font-size:1.12em}
+
+.tbl{overflow-x:auto;border:1px solid var(--border);border-radius:14px;background:var(--card)}
+table{border-collapse:collapse;width:100%;min-width:820px;font-size:.92rem}
+th,td{padding:14px 16px;text-align:right;border-bottom:1px solid var(--border);font-variant-numeric:tabular-nums}
+th:first-child,td:first-child{text-align:left}
+thead th{font-size:.74rem;font-weight:500;color:var(--txt-500);vertical-align:bottom;line-height:1.3}
+tbody tr:last-child td{border-bottom:0}
+tr.you td{font-weight:600;background:var(--accent-soft)}
+tr.you td:first-child{box-shadow:inset 3px 0 0 var(--accent)}
+td.lead{font-weight:700}
+td small{display:block;font-weight:400;color:var(--txt-500);font-size:.76rem}
+.dot{display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-left:6px;vertical-align:middle}
+
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px}
+.note{display:grid;gap:8px}
+.note p{color:var(--txt-600);font-size:.95rem}
+.flag{font-size:.75rem;color:var(--flag);border:1px solid currentColor;border-radius:6px;padding:2px 8px;justify-self:start}
+
+.plan{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.pil{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:22px;display:grid;gap:10px;align-content:start}
+.pil .c{font-size:2.6rem;font-weight:700;letter-spacing:-.04em;line-height:1}
+.pil ul{margin:0;padding-left:18px;color:var(--txt-600);font-size:.92rem;display:grid;gap:4px}
+.pil .kw{font-size:.82rem;color:var(--txt-500);border-top:1px solid var(--border);padding-top:10px}
+.pil .kw b{color:var(--txt);font-weight:600}
+
+.cta{background:var(--soft);color:var(--txt);border:1px solid var(--border);border-radius:18px;padding:40px;display:grid;gap:18px}
+.cta h2{text-transform:none;font-size:clamp(1.8rem,4vw,2.6rem)}
+.cta p{color:var(--txt-600);max-width:56ch}
+.act{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
+.btn{font:600 .95rem var(--font);background:var(--accent);color:#fff;border:0;border-radius:8px;padding:12px 20px;cursor:pointer}
+.btn:focus-visible{outline:2px solid var(--txt);outline-offset:3px}
+.mail{font-size:.9rem;opacity:.8;user-select:all}
+#st{flex-basis:100%;font-size:.8rem;opacity:.7;min-height:1em}
+
+.proj{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);gap:0;border:1px solid var(--border);border-radius:14px;overflow:hidden}
+.inputs{padding:24px;display:grid;gap:20px;align-content:start;border-right:1px solid var(--border)}
+.outputs{padding:24px;display:grid;gap:18px;align-content:start;background:var(--soft)}
+@media (max-width:760px){.proj{grid-template-columns:1fr}.inputs{border-right:0;border-bottom:1px solid var(--border)}}
+.field{display:grid;gap:8px}
+.field label{font-size:.85rem;font-weight:600;display:flex;justify-content:space-between;gap:12px}
+.field label output{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.field small{color:var(--txt-500);font-size:.78rem}
+input[type=range]{width:100%;accent-color:var(--accent)}
+input[type=range]:focus-visible{outline:2px solid var(--txt);outline-offset:4px}
+.seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border:1px solid var(--border-400);border-radius:8px;overflow:hidden}
+.seg button{font:500 .8rem/1.25 var(--font);background:var(--card);color:var(--txt-600);border:0;border-left:1px solid var(--border-400);padding:9px 6px;cursor:pointer}
+.seg button:first-child{border-left:0}
+.seg button[aria-pressed=true]{background:var(--txt);color:var(--bg)}
+.seg button b{display:block;font-size:1rem;font-variant-numeric:tabular-nums}
+.seg button:focus-visible{outline:2px solid var(--accent);outline-offset:-2px}
+.set{font-size:.72rem;color:var(--accent);font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.out{display:grid;gap:4px}
+.out .k{font-size:.8rem;color:var(--txt-500)}
+.out .v{font-size:2.6rem;font-weight:700;letter-spacing:-.04em;line-height:1;font-variant-numeric:tabular-nums}
+.out .d{font-size:.85rem;color:var(--txt-600)}
+.out .d b{color:var(--accent)}
+.meter{height:8px;background:var(--border);border-radius:4px;position:relative;overflow:hidden}
+.meter i{position:absolute;inset:0 auto 0 0;background:var(--accent);border-radius:4px}
+.meter u{position:absolute;top:-3px;bottom:-3px;width:2px;background:var(--txt)}
+.fine{font-size:.78rem;color:var(--txt-500)}
+.agency{display:grid;grid-template-columns:auto minmax(0,1fr);gap:18px;align-items:start;border-left:3px solid var(--accent);padding:4px 0 4px 20px}
+.avatar{width:44px;height:44px;border-radius:50%;background:var(--accent-soft);color:var(--accent);display:grid;place-items:center;font-weight:700}
+.agency q{font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.35;quotes:"“" "”";display:block;max-width:60ch}
+.agency .by{font-size:.82rem;color:var(--txt-500);margin-top:10px}
+footer .shell{padding-block:0 56px;display:grid;gap:8px;font-size:.78rem;color:var(--txt-500)}
+footer p{max-width:92ch}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script id="gs-data" type="application/json">{"meta": {"client": "your.realtor", "since": "2026-10-07", "until": "2026-10-31", "period": "Oct 7–Oct 31, 2026", "days": 25, "generated": "2026-11-02T20:37:40.478Z"}, "agency": {"name": "Saltwater", "tagline": "Real estate studio", "email": "hello@saltwaterstudio.co", "strategist": {"name": "Marina Ruiz", "title": "Strategist"}, "dmRate": 30, "note": "Your audience is already there. The next step is giving them a specific reason to comment on every reel. We would start with the format that already works for you.", "ctaTitle": "Want to see the first three reels?", "ctaBody": "A 15-minute call. We'll walk through this report and show you sample reels made from your own footage.", "disclaimer": "Saltwater is a fictional agency used for this sample report."}, "accounts": [{"username": "your.realtor", "role": "client", "audience": "", "name": "your.realtor", "followers": 134432, "posts": 13, "reels": 11, "postsPerWeek": 3.6, "reelsPerMonth": 13, "totalComments": 341, "medianComments": 15, "engagementRate": 0.33, "ctaPosts": 6, "ctaAvgComments": 21.3, "medianViews": 10466, "viewsPer100Followers": 7.8, "medianLikesPer1k": 14.9, "medianCommentsPer1k": 1.05, "paidPosts": [], "commentsPer30Days": 409, "offTopicPosts": 0, "strip": [{"c": 5, "cta": false}, {"c": 3, "cta": true}, {"c": 11, "cta": false}, {"c": 40, "cta": false}, {"c": 35, "cta": true}, {"c": 29, "cta": false}, {"c": 10, "cta": true}, {"c": 20, "cta": false}, {"c": 0, "cta": true}, {"c": 105, "cta": false}, {"c": 15, "cta": true}, {"c": 65, "cta": true}, {"c": 3, "cta": false}]}, {"username": "direct.rival", "role": "direct", "audience": "", "name": "direct.rival", "followers": 14329, "posts": 25, "reels": 19, "postsPerWeek": 7, "reelsPerMonth": 23, "totalComments": 175, "medianComments": 1, "engagementRate": 0.4, "ctaPosts": 5, "ctaAvgComments": 1.8, "medianViews": 1031, "viewsPer100Followers": 7.2, "medianLikesPer1k": 30.1, "medianCommentsPer1k": 0.97, "paidPosts": [{"date": "2026-10-08", "views": 13143, "likes": 22, "comments": 4, "likesPer1k": 1.7, "caption": "A listing reel about buying a home that pays for itself."}], "commentsPer30Days": 210, "offTopicPosts": 0, "strip": [{"c": 16, "cta": false}, {"c": 6, "cta": false}, {"c": 2, "cta": false}, {"c": 0, "cta": false}, {"c": 1, "cta": false}, {"c": 0, "cta": false}, {"c": 1, "cta": true}, {"c": 5, "cta": false}, {"c": 1, "cta": false}, {"c": 1, "cta": false}, {"c": 1, "cta": false}, {"c": 4, "cta": true}, {"c": 2, "cta": false}, {"c": 1, "cta": false}, {"c": 0, "cta": false}, {"c": 2, "cta": false}, {"c": 0, "cta": false}, {"c": 32, "cta": false}, {"c": 0, "cta": false}, {"c": 0, "cta": true}, {"c": 0, "cta": true}, {"c": 96, "cta": false}, {"c": 0, "cta": false}, {"c": 4, "cta": true}, {"c": 0, "cta": false}]}, {"username": "local.leader", "role": "benchmark", "audience": "", "name": "local.leader", "followers": 16145, "posts": 21, "reels": 12, "postsPerWeek": 5.9, "reelsPerMonth": 14, "totalComments": 540, "medianComments": 13, "engagementRate": 3.68, "ctaPosts": 8, "ctaAvgComments": 26.6, "medianViews": 21455, "viewsPer100Followers": 132.9, "medianLikesPer1k": 25.4, "medianCommentsPer1k": 1.87, "paidPosts": [], "commentsPer30Days": 648, "offTopicPosts": 0, "strip": [{"c": 28, "cta": true}, {"c": 14, "cta": false}, {"c": 9, "cta": false}, {"c": 109, "cta": true}, {"c": 11, "cta": true}, {"c": 13, "cta": false}, {"c": 4, "cta": true}, {"c": 48, "cta": false}, {"c": 10, "cta": true}, {"c": 69, "cta": false}, {"c": 8, "cta": false}, {"c": 64, "cta": false}, {"c": 10, "cta": true}, {"c": 7, "cta": false}, {"c": 30, "cta": false}, {"c": 2, "cta": false}, {"c": 28, "cta": false}, {"c": 39, "cta": true}, {"c": 2, "cta": true}, {"c": 34, "cta": false}, {"c": 1, "cta": false}]}], "kpis": [{"label": "Comments, 25 days", "value": "341", "rank": 2, "of": 3, "note": "leader @local.leader 540"}, {"label": "Engagement rate", "value": "0.33%", "rank": 3, "of": 3, "note": "leader @local.leader 3.68%"}, {"label": "Avg. comments on \"Comment X\" posts", "value": "21.3", "rank": 2, "of": 3, "note": "leader @local.leader 26.6"}, {"label": "Median views per reel", "value": "10.5K", "rank": 2, "of": 3, "note": "leader @local.leader 21.5K"}], "copy": {"headline": {"main": "@local.leader gets more comments.", "accent": "Here is why."}, "lede": "We compared the last 25 days of your Instagram with competitors in your market. Comments and DMs are where buyers raise their hand.", "ask_quotes": {}, "ask_context": {}, "takeaway": "Posts that offer something specific in exchange for a comment get the most replies.", "edge": {"title": "Where you stand against @direct.rival", "body": "You average 15 comments on a typical post. @direct.rival averages 1."}, "alert": {"title": "@direct.rival is boosting reels", "body": "One reel reached 13,143 views with only 22 likes, a sign of paid promotion."}, "plan": [{"count": 10, "title": "Local market news", "bullets": ["Openings in your area", "Big sales and what they signal", "Rule changes buyers ask about"], "ask_keyword": "GUIDE", "ask_text": "the neighborhood guide"}, {"count": 8, "title": "Storytimes", "bullets": ["Deals that almost fell apart", "Common buyer mistakes", "What nobody says about closing"], "ask_keyword": "CHECKLIST", "ask_text": "the buyer checklist"}, {"count": 6, "title": "Listings as offers", "bullets": ["Price and comps on request", "Pre-construction with numbers", "Homes under a set budget"], "ask_keyword": "HOME", "ask_text": "price and similar options"}], "agency_note_draft": "Your audience is already there. The next step is giving them a specific reason to comment on every reel. We would start with the format that already works for you."}, "leadAsk": [{"account": "local.leader", "kind": "post", "keyword": "SHOPS", "postId": "local.leader#3", "value": 109, "count": 1, "caption": "Comment SHOPS and I'll send you the list of new stores coming to the neighborhood.", "quote": "Comment SHOPS and I'll send you the list of new stores coming to the neighborhood.", "context": "on a local news reel"}, {"account": "your.realtor", "kind": "post", "keyword": "CASA", "postId": "your.realtor#11", "value": 65, "count": 1, "caption": "Comment CASA and I'll send you the price, the address and similar homes.", "quote": "Comment CASA and I'll send you the price, the address and similar homes.", "context": "on a listing reel"}, {"account": "your.realtor", "kind": "avg", "keyword": "INVEST", "postId": "your.realtor#4", "value": 16, "count": 3, "caption": "Comment INVEST and I'll help you plan your first investment property.", "quote": "Comment INVEST and I'll help you plan your first investment property.", "context": "on an investing reel"}, {"account": "direct.rival", "kind": "avg", "keyword": "MIAMI", "postId": "direct.rival#6", "value": 0.5, "count": 2, "caption": "Comment MIAMI and I'll tell you about the offer I have this month.", "quote": "Comment MIAMI and I'll tell you about the offer I have this month.", "context": "on a market news reel"}], "projection": {"baseline": 409, "reelsNow": 13, "reels": 24, "dmRate": 30, "options": [{"label": "Your current average", "value": 21.3}, {"label": "Top competitor average", "value": 26.6}, {"label": "Your best offer post", "value": 65}]}}</script>
+<script>
+(function(){
+var D=JSON.parse(document.getElementById('gs-data').textContent);
+var app=document.getElementById('app');
+if(!D.meta){app.innerHTML='<p style="padding:40px">No report data.</p>';return}
+function esc(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+function fmt(n){return Math.round(n).toLocaleString('en-US')}
+var ROLE_COLOR={client:'var(--you)',benchmark:'var(--c1)',direct:'var(--c2)'};
+var ROLE_LABEL={client:'you',direct:'direct competitor',benchmark:'local benchmark'};
+var acc={};D.accounts.forEach(function(a){acc[a.username]=a});
+function sw(u){return '<i class="sw" style="background:'+ROLE_COLOR[acc[u].role]+'"></i>'}
+var C=D.accounts.filter(function(a){return a.role==='client'})[0];
+var comps=D.accounts.filter(function(a){return a.role!=='client'});
+var A=D.agency,K=D.copy,initials=(A.strategist&&A.strategist.name||A.name).split(' ').map(function(w){return w[0]}).join('').slice(0,2);
+
+var h='';
+h+='<header class="top"><div class="shell"><div class="logo"><svg viewBox="0 0 26 26" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 22V11l9-7 9 7v11"/><path d="M4 17c3-2.5 6 2.5 9 0s6 2.5 9 0"/></svg><span><b>'+esc(A.name.toUpperCase())+'</b><small>'+esc(A.tagline||'')+'</small></span></div><span class="tag">GhostScan report · '+esc(D.meta.period)+'</span></div></header>';
+h+='<main><div class="shell">';
+
+// hero
+h+='<div class="hero"><span class="eyebrow">Market Visibility Report · prepared for @'+esc(C.username)+'</span><h1>'+esc(/[.!?]$/.test(K.headline.main)?K.headline.main:K.headline.main+'.')+' <em>'+esc(K.headline.accent)+'</em></h1><p class="lede">'+esc(K.lede)+'</p><div class="vs">'+D.accounts.map(function(a){return '<span>'+sw(a.username)+'@'+esc(a.username)+' · '+ROLE_LABEL[a.role]+'</span>'}).join('')+'</div></div>';
+
+// kpis
+h+='<div class="kpis">'+D.kpis.map(function(k){return '<div class="kpi"><span class="k">'+esc(k.label)+'</span><span class="v n">'+esc(k.value)+'</span><span class="r">#'+k.rank+' of '+k.of+' · '+esc(k.note)+'</span></div>'}).join('')+'</div>';
+
+// strip
+h+='<section><div class="sh"><span class="eyebrow">Every post, by comments</span><h2>Where the <em>conversations</em> happen</h2><p>Each dot is one post from the last '+D.meta.days+' days, placed by its number of comments. Further right means more people commented.</p></div><div class="card"><div class="scroll"><svg id="strip" viewBox="0 0 900 '+(60+D.accounts.length*66)+'" width="100%" style="min-width:620px;display:block" role="img" aria-label="Comments per post for each account"></svg></div><div class="legend"><span><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="5" fill="var(--c2)"/></svg>Post</span><span><svg width="12" height="12" viewBox="0 0 12 12"><circle cx="6" cy="6" r="4.5" fill="none" stroke="var(--txt)" stroke-width="2"/></svg>"Comment X" lead post</span><span><svg width="12" height="12" viewBox="0 0 12 12"><path d="M6 0v12" stroke="var(--txt)" stroke-width="2"/></svg>Median</span></div></div></section>';
+
+// lead ask
+if(D.leadAsk.length){
+  var maxV=Math.max.apply(null,D.leadAsk.map(function(r){return r.value}));
+  h+='<section><div class="sh"><span class="eyebrow">The lead ask</span><h2>What makes people <em>comment</em></h2><p>These posts ask viewers to comment a keyword to start a DM. The ones that offer something specific get far more replies.</p></div><div class="asks">';
+  D.leadAsk.forEach(function(r){var cls=acc[r.account].role==='client'?'you':(acc[r.account].role==='direct'?'direct':'');
+    h+='<div class="ask '+cls+'"><span class="who">'+sw(r.account)+'@'+esc(r.account)+(r.kind==='avg'?' · '+r.count+' posts':(r.context?' · '+esc(r.context):''))+'</span><q>'+esc(r.quote)+'</q><span class="bar"><i style="width:'+Math.max(1.2,r.value/maxV*100)+'%"></i></span><span class="num"><b class="n">'+r.value+'</b><small>'+(r.kind==='avg'?'avg. comments':'comments')+'</small></span></div>'});
+  h+='</div><p class="takeaway">'+esc(K.takeaway)+'</p></section>';
+}
+
+// table
+var best=function(key){return Math.max.apply(null,D.accounts.map(function(a){return a[key]}))};
+var cols=[['Followers','followers',fmt],['Posts','posts',String],['Total comments','totalComments',fmt],['Median comments / post','medianComments',String],['Engagement rate','engagementRate',function(n){return n+'%'}],['"Comment X" posts','ctaPosts',String],['Avg. comments on those','ctaAvgComments',String],['Comments per 1K views','medianCommentsPer1k',String],['Median views','medianViews',fmt]];
+h+='<section><div class="sh"><span class="eyebrow">Benchmark</span><h2>Side by side</h2></div><div class="tbl"><table><thead><tr><th>Account</th>'+cols.map(function(c){return '<th>'+c[0]+'</th>'}).join('')+'</tr></thead><tbody>';
+D.accounts.forEach(function(a){h+='<tr class="'+(a.role==='client'?'you':'')+'"><td>'+sw(a.username).replace('class="sw"','class="sw" style="margin-right:8px;background:'+ROLE_COLOR[a.role]+'"')+'@'+esc(a.username)+'<small>'+esc(a.audience||ROLE_LABEL[a.role])+'</small></td>'+cols.map(function(c){return '<td class="'+(a[c[1]]===best(c[1])&&a[c[1]]>0?'lead':'')+'">'+c[2](a[c[1]])+'</td>'}).join('')+'</tr>'});
+h+='</tbody></table></div></section>';
+
+// edge + alert
+if(K.edge||K.alert){h+='<div class="two">';
+  if(K.edge)h+='<div class="card note"><span class="eyebrow">Your edge</span><h3>'+esc(K.edge.title)+'</h3><p>'+esc(K.edge.body)+'</p></div>';
+  if(K.alert)h+='<div class="card note"><span class="flag">Likely paid</span><h3>'+esc(K.alert.title)+'</h3><p>'+esc(K.alert.body)+'</p></div>';
+  h+='</div>';}
+
+// projection
+var P=D.projection;
+if(P.options.length){
+  h+='<section><div class="sh"><span class="eyebrow">Projection</span><h2>What 30 days <em>could</em> look like</h2><p>Move the numbers to see a monthly estimate. Comments per post come from real posts in this report. Your agency sets the starting assumptions.</p></div><div class="proj"><div class="inputs">';
+  h+='<div class="field"><label for="reels">Reels per month <output id="reelsOut"></output></label><input id="reels" type="range" min="4" max="40" step="1" value="'+P.reels+'"><small>You posted about '+P.reelsNow+' reels per month in this period.</small></div>';
+  h+='<div class="field"><label>Comments per reel with an offer</label><div class="seg" role="group" aria-label="Comments per reel">'+P.options.map(function(o,i){return '<button type="button" data-v="'+o.value+'" aria-pressed="'+(i===0)+'"><b>'+Math.round(o.value)+'</b>'+esc(o.label)+'</button>'}).join('')+'</div></div>';
+  h+='<div class="field"><label for="dm">Commenters who start a conversation <output id="dmOut"></output></label><input id="dm" type="range" min="5" max="80" step="5" value="'+P.dmRate+'"><small><span class="set">Set by your agency</span> · based on their clients\' reply rates</small></div></div>';
+  h+='<div class="outputs" aria-live="polite"><div class="out"><span class="k">Projected comments / month</span><span class="v" id="pC"></span><span class="d" id="pCd"></span></div><div class="meter" aria-hidden="true"><i id="pBar"></i><u id="pBase"></u></div><div class="out"><span class="k">Projected conversations / month</span><span class="v" id="pD"></span><span class="d">Comments that turn into a DM thread with you.</span></div><p class="fine">Estimate only, built from public post data. Not a guarantee of comments, conversations or sales. Current pace: about '+fmt(P.baseline)+' real-estate comments per month.</p></div></div></section>';
+}
+
+// agency note
+if(A.note){h+='<section><div class="sh"><span class="eyebrow">From your agency</span><h2>Our <em>recommendation</em></h2></div><div class="agency"><span class="avatar">'+esc(initials)+'</span><div><q>'+esc(A.note)+'</q><p class="by">'+esc(A.strategist?A.strategist.name+' · '+A.strategist.title+', ':'')+esc(A.name)+'</p></div></div></section>';}
+
+// plan
+var total=K.plan.reduce(function(s,p){return s+p.count},0);
+h+='<section><div class="sh"><span class="eyebrow">Next 30 days</span><h2>'+total+' scripted reels, <em>built to start conversations</em></h2><p>Every reel ends with a specific reason to comment. We script, edit and deliver'+(C.audience&&/spanish/i.test(C.audience)?' in Spanish for your audience':'')+'. You film once from our shot list, or record a voiceover for animated reels.</p></div><div class="plan">'+K.plan.map(function(p){return '<div class="pil"><span class="c n">'+p.count+'</span><h3>'+esc(p.title)+'</h3><ul>'+p.bullets.map(function(b){return '<li>'+esc(b)+'</li>'}).join('')+'</ul><p class="kw">Ask: <b>Comment '+esc(p.ask_keyword)+'</b> for '+esc(p.ask_text)+'</p></div>'}).join('')+'</div></section>';
+
+// cta
+h+='<section class="cta"><h2>'+esc(A.ctaTitle||'Want to see the first reels?')+'</h2><p>'+esc(A.ctaBody||'A 15-minute call. We\'ll walk through this report and show you sample reels.')+'</p><div class="act"><button class="btn" id="cp" type="button">Copy email</button><span class="mail" id="ml">'+esc(A.email)+'</span><span id="st" aria-live="polite"></span></div></section>';
+h+='</div></main>';
+
+var off=C.offTopicPosts;
+h+='<footer><div class="shell"><p>Source: public Instagram data, '+esc(D.meta.period)+'. Engagement rate = average (likes + comments) per post ÷ followers. DMs are private and not included. Views include organic and paid reach and come from all locations. "Likely paid" = a reel with at least 3× the account\'s median views and very few likes per 1,000 views.'+(off?' '+off+' off-topic post'+(off>1?'s':'')+' from @'+esc(C.username)+' '+(off>1?'are':'is')+' counted in totals but left out of the lead-ask analysis and projection.':'')+' Past performance does not guarantee future results.</p>'+(A.disclaimer?'<p>'+esc(A.disclaimer)+'</p>':'')+'</div></footer>';
+app.innerHTML=h;
+
+// strip chart
+(function(){
+  var s=document.getElementById('strip'),NS='http://www.w3.org/2000/svg',L=170,R=880;
+  var mx=Math.max.apply(null,D.accounts.map(function(a){return Math.max.apply(null,a.strip.map(function(p){return p.c}).concat([1]))}));
+  var MAX=Math.max(50,Math.ceil(mx*1.05/25)*25),step=MAX<=100?25:MAX<=250?50:100;
+  function x(v){return L+v/MAX*(R-L)}
+  function el(t,a,txt){var e=document.createElementNS(NS,t);for(var k in a)e.setAttribute(k,a[k]);if(txt!=null)e.textContent=txt;s.appendChild(e);return e}
+  var bottom=26+D.accounts.length*66;
+  for(var t=0;t<=MAX;t+=step){el('line',{x1:x(t),x2:x(t),y1:12,y2:bottom,stroke:'var(--border)','stroke-width':1});el('text',{x:x(t),y:bottom+20,'text-anchor':'middle'},t)}
+  D.accounts.forEach(function(a,i){
+    var y=42+i*66,col=ROLE_COLOR[a.role],seen={};
+    el('text',{x:0,y:y+4,'class':'acc'},'@'+a.username);
+    a.strip.forEach(function(p){var k=Math.round(p.c/(MAX/50));seen[k]=(seen[k]||0)+1;var dy=[0,-9,9,-17,17,-4,4][(seen[k]-1)%7];
+      el('circle',{cx:x(p.c),cy:y+dy,r:5.5,fill:col,'fill-opacity':.85,stroke:p.cta?'var(--txt)':'none','stroke-width':p.cta?2.4:0})});
+    el('line',{x1:x(a.medianComments),x2:x(a.medianComments),y1:y-22,y2:y+22,stroke:'var(--txt)','stroke-width':2});
+    el('text',{x:x(a.medianComments)+6,y:y-24,fill:'var(--txt)'},'median '+a.medianComments);
+  });
+})();
+
+// projection
+(function(){
+  var r=document.getElementById('reels');if(!r)return;
+  var dm=document.getElementById('dm'),btns=document.querySelectorAll('.seg button'),per=P.options[0].value;
+  var MAXC=Math.max(P.baseline*2,40*Math.max.apply(null,P.options.map(function(o){return o.value})));
+  function run(){var c=r.value*per,d=c*dm.value/100;
+    document.getElementById('reelsOut').textContent=r.value;document.getElementById('dmOut').textContent=dm.value+'%';
+    document.getElementById('pC').textContent=fmt(c);document.getElementById('pD').textContent=fmt(d);
+    var diff=P.baseline?c/P.baseline:0;
+    document.getElementById('pCd').innerHTML=diff>=1?'<b>'+diff.toFixed(1)+'×</b> your current pace':'Below your current pace';
+    document.getElementById('pBar').style.width=Math.min(100,c/MAXC*100)+'%';
+    document.getElementById('pBase').style.left=Math.min(100,P.baseline/MAXC*100)+'%';}
+  Array.prototype.forEach.call(btns,function(b){b.addEventListener('click',function(){Array.prototype.forEach.call(btns,function(x){x.setAttribute('aria-pressed','false')});b.setAttribute('aria-pressed','true');per=parseFloat(b.dataset.v);run()})});
+  r.addEventListener('input',run);dm.addEventListener('input',run);run();
+})();
+
+document.getElementById('cp').addEventListener('click',function(){
+  var m=document.getElementById('ml'),st=document.getElementById('st');
+  function sel(){var rg=document.createRange();rg.selectNodeContents(m);var w=getSelection();w.removeAllRanges();w.addRange(rg);st.textContent='Selected. Press Ctrl+C or ⌘C to copy.'}
+  try{navigator.clipboard.writeText(m.textContent).then(function(){st.textContent='Copied.'},sel)}catch(e){sel()}
+});
+})();
+</script>
+</body>
+</html>
