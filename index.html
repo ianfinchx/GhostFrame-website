@@ -138,10 +138,8 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 /* ---------- hero media: the VSL, full width and centered (or the collage when no video is set) ---------- */
 .hero-media{margin-top:72px}
 .hero-media:not(.has-vsl){max-width:620px;margin-inline:auto}
-.hero-vsl{text-align:center}
-.hero-vsl .h-section{font-size:clamp(28px,3.4vw,44px);max-width:22ch;margin-inline:auto;letter-spacing:-.025em}
-.vsl-note{margin-top:12px;font-size:17px;color:var(--txt-500)}
-.vsl-frame{position:relative;max-width:1100px;margin:32px auto 0;text-align:left;background:#fff;border:1px solid var(--border);border-radius:22px;padding:10px;
+.hero-media.has-vsl{margin-top:48px}
+.vsl-frame{position:relative;max-width:1100px;margin:0 auto;text-align:left;background:#fff;border:1px solid var(--border);border-radius:22px;padding:10px;
   box-shadow:0 1px 2px rgba(18,18,20,.05),0 20px 40px -22px rgba(18,18,20,.30),0 60px 90px -50px rgba(18,18,20,.35)}
 .hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
 .btn-lg{min-height:56px;padding:0 28px;font-size:17px;border-radius:10px}
@@ -523,8 +521,8 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
   <div class="shell">
     <p class="cover-badge"><i></i> White-label video for agencies that serve realtors</p>
 
-    <h1 class="cover-offer">Sign more realtors. Keep them past month 3. <span class="hl">Never hire an editor.</span></h1>
-    <p class="cover-sub">Close more prospects, take on more realtors without hiring, and keep them longer. We give you the pitch, the production and the proof, all under your brand.</p>
+    <h1 class="cover-offer">Close your next realtor with their own numbers.</h1>
+    <p class="cover-sub">Get a free market report and 2 sample reels for your next sales call, under your brand. See how in 3 minutes.</p>
 
     <!-- With SITE.vslUrl set, the VSL renders here; without it, the collage below does. Full width, centered.
          The collage sits in a template so its screenshots never download when the video is shown. -->
@@ -1037,8 +1035,6 @@ function vslSlot(url) {
   // the CTA buttons under the video are static HTML (.hero-actions), so they
   // also show under the collage when no video is set
   block.innerHTML =
-    '<h2 class="h-section">Close your next realtor with their own numbers.</h2>' +
-    '<p class="vsl-note">See how in 3 minutes.</p>' +
     '<div class="vsl-frame"></div>';
   var frame = block.querySelector('.vsl-frame');
 
