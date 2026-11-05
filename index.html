@@ -114,9 +114,6 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 /* the one accent phrase: a text serif italic against the grotesque */
 .cover-offer .hl{font-family:var(--serif);font-style:italic;font-weight:400;font-size:1.05em;letter-spacing:-.012em}
 .cover-sub{margin-top:22px;max-width:60ch;font-size:clamp(17px,1.45vw,20px);line-height:1.5;color:var(--txt-600)}
-.cover-cta{display:flex;flex-wrap:wrap;gap:10px;margin-top:30px}
-.hero-split{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:start;margin-top:48px}
-.hero-split .cover-promise{padding-top:24px}
 /* three outcomes: the lead word carries the promise, the rest is how */
 .cover-promise{list-style:none;max-width:56ch;display:flex;flex-direction:column;gap:18px}
 .cover-promise li{display:grid;grid-template-columns:25px minmax(0,1fr);gap:12px;
@@ -138,14 +135,28 @@ h1,h2,h3,h4{font-weight:700;letter-spacing:-.022em;line-height:1.05}
 .shot-review img{aspect-ratio:1010/463;object-position:0 50%}
 .collage-note{margin-top:18px;font-size:12.5px;color:#6e6e6e;text-align:center}
 
-/* ---------- VSL slot (only rendered when a video URL is set) ---------- */
-.vsl{padding:var(--pad) 0;border-bottom:1px solid var(--border);text-align:center}
-.vsl .h-section{max-width:24ch;margin-inline:auto}
-.vsl-note{margin-top:12px;font-size:15px;color:var(--txt-500)}
-.vsl-frame{margin:40px auto 0;max-width:880px;background:#fff;border:1px solid var(--border);border-radius:20px;padding:10px;
-  box-shadow:var(--lift)}
-.vsl-frame iframe,.vsl-frame video{display:block;width:100%;aspect-ratio:16/9;border-radius:12px;background:var(--bg-900)}
-.vsl .btn{margin-top:32px}
+/* ---------- hero media: the VSL, full width and centered (or the collage when no video is set) ---------- */
+.hero-media{margin-top:72px}
+.hero-media:not(.has-vsl){max-width:620px;margin-inline:auto}
+.hero-vsl{text-align:center}
+.hero-vsl .h-section{font-size:clamp(28px,3.4vw,44px);max-width:22ch;margin-inline:auto;letter-spacing:-.025em}
+.vsl-note{margin-top:12px;font-size:17px;color:var(--txt-500)}
+.vsl-frame{position:relative;max-width:1100px;margin:32px auto 0;text-align:left;background:#fff;border:1px solid var(--border);border-radius:22px;padding:10px;
+  box-shadow:0 1px 2px rgba(18,18,20,.05),0 20px 40px -22px rgba(18,18,20,.30),0 60px 90px -50px rgba(18,18,20,.35)}
+.hero-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:36px}
+.btn-lg{min-height:56px;padding:0 28px;font-size:17px;border-radius:10px}
+/* three outcomes in a row under the CTA */
+.promise-row{max-width:none;flex-direction:row;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;
+  margin-top:72px;padding-top:36px;border-top:1px solid var(--border)}
+.vsl-frame iframe,.vsl-frame video,.vsl-frame wistia-player{display:block;width:100%;border-radius:11px;overflow:hidden;background:var(--bg-900)}
+.vsl-frame iframe,.vsl-frame video{aspect-ratio:16/9}
+/* phones: the video plays muted on its own; this is the one way in to sound */
+.vsl-unmute{position:absolute;left:50%;top:50%;z-index:2;translate:-50% -50%;display:inline-flex;align-items:center;gap:10px;
+  min-height:56px;padding:0 24px;border-radius:999px;white-space:nowrap;background:rgba(18,18,20,.88);color:#fff;font-size:17px;font-weight:600;
+  box-shadow:0 10px 30px -8px rgba(0,0,0,.55);transition:transform .2s var(--ease),background-color .2s var(--ease)}
+.vsl-unmute:hover{background:#000}
+.vsl-unmute:active{transform:scale(.96)}
+.vsl-unmute:focus-visible{outline:2px solid #fff;outline-offset:3px}
 
 /* ---------- proof line ---------- */
 .proofstrip{padding:56px 0;border-bottom:1px solid var(--border);background:var(--bg-white)}
@@ -414,9 +425,7 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
   :root{--pad:80px}
   .cover{padding-top:96px}
   .split{grid-template-columns:1fr;gap:28px}
-  .hero-split{grid-template-columns:1fr;gap:48px;align-items:start}
   /* the prints stop overlapping: two side by side, the review board under them */
-  .hero-right{max-width:720px}
   .collage{height:auto;display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
   .shot{position:static;width:auto;rotate:0deg}
   .shot-review{grid-column:1/-1}
@@ -434,7 +443,11 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
 @media (max-width:680px){
   :root{--pad:64px}
   .shell{padding-inline:20px}
-  .cover-cta .btn,.closer .row .btn,.report-cta .btn{flex:1 1 100%}
+  .closer .row .btn,.report-cta .btn{flex:1 1 100%}
+  .hero-media{margin-top:56px}
+  .hero-actions{margin-top:28px}
+  .hero-actions .btn{flex:1 1 100%;padding-block:12px}
+  .promise-row{grid-template-columns:1fr;gap:18px;margin-top:48px;padding-top:28px}
   .brand-name span{display:none}
   .collage{grid-template-columns:1fr}
   .shot-views img,.shot-followers img{aspect-ratio:4/3}
@@ -513,43 +526,40 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
     <h1 class="cover-offer">Sign more realtors. Keep them past month 3. <span class="hl">Never hire an editor.</span></h1>
     <p class="cover-sub">Close more prospects, take on more realtors without hiring, and keep them longer. We give you the pitch, the production and the proof, all under your brand.</p>
 
-    <div class="cover-cta">
-      <a class="btn btn-dark" href="#pitch-pack" data-pitch>Get a free pitch pack</a>
-      <a class="btn btn-line" href="#sample-report">See a sample report</a>
-    </div>
-
-    <div class="hero-split">
-      <ul class="cover-promise">
-        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Close more:</b> a market report in minutes and 2 sample reels within 24 hours for every sales call</span></li>
-        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Take on more:</b> 24 scripts + 24 reels a month per realtor, no new hires</span></li>
-        <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Keep them:</b> a monthly report that shows your client why to stay</span></li>
-      </ul>
-
-      <div class="hero-right">
-        <div class="collage">
-          <figure class="shot shot-views">
-            <img src="Brand Assets/proof/insights-views.png" alt="Instagram insights: 14,639,106 views in the last 90 days">
-            <figcaption>14.6M views · 90 days</figcaption>
-          </figure>
-          <figure class="shot shot-followers">
-            <img src="Brand Assets/proof/insights-followers.png" alt="Instagram insights: 476,042 followers, up 41,339 in the last 90 days">
-            <figcaption>+41,339 followers · 90 days</figcaption>
-          </figure>
-          <figure class="shot shot-review">
-            <img src="Brand Assets/proof/frameio-real.png" alt="Frame.io project with five reels marked Approved or Needs Review">
-            <figcaption>Real review workflow</figcaption>
-          </figure>
-        </div>
-        <p class="collage-note">Real screenshots from accounts we edit. Names blurred.</p>
+    <!-- With SITE.vslUrl set, the VSL renders here; without it, the collage below does. Full width, centered.
+         The collage sits in a template so its screenshots never download when the video is shown. -->
+    <div class="hero-media" id="hero-media">
+      <template id="hero-collage">
+      <div class="collage">
+        <figure class="shot shot-views">
+          <img src="Brand Assets/proof/insights-views.png" alt="Instagram insights: 14,639,106 views in the last 90 days">
+          <figcaption>14.6M views · 90 days</figcaption>
+        </figure>
+        <figure class="shot shot-followers">
+          <img src="Brand Assets/proof/insights-followers.png" alt="Instagram insights: 476,042 followers, up 41,339 in the last 90 days">
+          <figcaption>+41,339 followers · 90 days</figcaption>
+        </figure>
+        <figure class="shot shot-review">
+          <img src="Brand Assets/proof/frameio-real.png" alt="Frame.io project with five reels marked Approved or Needs Review">
+          <figcaption>Real review workflow</figcaption>
+        </figure>
       </div>
+      <p class="collage-note">Real screenshots from accounts we edit. Names blurred.</p>
+      </template>
     </div>
+
+    <div class="hero-actions">
+      <a class="btn btn-dark btn-lg" href="#pitch-pack" data-pitch>Get a free report + 2 reels for your next sales call</a>
+      <a class="btn btn-line btn-lg" href="#sample-report">See a sample report</a>
+    </div>
+
+    <ul class="cover-promise promise-row">
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Close more:</b> a market report in minutes and 2 sample reels within 24 hours for every sales call</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Take on more:</b> 24 scripts + 24 reels a month per realtor, no new hires</span></li>
+      <li><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"/></svg><span><b>Keep them:</b> a monthly report that shows your client why to stay</span></li>
+    </ul>
   </div>
 </section>
-
-<!-- ============ 2. VSL ============
-     Rendered by vslSlot() in the script below, and only when SITE.vslUrl is set.
-     With no URL this mount point is removed and nothing shows. -->
-<div id="vsl-mount" hidden></div>
 
 <!-- ============ 3. PROOF LINE ============ -->
 <section class="proofstrip" aria-label="Proof">
@@ -991,22 +1001,25 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
 // Site settings. Paste your URLs here; nothing else needs to change.
 // ---------------------------------------------------------------------------
 var SITE = {
-  // YouTube, Vimeo, Loom or a direct .mp4 link. Empty = the VSL section is not rendered.
-  vslUrl: '',
+  // Wistia, YouTube, Vimeo, Loom or a direct .mp4 link. Set = the video replaces the hero collage.
+  vslUrl: 'https://fast.wistia.com/embed/medias/w3t1s9fpdz',
   // Google Apps Script web app URL (ends in /exec). See apps-script/pitch-pack.gs.
   pitchFormEndpoint: 'https://script.google.com/macros/s/AKfycbxBNtJWObgcXMMsnZx-BIqA7YkmLT35IezOkbUvI2T1Ar-hK9QAJLO4wJ8iCeV8WxSk/exec',
   // Link for the "Open the full sample" button.
   sampleReportUrl: '/sample-report.html'
 };
 
-// VSL slot: takes a video URL, returns the section element, or null when the
-// URL is empty, so an unset slot renders nothing at all.
+// VSL slot: takes a video URL and returns the hero video block, or null when the
+// URL is empty, so an unset slot renders nothing and the collage shows instead.
+// Wistia (any wistia.com / wistia.net media link), YouTube, Vimeo, Loom and .mp4 work.
 function vslSlot(url) {
   url = (url || '').trim();
   if (!url) return null;
 
-  function embedSrc(u) {
+  function source(u) {
     var m;
+    if ((m = u.match(/wistia\.(?:com|net)\/(?:embed\/(?:iframe\/|medias\/)?|medias\/)([a-z0-9]{10})/i)) || (m = u.match(/^wistia:([a-z0-9]{10})$/i)))
+      return { wistia: m[1] };
     if ((m = u.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{11})/)))
       return { iframe: 'https://www.youtube-nocookie.com/embed/' + m[1] + '?rel=0' };
     if ((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/)))
@@ -1017,41 +1030,93 @@ function vslSlot(url) {
     return { iframe: u };
   }
 
-  var src = embedSrc(url);
-  var section = document.createElement('section');
-  section.className = 'vsl';
-  section.id = 'video';
-  section.setAttribute('aria-label', 'Video');
-  section.innerHTML =
-    '<div class="shell">' +
-      '<h2 class="h-section">Close your next realtor with their own numbers.</h2>' +
-      '<p class="vsl-note">See how in 3 minutes.</p>' +
-      '<div class="vsl-frame"></div>' +
-      '<a class="btn btn-dark" href="#pitch-pack" data-pitch>Get a free report + 2 reels for your next sales call</a>' +
-    '</div>';
+  var src = source(url);
+  var block = document.createElement('div');
+  block.className = 'hero-vsl';
+  block.id = 'video';
+  // the CTA buttons under the video are static HTML (.hero-actions), so they
+  // also show under the collage when no video is set
+  block.innerHTML =
+    '<h2 class="h-section">Close your next realtor with their own numbers.</h2>' +
+    '<p class="vsl-note">See how in 3 minutes.</p>' +
+    '<div class="vsl-frame"></div>';
+  var frame = block.querySelector('.vsl-frame');
 
-  var frame = section.querySelector('.vsl-frame'), el;
-  if (src.video) {
-    el = document.createElement('video');
-    el.controls = true; el.playsInline = true; el.preload = 'metadata';
-    el.src = src.video;
+  if (src.wistia) wistia(frame, src.wistia);
+  else if (src.video) {
+    var v = document.createElement('video');
+    v.controls = true; v.playsInline = true; v.preload = 'metadata';
+    v.src = src.video;
+    frame.appendChild(v);
   } else {
-    el = document.createElement('iframe');
-    el.src = src.iframe;
-    el.title = 'Close your next realtor with their own numbers';
-    el.loading = 'lazy';
-    el.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
-    el.allowFullscreen = true;
+    var f = document.createElement('iframe');
+    f.src = src.iframe;
+    f.title = 'Close your next realtor with their own numbers';
+    f.loading = 'lazy';
+    f.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+    f.allowFullscreen = true;
+    frame.appendChild(f);
   }
-  frame.appendChild(el);
-  return section;
+  return block;
 }
 
-(function mountVsl() {
-  var mount = document.getElementById('vsl-mount');
+// Wistia player. The swatch (a blurred still) shows right away; Wistia's two
+// scripts load only once the frame is within 600px of the screen. On phones the
+// video autoplays muted with a big "Tap to unmute"; a tap restarts it at 0:00 with sound.
+function wistia(frame, id) {
+  var mobile = window.matchMedia('(max-width: 767px)').matches;
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var autoplay = mobile && !still;
+
+  var style = document.createElement('style');
+  style.textContent = "wistia-player[media-id='" + id + "']:not(:defined){background:center / contain no-repeat url('https://fast.wistia.com/embed/medias/" + id + "/swatch');display:block;filter:blur(5px);padding-top:56.25%}";
+  document.head.appendChild(style);
+
+  var player = document.createElement('wistia-player');
+  player.setAttribute('media-id', id);
+  player.setAttribute('aspect', '1.7777777777777777');
+  if (autoplay) { player.setAttribute('autoplay', ''); player.setAttribute('muted', ''); player.setAttribute('playsinline', ''); }
+  frame.appendChild(player);
+
+  if (autoplay) {
+    var btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'vsl-unmute';
+    btn.innerHTML = '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H2v6h4l5 4V5z"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/></svg>Tap to unmute';
+    btn.addEventListener('click', function () {
+      try { player.currentTime = 0; } catch (e) {}
+      try { player.muted = false; } catch (e) {}
+      if (typeof player.unmute === 'function') player.unmute();
+      if (typeof player.play === 'function') player.play();
+      btn.remove();
+    });
+    frame.appendChild(btn);
+  }
+
+  var loaded = false;
+  function load() {
+    if (loaded) return;
+    loaded = true;
+    var a = document.createElement('script');
+    a.src = 'https://fast.wistia.com/player.js'; a.async = true;
+    var b = document.createElement('script');
+    b.src = 'https://fast.wistia.com/embed/' + id + '.js'; b.async = true; b.type = 'module';
+    document.head.appendChild(a); document.head.appendChild(b);
+  }
+  if (!('IntersectionObserver' in window)) { load(); return; }
+  var io = new IntersectionObserver(function (entries) {
+    if (entries.some(function (e) { return e.isIntersecting; })) { io.disconnect(); load(); }
+  }, { rootMargin: '600px 0px' });
+  io.observe(frame);
+}
+
+(function mountHeroMedia() {
+  var mount = document.getElementById('hero-media');
   if (!mount) return;
-  var section = vslSlot(SITE.vslUrl);
-  if (section) mount.replaceWith(section); else mount.remove();
+  var block = vslSlot(SITE.vslUrl);
+  if (block) { mount.appendChild(block); mount.classList.add('has-vsl'); return; }
+  var tpl = document.getElementById('hero-collage');
+  if (tpl) mount.appendChild(tpl.content.cloneNode(true));
 })();
 
 // "Open the full sample" follows SITE.sampleReportUrl once it is set.
