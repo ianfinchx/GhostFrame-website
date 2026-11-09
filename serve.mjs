@@ -50,10 +50,28 @@ const server = http.createServer((req, res) => {
     return;
   }
 
-  res.writeHead(200, {
+  // Content-Length and Range support: browsers need them to start and loop video reliably.
+  const size = fs.statSync(filePath).size;
+  const headers = {
     'Content-Type': MIME[path.extname(filePath).toLowerCase()] || 'application/octet-stream',
     'Cache-Control': 'no-store',
-  });
+    'Accept-Ranges': 'bytes',
+  };
+  const range = /^bytes=(\d*)-(\d*)$/.exec(req.headers.range || '');
+  if (range && (range[1] || range[2])) {
+    let start = range[1] ? Number(range[1]) : size - Number(range[2]);
+    let end = range[1] && range[2] ? Number(range[2]) : size - 1;
+    if (start < 0) start = 0;
+    if (start >= size || end < start) {
+      res.writeHead(416, { 'Content-Range': `bytes */${size}` }).end();
+      return;
+    }
+    end = Math.min(end, size - 1);
+    res.writeHead(206, { ...headers, 'Content-Range': `bytes ${start}-${end}/${size}`, 'Content-Length': end - start + 1 });
+    fs.createReadStream(filePath, { start, end }).pipe(res);
+    return;
+  }
+  res.writeHead(200, { ...headers, 'Content-Length': size });
   fs.createReadStream(filePath).pipe(res);
 });
 

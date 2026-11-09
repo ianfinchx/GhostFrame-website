@@ -12,6 +12,13 @@ var HEADERS = ['Submitted at', 'Name', 'Agency', 'Agency website', 'Agency Insta
 var REQUIRED = ['name', 'agency', 'website', 'agencyInstagram', 'email', 'realtors', 'prospectInstagram'];
 var BLOCKED_DOMAINS = /^(gmail|googlemail|yahoo|hotmail|outlook)\.[a-z.]+$/i;
 
+// Reel styles offered in the form. Must match the visible names in Video-Editor/styles/registry.json.
+// The value goes to the "Reel style" column, found by its header (never by position, because the
+// watcher adds its own columns to the right of these). An unknown or empty value is left blank and
+// the engine falls back to Isometric.
+var STYLE_HEADER = 'Reel style';
+var STYLES = ['Isometric', 'Data Dashboard', 'Minimal Lines', 'Whiteboard', 'Editorial Collage', 'Product Reveal'];
+
 // Optional: an address to notify on every new request. Leave empty to skip.
 var NOTIFY_EMAIL = '';
 
@@ -41,10 +48,15 @@ function doPost(e) {
     clean(p.page)
   ];
 
+  var style = String(p.reel_style || '').trim();
+  if (STYLES.indexOf(style) < 0) style = '';
+
   var lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
-    getSheet().appendRow(row);
+    var sheet = getSheet();
+    sheet.appendRow(row);
+    writeStyle(sheet, sheet.getLastRow(), style);
   } finally {
     lock.releaseLock();
   }
@@ -72,6 +84,22 @@ function getSheet() {
     sheet.getRange(1, 1, 1, HEADERS.length).setFontWeight('bold');
   }
   return sheet;
+}
+
+// Writes the chosen style into the "Reel style" column. The column is found by its header
+// (case-insensitive); if it does not exist yet, it is added after the last column.
+function writeStyle(sheet, rowNumber, style) {
+  var lastCol = Math.max(sheet.getLastColumn(), 1);
+  var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+  var col = -1;
+  for (var i = 0; i < headers.length; i++) {
+    if (String(headers[i]).trim().toLowerCase() === STYLE_HEADER.toLowerCase()) { col = i + 1; break; }
+  }
+  if (col < 0) {
+    col = lastCol + 1;
+    sheet.getRange(1, col).setValue(STYLE_HEADER).setFontWeight('bold');
+  }
+  if (style) sheet.getRange(rowNumber, col).setValue(style);
 }
 
 // Trims, caps the length, and stops values like "=HYPERLINK(...)" or "@handle"

@@ -403,6 +403,17 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
 .field input:hover{border-color:var(--txt-500)}
 .field input:focus{outline:none;border-color:var(--txt)}
 .field input:focus-visible{outline:2px solid var(--txt);outline-offset:1px}
+.field select{width:100%;height:46px;padding:0 40px 0 14px;border:1px solid var(--border-400);border-radius:10px;background-color:#fff;
+  font:inherit;font-size:16px;color:var(--txt);transition:border-color .2s var(--ease);-webkit-appearance:none;appearance:none;cursor:pointer;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+  background-repeat:no-repeat;background-position:right 14px center}
+.field select:invalid{color:#a5a5a5}
+.field select option{color:var(--txt)}
+.field select:hover{border-color:var(--txt-500)}
+.field select:focus{outline:none;border-color:var(--txt)}
+.field select:focus-visible{outline:2px solid var(--txt);outline-offset:1px}
+.field.bad select{border-color:var(--warn)}
+.field .hint{margin-top:6px;font-size:13px;line-height:1.35;color:var(--txt-600)}
 .field.bad input{border-color:var(--warn)}
 .field .err{display:none;margin-top:6px;font-size:13px;line-height:1.35;color:var(--warn)}
 .field.bad .err{display:block}
@@ -481,6 +492,49 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
   .pp-card{padding:28px 20px 22px}
   .pp-grid{grid-template-columns:1fr}
 }
+
+.results-proof{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.75fr);gap:56px;align-items:center;margin-bottom:72px}
+.results-proof:not(:has(figure)){grid-template-columns:1fr}
+.results-proof p{font-size:clamp(22px,2.3vw,31px);font-weight:700;letter-spacing:-.022em;line-height:1.24;max-width:32ch}
+.results-proof .proofstrip-shot{position:relative;margin:0;border:1px solid var(--border);border-radius:14px;overflow:hidden;box-shadow:var(--lift)}
+.results-proof .proofstrip-shot .tag{position:absolute;top:10px;left:10px;padding:4px 8px;border-radius:6px;background:rgba(18,18,20,.82);color:#fff;font-size:11px;font-weight:600;letter-spacing:.06em}
+@media (max-width:1100px){.results-proof{grid-template-columns:1fr;gap:32px;margin-bottom:48px}}
+/* ---------- styles gallery ---------- */
+.styles-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:16px;list-style:none}
+.style-card{position:relative;display:flex;flex-direction:column;gap:12px;text-align:left;width:100%}
+.style-media{position:relative;display:block;aspect-ratio:9/16;border-radius:12px;overflow:hidden;background:var(--bg-900);
+  box-shadow:var(--lift);transition:transform .35s var(--ease),box-shadow .35s var(--ease)}
+.style-media video,.style-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.style-media video{opacity:0;transition:opacity .25s var(--ease)}
+.style-card.playing .style-media video{opacity:1}
+.style-badge{position:absolute;left:10px;bottom:10px;z-index:2;font-size:12px;font-weight:600;letter-spacing:0;color:#fff;
+  background:rgba(18,18,20,.72);padding:6px 10px;border-radius:999px;opacity:0;transform:translateY(4px);
+  transition:opacity .25s var(--ease),transform .25s var(--ease)}
+.style-card:hover .style-badge,.style-card:focus-visible .style-badge{opacity:1;transform:none}
+.style-card:hover .style-media,.style-card:focus-visible .style-media{transform:translateY(-4px)}
+.style-card:focus-visible{outline-offset:6px}
+.style-name{font-size:16px;font-weight:600;letter-spacing:-.01em;line-height:1.2}
+.style-desc{font-size:14px;line-height:1.4;color:var(--txt-600);letter-spacing:0;margin-top:2px;display:block}
+.styles-foot{display:flex;flex-wrap:wrap;align-items:center;gap:16px 24px;margin-top:48px}
+.styles-foot p{font-size:15px;color:var(--txt-600);max-width:48ch;letter-spacing:0}
+.showcase{margin-top:56px;display:grid;grid-template-columns:minmax(0,280px) minmax(0,1fr);gap:40px;align-items:center}
+.showcase-frame{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:var(--bg-900);box-shadow:var(--lift)}
+.showcase-frame video,.showcase-frame>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.showcase-play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(to top,rgba(18,18,20,.45),rgba(18,18,20,0) 55%)}
+.showcase-play span{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;background:#fff;
+  color:var(--txt);font-size:15px;font-weight:600;letter-spacing:0;transition:transform .2s var(--ease)}
+.showcase-play:hover span{transform:scale(1.04)}
+.showcase-play svg{width:14px;height:14px}
+.showcase-copy h3{font-size:clamp(22px,1.9vw,25px);line-height:1.2;margin-bottom:12px}
+@media (max-width:1100px){.styles-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (max-width:680px){
+  .styles-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .style-badge{opacity:1;transform:none}
+  .showcase{grid-template-columns:1fr;gap:24px}
+  .showcase-frame{max-width:300px}
+}
+@media (prefers-reduced-motion:reduce){.style-media,.style-badge{transition:none}.style-card:hover .style-media{transform:none}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;
     transition-duration:.001ms!important;scroll-behavior:auto!important}
@@ -500,6 +554,7 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
       </a>
 
       <div class="nav-links">
+        <a href="#styles">Styles</a>
         <a href="#results">Results</a>
         <a href="#steps">How It Works</a>
         <a href="#sample-report">Sample Report</a>
@@ -559,14 +614,108 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
   </div>
 </section>
 
-<!-- ============ 3. PROOF LINE ============ -->
-<section class="proofstrip" aria-label="Proof">
+<!-- ============ STYLES ============ -->
+<section class="section" id="styles">
   <div class="shell">
-    <p>One realtor account: 2K to 10K average views and 150+ qualified leads into the CRM.</p>
-    <figure class="proofstrip-shot">
-      <img src="Brand Assets/proof/proof-lead.png" alt="Example of a qualified lead from a realtor account" onerror="this.closest('figure').remove()">
-      <span class="tag">EXAMPLE</span>
-    </figure>
+    <h2 class="section-title">Styles</h2>
+    <div class="split">
+      <p class="h-section">Six looks for your sample reels.</p>
+      <p class="lede">Pick the one that fits your prospect's brand. Both sample reels in your pitch pack use it. Hover a card to preview it, click to choose it.</p>
+    </div>
+    <ul class="styles-grid" style="margin-top:56px">
+        <li>
+          <button type="button" class="style-card" data-pitch data-style="Isometric" aria-label="Choose Isometric for your sample reels. Pastel 3D city blocks. Friendly and clear.">
+            <span class="style-media">
+              <img src="assets/styles/isometric.jpg" alt="" width="540" height="960" loading="lazy">
+              <video muted loop playsinline preload="metadata" poster="assets/styles/isometric.jpg" aria-hidden="true" tabindex="-1">
+                <source src="assets/styles/isometric.webm" type="video/webm">
+                <source src="assets/styles/isometric.mp4" type="video/mp4">
+              </video>
+              <span class="style-badge">Use this look</span>
+            </span>
+            <span><span class="style-name">Isometric</span><span class="style-desc">Pastel 3D city blocks. Friendly and clear.</span></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="style-card" data-pitch data-style="Data Dashboard" aria-label="Choose Data Dashboard for your sample reels. Editorial charts on paper. Numbers first.">
+            <span class="style-media">
+              <img src="assets/styles/data.jpg" alt="" width="540" height="960" loading="lazy">
+              <video muted loop playsinline preload="metadata" poster="assets/styles/data.jpg" aria-hidden="true" tabindex="-1">
+                <source src="assets/styles/data.webm" type="video/webm">
+                <source src="assets/styles/data.mp4" type="video/mp4">
+              </video>
+              <span class="style-badge">Use this look</span>
+            </span>
+            <span><span class="style-name">Data Dashboard</span><span class="style-desc">Editorial charts on paper. Numbers first.</span></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="style-card" data-pitch data-style="Minimal Lines" aria-label="Choose Minimal Lines for your sample reels. Thin white lines on black. Quiet and sharp.">
+            <span class="style-media">
+              <img src="assets/styles/minimal.jpg" alt="" width="540" height="960" loading="lazy">
+              <video muted loop playsinline preload="metadata" poster="assets/styles/minimal.jpg" aria-hidden="true" tabindex="-1">
+                <source src="assets/styles/minimal.webm" type="video/webm">
+                <source src="assets/styles/minimal.mp4" type="video/mp4">
+              </video>
+              <span class="style-badge">Use this look</span>
+            </span>
+            <span><span class="style-name">Minimal Lines</span><span class="style-desc">Thin white lines on black. Quiet and sharp.</span></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="style-card" data-pitch data-style="Whiteboard" aria-label="Choose Whiteboard for your sample reels. Marker strokes on a glossy board. Explains itself.">
+            <span class="style-media">
+              <img src="assets/styles/whiteboard.jpg" alt="" width="540" height="960" loading="lazy">
+              <video muted loop playsinline preload="metadata" poster="assets/styles/whiteboard.jpg" aria-hidden="true" tabindex="-1">
+                <source src="assets/styles/whiteboard.webm" type="video/webm">
+                <source src="assets/styles/whiteboard.mp4" type="video/mp4">
+              </video>
+              <span class="style-badge">Use this look</span>
+            </span>
+            <span><span class="style-name">Whiteboard</span><span class="style-desc">Marker strokes on a glossy board. Explains itself.</span></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="style-card" data-pitch data-style="Editorial Collage" aria-label="Choose Editorial Collage for your sample reels. Torn paper and bold headlines. Loud and fast.">
+            <span class="style-media">
+              <img src="assets/styles/collage.jpg" alt="" width="540" height="960" loading="lazy">
+              <video muted loop playsinline preload="metadata" poster="assets/styles/collage.jpg" aria-hidden="true" tabindex="-1">
+                <source src="assets/styles/collage.webm" type="video/webm">
+                <source src="assets/styles/collage.mp4" type="video/mp4">
+              </video>
+              <span class="style-badge">Use this look</span>
+            </span>
+            <span><span class="style-name">Editorial Collage</span><span class="style-desc">Torn paper and bold headlines. Loud and fast.</span></span>
+          </button>
+        </li>
+        <li>
+          <button type="button" class="style-card" data-pitch data-style="Product Reveal" aria-label="Choose Product Reveal for your sample reels. Metal and light. A premium launch feel.">
+            <span class="style-media">
+              <img src="assets/styles/reveal.jpg" alt="" width="540" height="960" loading="lazy">
+              <video muted loop playsinline preload="metadata" poster="assets/styles/reveal.jpg" aria-hidden="true" tabindex="-1">
+                <source src="assets/styles/reveal.webm" type="video/webm">
+                <source src="assets/styles/reveal.mp4" type="video/mp4">
+              </video>
+              <span class="style-badge">Use this look</span>
+            </span>
+            <span><span class="style-name">Product Reveal</span><span class="style-desc">Metal and light. A premium launch feel.</span></span>
+          </button>
+        </li>
+    </ul>
+
+    <div class="showcase">
+      <div class="showcase-frame" id="showcase">
+        <img src="assets/styles/showcase-poster.jpg" alt="Sample reel in the Product Reveal style: a house key on a metal slab with 42% sample" loading="lazy" width="720" height="1280">
+        <button type="button" class="showcase-play" data-showcase aria-label="Play the 30 second showcase of all six styles"><span><svg viewBox="0 0 14 14" aria-hidden="true"><path d="M2 1l11 6-11 6z" fill="currentColor"/></svg>Watch all six, 30 s</span></button>
+      </div>
+      <div class="showcase-copy">
+        <h3>The same story in all six looks.</h3>
+        <p class="lede">One house key, one sample stat, six ways to tell it. All numbers in these previews are sample data, not a real market.</p>
+        <div class="styles-foot">
+          <a class="btn btn-dark" href="#pitch-pack" data-pitch>Get a free pitch pack</a>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -574,7 +723,14 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
 <section class="section" id="results">
   <div class="shell">
     <h2 class="section-title">Results</h2>
-    <p class="h-section">Accounts our team scripts and edits</p>
+    <div class="results-proof">
+    <p>One realtor account: 2K to 10K average views and 150+ qualified leads into the CRM.</p>
+  <figure class="proofstrip-shot">
+    <img src="Brand Assets/proof/proof-lead.png" alt="Example of a qualified lead from a realtor account" onerror="this.closest('figure').remove()">
+    <span class="tag">EXAMPLE</span>
+  </figure>
+    </div>
+    <p class="h-section results-sub">Accounts our team scripts and edits</p>
   </div>
 
   <div class="rail" tabindex="0" aria-label="Accounts our team scripts and edits">
@@ -973,6 +1129,20 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
             <input id="pp-prospect" name="prospectInstagram" type="text" autocapitalize="off" placeholder="@realtorhandle" required>
             <span class="err" id="pp-prospect-err"></span>
           </div>
+          <div class="field full">
+            <label for="pp-style">Reel style</label>
+            <select id="pp-style" name="reel_style" required aria-describedby="pp-style-hint pp-style-err">
+              <option value="" disabled selected>Choose a look</option>
+              <option value="Isometric">Isometric</option>
+              <option value="Data Dashboard">Data Dashboard</option>
+              <option value="Minimal Lines">Minimal Lines</option>
+              <option value="Whiteboard">Whiteboard</option>
+              <option value="Editorial Collage">Editorial Collage</option>
+              <option value="Product Reveal">Product Reveal</option>
+            </select>
+            <span class="hint" id="pp-style-hint">Both sample reels use this look.</span>
+            <span class="err" id="pp-style-err"></span>
+          </div>
           <!-- spam trap: people never see or fill this -->
           <div class="hp" aria-hidden="true">
             <label for="pp-company-url">Leave this empty</label>
@@ -1125,6 +1295,52 @@ function wistia(frame, id) {
   }
 })();
 
+// Styles gallery: hover/focus plays the preview, touch devices play what is on screen,
+// reduced motion keeps posters only. A click opens the pitch form with the look preselected.
+(function () {
+  var cards = document.querySelectorAll('.style-card');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  // Hover or keyboard focus is the visitor's own action, so it plays even with reduced motion on
+  // (Windows turns that on when animations are off). Only the automatic play on touch screens respects it.
+  function play(c, user) {
+    var v = c.querySelector('video'); if (!v || (reduce && !user)) return;
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  }
+  function stop(c) {
+    var v = c.querySelector('video'); if (!v) return;
+    v.pause(); c.classList.remove('playing');
+    try { v.currentTime = 0; } catch (e) {}
+  }
+  Array.prototype.forEach.call(cards, function (c) {
+    // mouse hover works on any device that has a mouse, including touch laptops
+    c.addEventListener('mouseenter', function () { play(c, true); });
+    c.addEventListener('mouseleave', function () { stop(c); });
+    c.addEventListener('focus', function () { play(c, true); });
+    c.addEventListener('blur', function () { stop(c); });
+    var v = c.querySelector('video');
+    if (v) v.addEventListener('playing', function () { c.classList.add('playing'); });
+  });
+  if (!fine && !reduce && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) { if (en.isIntersecting) play(en.target); else stop(en.target); });
+    }, { threshold: 0.7 });
+    Array.prototype.forEach.call(cards, function (c) { io.observe(c); });
+  }
+
+  var btn = document.querySelector('[data-showcase]');
+  if (btn) btn.addEventListener('click', function () {
+    var frame = document.getElementById('showcase');
+    var v = document.createElement('video');
+    v.src = 'assets/styles/showcase-web.mp4';
+    v.poster = 'assets/styles/showcase-poster.jpg';
+    v.controls = true; v.playsInline = true; v.autoplay = true;
+    v.setAttribute('aria-label', 'Showcase of the six reel styles');
+    frame.replaceChildren(v);
+    var p = v.play(); if (p && p.catch) p.catch(function () {});
+  });
+})();
+
 // Pitch pack form: a modal opened from every [data-pitch] link, or by visiting /#pitch-pack.
 (function () {
   var dialog = document.getElementById('pitch-pack');
@@ -1151,6 +1367,13 @@ function wistia(frame, id) {
     if (!t) return;
     e.preventDefault();
     open();
+    var want = t.getAttribute('data-style');
+    var sel = document.getElementById('pp-style');
+    if (want && sel) {
+      sel.value = want;
+      sel.dispatchEvent(new Event('input', { bubbles: true }));
+      sel.dispatchEvent(new Event('change', { bubbles: true }));
+    }
   });
   dialog.addEventListener('click', function (e) {
     if (e.target === dialog || e.target.closest('[data-pp-close]')) close();
@@ -1195,6 +1418,13 @@ function wistia(frame, id) {
   }
 
   form.addEventListener('input', function (e) {
+    if (e.target.name === 'reel_style') {
+      var sf = e.target.closest('.field');
+      sf.classList.remove('bad');
+      sf.querySelector('.err').textContent = '';
+      e.target.setAttribute('aria-invalid', 'false');
+      return;
+    }
     if (e.target.closest('.field.bad')) check(e.target);
   });
   form.addEventListener('focusout', function (e) {
@@ -1206,10 +1436,17 @@ function wistia(frame, id) {
     alertBox.classList.remove('on');
     var inputs = form.querySelectorAll('.field input'), first = null;
     for (var i = 0; i < inputs.length; i++) if (!check(inputs[i]) && !first) first = inputs[i];
+    var styleSel = form.elements.reel_style, styleField = styleSel.closest('.field');
+    var styleMissing = !styleSel.value;
+    styleField.classList.toggle('bad', styleMissing);
+    styleField.querySelector('.err').textContent = styleMissing ? 'Choose the look for your two sample reels.' : '';
+    styleSel.setAttribute('aria-invalid', styleMissing ? 'true' : 'false');
     if (first) { first.focus(); return; }
+    if (styleMissing) { styleSel.focus(); return; }
 
     var data = new URLSearchParams();
     for (var j = 0; j < inputs.length; j++) data.append(inputs[j].name, inputs[j].value.trim());
+    data.append('reel_style', styleSel.value);
     data.append('company_url', form.elements.company_url.value);
     data.append('page', location.href);
 
