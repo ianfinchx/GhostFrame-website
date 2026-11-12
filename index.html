@@ -418,7 +418,14 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
 .field .err{display:none;margin-top:6px;font-size:13px;line-height:1.35;color:var(--warn)}
 .field.bad .err{display:block}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
-.pp-submit{width:100%;margin-top:24px;min-height:50px;font-size:16px}
+.pp-consent{display:grid;grid-template-columns:20px minmax(0,1fr);column-gap:10px;align-items:start;margin-top:22px}
+.pp-consent input{width:18px;height:18px;margin:2px 0 0;accent-color:var(--txt);cursor:pointer;border-radius:4px}
+.pp-consent input:focus-visible{outline:2px solid var(--txt);outline-offset:2px}
+.pp-consent label{font-size:13.5px;line-height:1.45;color:var(--txt-600);cursor:pointer}
+.pp-consent .err{grid-column:2;display:none;margin-top:6px;font-size:13px;line-height:1.35;color:var(--warn)}
+.pp-consent.bad .err{display:block}
+.pp-consent.bad input{outline:1.5px solid var(--warn);outline-offset:2px}
+.pp-submit{width:100%;margin-top:20px;min-height:50px;font-size:16px}
 .pp-fine{margin-top:12px;font-size:12.5px;line-height:1.45;color:#6e6e6e;text-align:center}
 .pp-alert{display:none;margin-top:14px;padding:12px 14px;border-radius:10px;background:#fdf3f2;border:1px solid rgba(192,57,43,.25);
   font-size:14px;line-height:1.45;color:var(--warn)}
@@ -1151,6 +1158,11 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
         </div>
 
         <div class="pp-alert" role="alert" data-pp-alert></div>
+        <div class="pp-consent">
+          <input id="pp-consent" name="consent" type="checkbox" required aria-describedby="pp-consent-err">
+          <label for="pp-consent">Send me the pitch pack and a few follow-up emails. Unsubscribe anytime.</label>
+          <span class="err" id="pp-consent-err"></span>
+        </div>
         <button class="btn btn-dark pp-submit" type="submit">Get a free pitch pack</button>
         <p class="pp-fine">One free pitch pack per agency.</p>
       </form>
@@ -1425,8 +1437,18 @@ function wistia(frame, id) {
       e.target.setAttribute('aria-invalid', 'false');
       return;
     }
+    if (e.target.name === 'consent') { checkConsent(); return; }
     if (e.target.closest('.field.bad')) check(e.target);
   });
+
+  function checkConsent() {
+    var box = form.elements.consent, wrap = box.closest('.pp-consent');
+    var msg = box.checked ? '' : 'Check this box so we can email you the pitch pack.';
+    wrap.classList.toggle('bad', !!msg);
+    wrap.querySelector('.err').textContent = msg;
+    box.setAttribute('aria-invalid', msg ? 'true' : 'false');
+    return !msg;
+  }
   form.addEventListener('focusout', function (e) {
     if (e.target.name && e.target.value.trim()) check(e.target);
   });
@@ -1441,12 +1463,17 @@ function wistia(frame, id) {
     styleField.classList.toggle('bad', styleMissing);
     styleField.querySelector('.err').textContent = styleMissing ? 'Choose the look for your two sample reels.' : '';
     styleSel.setAttribute('aria-invalid', styleMissing ? 'true' : 'false');
+    var consentOk = checkConsent();
     if (first) { first.focus(); return; }
     if (styleMissing) { styleSel.focus(); return; }
+    if (!consentOk) { form.elements.consent.focus(); return; }
 
     var data = new URLSearchParams();
     for (var j = 0; j < inputs.length; j++) data.append(inputs[j].name, inputs[j].value.trim());
     data.append('reel_style', styleSel.value);
+    data.append('consent', form.elements.consent.checked ? 'true' : 'false');
+    // the exact label the visitor saw, read from the page so it can never drift from the copy
+    data.append('consent_text', form.querySelector('label[for="pp-consent"]').textContent.trim());
     data.append('company_url', form.elements.company_url.value);
     data.append('page', location.href);
 

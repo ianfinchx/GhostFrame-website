@@ -19,6 +19,9 @@ var BLOCKED_DOMAINS = /^(gmail|googlemail|yahoo|hotmail|outlook)\.[a-z.]+$/i;
 var STYLE_HEADER = 'Reel style';
 var STYLES = ['Isometric', 'Data Dashboard', 'Minimal Lines', 'Whiteboard', 'Editorial Collage', 'Product Reveal'];
 
+// Email consent columns, also found by header and added at the end the first time.
+var CONSENT_HEADERS = { consent: 'Consent', text: 'Consent text', at: 'Consent at' };
+
 // Optional: an address to notify on every new request. Leave empty to skip.
 var NOTIFY_EMAIL = '';
 
@@ -51,12 +54,22 @@ function doPost(e) {
   var style = String(p.reel_style || '').trim();
   if (STYLES.indexOf(style) < 0) style = '';
 
+  // Email consent. The website requires the checkbox, but a request without it (an older copy of
+  // the page, a cached form) is still saved, with Consent = FALSE and the other two left blank.
+  // consent_text is the exact label the visitor saw; consent_at is stamped here, on the server.
+  var consent = String(p.consent) === 'true';
+  var extra = {};
+  extra[STYLE_HEADER] = style;
+  extra[CONSENT_HEADERS.consent] = consent;
+  extra[CONSENT_HEADERS.text] = consent ? clean(p.consent_text) : '';
+  extra[CONSENT_HEADERS.at] = consent ? new Date().toISOString() : '';
+
   var lock = LockService.getScriptLock();
   lock.waitLock(10000);
   try {
     var sheet = getSheet();
     sheet.appendRow(row);
-    writeStyle(sheet, sheet.getLastRow(), style);
+    writeByHeader(sheet, sheet.getLastRow(), extra);
   } finally {
     lock.releaseLock();
   }
@@ -86,20 +99,27 @@ function getSheet() {
   return sheet;
 }
 
-// Writes the chosen style into the "Reel style" column. The column is found by its header
-// (case-insensitive); if it does not exist yet, it is added after the last column.
-function writeStyle(sheet, rowNumber, style) {
+// Writes { header: value } pairs into this row. Each column is found by its header
+// (case-insensitive), never by position; a missing column is added after the last one,
+// so existing columns never move and older rows stay blank in the new ones.
+function writeByHeader(sheet, rowNumber, values) {
   var lastCol = Math.max(sheet.getLastColumn(), 1);
-  var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
-  var col = -1;
-  for (var i = 0; i < headers.length; i++) {
-    if (String(headers[i]).trim().toLowerCase() === STYLE_HEADER.toLowerCase()) { col = i + 1; break; }
-  }
-  if (col < 0) {
-    col = lastCol + 1;
-    sheet.getRange(1, col).setValue(STYLE_HEADER).setFontWeight('bold');
-  }
-  if (style) sheet.getRange(rowNumber, col).setValue(style);
+  var headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0]
+    .map(function (h) { return String(h).trim().toLowerCase(); });
+  Object.keys(values).forEach(function (header) {
+    var col = headers.indexOf(header.toLowerCase()) + 1;
+    if (!col) {
+      headers.push(header.toLowerCase());
+      col = headers.length;
+      sheet.getRange(1, col).setValue(header).setFontWeight('bold');
+    }
+    var value = values[header];
+    if (value === '' || value == null) return;
+    var cell = sheet.getRange(rowNumber, col);
+    // keep the ISO timestamp as text, so Sheets does not convert it to its own date format
+    if (header === CONSENT_HEADERS.at) cell.setNumberFormat('@');
+    cell.setValue(value);
+  });
 }
 
 // Trims, caps the length, and stops values like "=HYPERLINK(...)" or "@handle"
