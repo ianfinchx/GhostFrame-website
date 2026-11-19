@@ -397,6 +397,7 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
 .field{display:flex;flex-direction:column;min-width:0}
 .field.full{grid-column:1/-1}
 .field label{font-size:13.5px;font-weight:500;margin-bottom:6px}
+.field label .opt{font-weight:400;color:var(--txt-600)}
 .field input{width:100%;height:46px;padding:0 14px;border:1px solid var(--border-400);border-radius:10px;background:#fff;
   font:inherit;font-size:16px;color:var(--txt);transition:border-color .2s var(--ease)}
 .field input::placeholder{color:#a5a5a5}
@@ -1135,6 +1136,12 @@ dialog.pp[open] .pp-card{animation:pp-in .4s var(--ease)}
             <label for="pp-prospect">Your prospect's Instagram</label>
             <input id="pp-prospect" name="prospectInstagram" type="text" autocapitalize="off" placeholder="@realtorhandle" required>
             <span class="err" id="pp-prospect-err"></span>
+          </div>
+          <div class="field full">
+            <label for="pp-market">Prospect's city / market <span class="opt">(optional)</span></label>
+            <input id="pp-market" name="market" type="text" maxlength="80" autocomplete="off" placeholder="e.g. Phoenix, AZ" aria-describedby="pp-market-hint">
+            <span class="hint" id="pp-market-hint">Where your prospect sells. Leave it blank and we read it from their profile.</span>
+            <span class="err" id="pp-market-err"></span>
           </div>
           <div class="field full">
             <label for="pp-style">Reel style</label>
