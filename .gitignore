@@ -19,3 +19,13 @@ Brand Assets/ghost frame logo.png
 # OS noise
 .DS_Store
 Thumbs.db
+
+# Internal files that must never go into this PUBLIC repo (2026-11-19): the Apps Script
+# source (pasted by hand into Apps Script; kept on disk only) and the local Claude notes.
+# .vercelignore also keeps them off the live site if they are ever committed again.
+apps-script/
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+.env
+.env.*

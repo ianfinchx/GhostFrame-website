@@ -1,0 +1,18 @@
+# Files Vercel must never serve on ghostframemedia.com (2026-11-19).
+# Only the public site goes out: index.html, privacy.html, terms.html, sample-report.html,
+# Brand Assets/ and assets/. Everything below is internal.
+apps-script/
+CLAUDE.md
+CLAUDE.local.md
+.claude/
+README.md
+package.json
+package-lock.json
+serve.mjs
+screenshot.mjs
+node_modules/
+temporary screenshots/
+*.gs
+*.test.mjs
+.env
+.env.*
